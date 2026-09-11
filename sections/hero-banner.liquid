@@ -1,0 +1,512 @@
+{%- comment -%}
+  SitComfort — Home hero (redesign)
+  Drop this file into your theme at `sections/hero-banner.liquid`, then add
+  "SitComfort Hero" to the home page template in the theme editor.
+
+  Self-contained: no dependency on theme CSS, JS or snippets.
+  Spec + rationale: design-system/sitcomfort/pages/hero.md
+{%- endcomment -%}
+
+{%- liquid
+  assign product = section.settings.product
+  assign variant = product.selected_or_first_available_variant
+  assign has_offer = false
+  if variant.compare_at_price > variant.price
+    assign has_offer = true
+    assign saving = variant.compare_at_price | minus: variant.price
+  endif
+-%}
+
+<section
+  class="sc-hero"
+  id="sc-hero-{{ section.id }}"
+  aria-labelledby="sc-hero-title-{{ section.id }}"
+>
+  <div class="sc-hero__inner">
+
+    {%- comment -%} Column 1, upper: proof -> promise {%- endcomment -%}
+    <div class="sc-hero__top">
+      {%- if section.settings.show_rating and section.settings.rating_value != blank -%}
+        <div
+          class="sc-hero__rating"
+          role="img"
+          aria-label="Rated {{ section.settings.rating_value }} out of 5 from {{ section.settings.rating_count }} reviews"
+        >
+          <span class="sc-hero__stars" aria-hidden="true">
+            {%- for i in (1..5) -%}
+              <svg viewBox="0 0 20 20" width="16" height="16" focusable="false">
+                <path fill="currentColor" d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.21l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/>
+              </svg>
+            {%- endfor -%}
+          </span>
+          <span class="sc-hero__rating-text" aria-hidden="true">
+            {{ section.settings.rating_value }}/5 · {{ section.settings.rating_count }} reviews
+          </span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="sc-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <h1 class="sc-hero__title" id="sc-hero-title-{{ section.id }}">
+        {{ section.settings.heading }}
+      </h1>
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="sc-hero__sub">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Column 2 on desktop, middle of the stack on mobile {%- endcomment -%}
+    <div class="sc-hero__media">
+      <div class="sc-hero__img-wrap">
+        {%- liquid
+          assign hero_image = section.settings.image
+          if hero_image == blank
+            assign hero_image = product.featured_media.preview_image
+          endif
+          assign hero_alt = section.settings.image_alt
+          if hero_alt == blank
+            assign hero_alt = hero_image.alt | default: product.title
+          endif
+        -%}
+        {%- if hero_image != blank -%}
+          {{
+            hero_image
+            | image_url: width: 1200
+            | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              decoding: 'async',
+              sizes: '(min-width: 900px) 48vw, 100vw',
+              widths: '400, 600, 800, 1000, 1200',
+              alt: hero_alt
+          }}
+        {%- else -%}
+          {{ 'hero-apparel-1' | placeholder_svg_tag: 'sc-hero__placeholder' }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.proof_stat != blank -%}
+        <div class="sc-hero__proof">
+          <p class="sc-hero__proof-stat">{{ section.settings.proof_stat | escape }}</p>
+          <p class="sc-hero__proof-label">{{ section.settings.proof_label | escape }}</p>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Column 1, lower: price -> action -> reassurance {%- endcomment -%}
+    <div class="sc-hero__bottom">
+      {%- if product != blank -%}
+        <div class="sc-hero__offer">
+          <span class="sc-hero__price">{{ variant.price | money_without_trailing_zeros }}</span>
+          {%- if has_offer -%}
+            <s class="sc-hero__was">
+              <span class="sc-visually-hidden">Regular price</span>
+              {{ variant.compare_at_price | money_without_trailing_zeros }}
+            </s>
+            <span class="sc-hero__save">Save {{ saving | money_without_trailing_zeros }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="sc-hero__actions">
+        {%- if product != blank and variant.available -%}
+          <form method="post" action="{{ routes.cart_add_url }}" class="sc-hero__form">
+            <input type="hidden" name="form_type" value="product">
+            <input type="hidden" name="utf8" value="✓">
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="sc-btn sc-btn--primary">
+              {{ section.settings.cta_label | escape }}
+              {%- if section.settings.cta_show_price %} — {{ variant.price | money_without_trailing_zeros }}{% endif -%}
+            </button>
+          </form>
+        {%- else -%}
+          <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="sc-btn sc-btn--primary">
+            {{ section.settings.cta_label | escape }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_label != blank -%}
+          <a href="{{ section.settings.secondary_link | default: '#' }}" class="sc-hero__secondary">
+            {{ section.settings.secondary_label | escape }}
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+              <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.reassurance != blank -%}
+        <p class="sc-hero__reassure">{{ section.settings.reassurance | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="sc-hero__trust">
+          {%- for block in section.blocks -%}
+            <li class="sc-hero__trust-item" {{ block.shopify_attributes }}>
+              <span class="sc-hero__trust-icon" aria-hidden="true">
+                {%- case block.settings.icon -%}
+                  {%- when 'shipping' -%}
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+                  {%- when 'guarantee' -%}
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
+                  {%- when 'returns' -%}
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12a8 8 0 1 1 2.4 5.7"/><path d="M4 19v-5h5"/></svg>
+                  {%- else -%}
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg>
+                {%- endcase -%}
+              </span>
+              <span class="sc-hero__trust-label">{{ block.settings.label | escape }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% stylesheet %}
+.sc-hero {
+  --sc-teal: #1A7A6E;
+  --sc-teal-dark: #14615A;
+  --sc-teal-tint: #E8F2F0;
+  --sc-gold: #C9A84C;
+  --sc-cream: #F9F6F0;
+  --sc-ink: #1C1C1C;
+  --sc-muted: #5A5A56;
+  --sc-line: #E2DED4;
+
+  background: var(--sc-cream);
+  color: var(--sc-ink);
+  padding-block: 20px 26px;
+}
+
+.sc-hero__inner {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "top"
+    "media"
+    "bottom";
+  gap: 20px;
+}
+
+.sc-hero__top    { grid-area: top; }
+.sc-hero__media  { grid-area: media; position: relative; }
+.sc-hero__bottom { grid-area: bottom; }
+
+.sc-hero__top > * + *,
+.sc-hero__bottom > * + * { margin-top: 14px; }
+
+/* --- rating ------------------------------------------------------------- */
+.sc-hero__rating { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sc-hero__stars { display: inline-flex; gap: 2px; color: var(--sc-gold); }
+.sc-hero__rating-text { font-size: 13px; font-weight: 600; color: var(--sc-muted); }
+
+/* --- copy --------------------------------------------------------------- */
+.sc-hero__eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--sc-teal);
+}
+
+.sc-hero__title {
+  margin: 0;
+  font-size: clamp(34px, 8.5vw, 44px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.sc-hero__title em { font-style: normal; color: var(--sc-teal); }
+
+.sc-hero__sub {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--sc-muted);
+  max-width: 46ch;
+}
+
+/* --- media -------------------------------------------------------------- */
+.sc-hero__img-wrap {
+  position: relative;
+  display: block;
+  aspect-ratio: 7 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #EDE9E1;
+}
+.sc-hero__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- price -------------------------------------------------------------- */
+.sc-hero__offer { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.sc-hero__price { font-size: 32px; font-weight: 700; line-height: 1; }
+.sc-hero__was { font-size: 18px; color: var(--sc-muted); }
+.sc-hero__save {
+  background: var(--sc-gold);
+  color: var(--sc-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 999px;
+}
+
+/* --- actions ------------------------------------------------------------ */
+.sc-hero__actions { display: flex; flex-direction: column; gap: 12px; }
+.sc-hero__form { margin: 0; }
+
+.sc-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 54px;
+  padding: 15px 24px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.sc-btn--primary { background: var(--sc-teal); border-color: var(--sc-teal); color: #fff; }
+.sc-btn--primary:hover { background: var(--sc-teal-dark); border-color: var(--sc-teal-dark); }
+.sc-btn--primary:active { transform: translateY(1px); }
+
+.sc-hero__secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  align-self: center;
+  min-height: 48px;
+  padding: 12px 8px;
+  color: var(--sc-teal);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+.sc-hero__secondary:hover { text-decoration: underline; }
+
+.sc-hero__reassure {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--sc-muted);
+  text-align: center;
+}
+
+:where(.sc-hero) a:focus-visible,
+:where(.sc-hero) button:focus-visible {
+  outline: 3px solid var(--sc-teal);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+/* --- trust strip -------------------------------------------------------- */
+.sc-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 18px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--sc-line);
+  list-style: none;
+}
+.sc-hero__trust-item { display: flex; align-items: center; gap: 8px; }
+.sc-hero__trust-icon { display: inline-flex; color: var(--sc-teal); }
+.sc-hero__trust-label { font-size: 13px; font-weight: 500; color: var(--sc-ink); }
+
+/* --- proof card --------------------------------------------------------- */
+.sc-hero__proof {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 12px 28px rgba(28, 28, 28, .14);
+  max-width: 230px;
+}
+.sc-hero__proof-stat { margin: 0; font-size: 26px; font-weight: 700; color: var(--sc-teal); line-height: 1.1; }
+.sc-hero__proof-label { margin: 4px 0 0; font-size: 13px; line-height: 1.35; color: var(--sc-muted); }
+
+.sc-visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- desktop ------------------------------------------------------------ */
+@media screen and (min-width: 900px) {
+  .sc-hero { padding-block: 56px 64px; }
+
+  .sc-hero__inner {
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-areas:
+      "top    media"
+      "bottom media";
+    grid-template-rows: auto auto;
+    align-content: center;
+    column-gap: 64px;
+    row-gap: 28px;
+    padding-inline: 32px;
+  }
+
+  .sc-hero__top > * + *,
+  .sc-hero__bottom > * + * { margin-top: 18px; }
+
+  /* The image spans both text rows. Left to its intrinsic ratio it would
+     inflate them and tear a gap between the headline and the price, so on
+     desktop it stretches to whatever height the copy sets instead. */
+  .sc-hero__media { align-self: stretch; }
+  .sc-hero__img-wrap {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 430px;
+    border-radius: 20px;
+  }
+
+  .sc-hero__eyebrow { font-size: 14px; }
+  .sc-hero__title { font-size: clamp(44px, 4.2vw, 60px); }
+  .sc-hero__sub { font-size: 19px; }
+  .sc-hero__price { font-size: 38px; }
+
+  .sc-hero__actions { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 12px 18px; }
+  .sc-btn { width: auto; min-width: 236px; }
+  .sc-hero__secondary { align-self: auto; white-space: nowrap; }
+  .sc-hero__reassure { text-align: left; }
+  .sc-hero__trust-label { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-hero *,
+  .sc-hero *::before,
+  .sc-hero *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SitComfort Hero",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Product" },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Hero product",
+      "info": "Drives the price, saving and add-to-cart. Set this to ComfortBundle™."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image",
+      "info": "Falls back to the hero product's featured image."
+    },
+    { "type": "text", "id": "image_alt", "label": "Image alt text override", "default": "" },
+
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The 7-Day Relief System" },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Headline",
+      "default": "<p>Sit longer without pain — <em>in 7 days.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The seat cushion, lumbar support and guided reset program for people who sit 6+ hours a day."
+    },
+
+    { "type": "header", "content": "Calls to action" },
+    { "type": "text", "id": "cta_label", "label": "Primary button label", "default": "Add ComfortBundle" },
+    { "type": "checkbox", "id": "cta_show_price", "label": "Append price to button label", "default": true },
+    { "type": "url", "id": "cta_link", "label": "Primary link (used only if no product is set)" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary link label", "default": "See how the 7-Day Reset works" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary link" },
+    {
+      "type": "text",
+      "id": "reassurance",
+      "label": "Reassurance line under the button",
+      "default": "30-day money-back guarantee · Free express shipping Australia-wide"
+    },
+
+    { "type": "header", "content": "Social proof" },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show star rating",
+      "default": false,
+      "info": "Leave off until you have real review data. Do not display a rating you cannot substantiate."
+    },
+    { "type": "text", "id": "rating_value", "label": "Rating value (out of 5)", "default": "" },
+    { "type": "text", "id": "rating_count", "label": "Review count", "default": "" },
+    { "type": "text", "id": "proof_stat", "label": "Proof card — stat (desktop only)", "default": "" },
+    { "type": "text", "id": "proof_label", "label": "Proof card — label", "default": "" }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust point",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Free express shipping" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "guarantee", "label": "Guarantee" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "check", "label": "Check" }
+          ],
+          "default": "shipping"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SitComfort Hero",
+      "blocks": [
+        { "type": "trust", "settings": { "label": "Free express shipping", "icon": "shipping" } },
+        { "type": "trust", "settings": { "label": "30-day guarantee", "icon": "guarantee" } },
+        { "type": "trust", "settings": { "label": "Easy returns", "icon": "returns" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
