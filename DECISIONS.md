@@ -319,3 +319,95 @@ Settles the guarantee naming on one phrase ("30 days to change your mind" + the 
   separate question; owner has not ruled, and kept as is.
 - **3b** (heading levels h2 → h6 → h4 inside the section) lives in `feature-highlight.liquid`, not the
   template — out of scope for a copy change.
+
+---
+
+# CHANGE 3 — Collection Products card alignment  (pushed 2026-09-18)
+
+**Target:** theme `164124164353` (unpublished). Live re-verified untouched after both pushes
+(`12406` / `4f65aaab…` and `8706` / `222d850a…`, still MAIN).
+
+## The finding
+
+`cstm-style.css:1634` sets `.collection-products .products-grid { align-items: center }`. Because the
+ComfortBundle card is taller, the two side cards were vertically centred against it and nothing lined
+up across the row. Measured in the harness at 1280px:
+
+| | before | after |
+|---|---|---|
+| card top spread | **80 px** | **0 px** |
+| ErgoRelief / LumbarEase top | y=390 | y=310 |
+| ComfortBundle top | y=310 | y=310 |
+
+Bottom spread goes from 81px to 161px, which is correct and intended: the bundle card is genuinely
+taller because it alone carries the trust line and the "Most customers choose…" block. Tops aligned is
+what makes the row scannable.
+
+## The fix
+
+One declaration, scoped, in the section's own `<style>` block:
+
+```css
+.cp-v2 .products-grid { align-items: start; }
+```
+
+**Shared section → opt-in setting.** `sections/collection-products.liquid` is also used by
+`templates/collection.json` (the unused orphan template), so blast radius is 2. Following the house
+pattern, the rule is gated behind a new `align_cards` checkbox defaulting to **false**, and enabled
+only on `collection.custom-collection.json`. `collection.json` renders byte-identically to before.
+
+## Measured cost: zero, at every width
+
+| width | before | after | delta |
+|---|---|---|---|
+| 1500 | 1144 | 1144 | **0** |
+| 1280 | 1163 | 1163 | **0** |
+| 1100 | 1184 | 1184 | **0** |
+| 1024 | 1727 | 1727 | **0** |
+| 768 | 1696 | 1696 | **0** |
+| 390 | 2271 | 2271 | **0** |
+
+## Two approaches tried and rejected — recorded so they are not re-derived
+
+1. **`margin-top: auto` on the price block** to pin CTAs to the card bottom. Rendered and rejected: it
+   aligns the cards but punches a ~145px void into the middle of the two side cards, and the CTAs still
+   do not align because the bundle has content *below* its button.
+2. **`min-height` on `.custom-content`** to equalise description blocks so the price/CTA rows align
+   exactly. Rejected on measurement: it is a magic number that only holds at one width. At 1025–1399px
+   120px worked, but at ≥1400px (where `.page-width` caps and cards get wider) the bundle's description
+   drops to 4 lines and the same rule **added 24px**. A tablet variant added **+72px at 768 and +120px
+   at 1024**. Any fixed value breaks as soon as copy or width changes.
+
+Consequence accepted: where descriptions differ in line count the star/price/CTA rows can still sit up
+to ~24px apart. The honest fix for that is to even up the three description lengths in copy, not a CSS
+hack. Raised with the owner; not actioned.
+
+## Verification
+
+- Section file: pulled to disk and checksum-matched live (`222d850a…`) before editing. LF file, zero
+  backslashes, no `"""` sequence. Diff is exactly **3 hunks** (wrapper class, style rule, schema
+  setting); schema re-parsed as JSON and the new `align_cards` id confirmed present; no CRLF introduced.
+- Template: round-trip byte-identical before editing; **204 → 205 keys, exactly 1 diff**
+  (`/sections/collection_products_7hQ9pr/settings/align_cards` absent → true); `order` and every
+  `block_order` unchanged.
+- Guard extended to 35 assertions. PASS.
+- Both pushed as TEXT GraphQL variables. Post-push `checksumMd5`:
+  `sections/collection-products.liquid` = `4cf4329421c57c39ad0b62890dc70fd9` (9138 bytes),
+  `templates/collection.custom-collection.json` = `bc880091c3a33cc586e53484993976d1` (12582 bytes) —
+  both equal to local `md5sum`, confirmed by an independent re-pull.
+
+## Still open on this section (raised, not actioned)
+
+- **Tablet orphan, 577–1024px:** `repeat(2, 1fr)` with 3 cards renders 2 + 1, leaving LumbarEase alone
+  with a card's width of dead space. Proposed shape: bundle full-width on top, the two singles 2-up
+  below. Needs a measured render.
+- **Mobile length:** one card ≈ one full viewport; three cards + header ≈ three screens before the
+  comparison table. Descriptions are 4–5 lines of **centred** 16px copy; left-aligning them on mobile
+  would read better.
+- **`.best-subheading` is `text-align: left` with `max-width: 285px`** inside an otherwise centred card,
+  so "Free shipping • 30-day money-back guarantee • Easy returns" wraps with a dangling "• Easy returns"
+  opening line two. Same dangling-separator class of bug as the PDP's `[br]` lesson.
+- **Header stack:** ~100px between the teal one-line label and the cards (40px collapsed margin + 60px
+  `.section-header` margin-bottom), and three tiers of header text.
+- **Naming:** the ComfortBundle card still reads "7-Day Pain Relief Reset" (finding 1d).
+- **CLS:** card images still carry `width=""` / `height=""` (finding 1a).
