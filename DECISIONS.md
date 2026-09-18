@@ -449,3 +449,54 @@ reasoning from line counts, **not a measurement** — verify in preview.
 
 Publishing is the owner's. The Shopify connector blocks theme publishing outright, so it can only be
 done by him in admin: Online Store → Themes → Publish. Nothing in this project has ever gone live.
+
+---
+
+# CHANGE 5 — Tablet layout + trust line  (pushed 2026-09-18)
+
+Owner picked option 2 for the tablet orphan and said finish it.
+
+**Tablet orphan (577–1024px).** `resposive.css` drops the grid to `repeat(2, 1fr)` at ≤1024, and three
+cards into two columns renders 2 + 1 — LumbarEase alone on row 2 with a card's width of dead space.
+Fixed by spanning the featured card across both columns and placing it first:
+
+```css
+@media screen and (min-width: 577px) and (max-width: 1024px) {
+  .cp-v2 .product-card.active-card { grid-column: 1 / -1; order: -1; }
+}
+```
+
+`order: -1` is required, not cosmetic: without it grid auto-placement puts ErgoRelief in row 1 col 1,
+then the 2-column bundle cannot fit beside it and wraps to row 2, leaving a hole at row 1 col 2.
+
+**Rendered and confirmed at 768px before pushing:** bundle full width on top, ErgoRelief and
+LumbarEase side by side beneath, no orphan and no gap.
+
+**Trust line.** `.best-subheading` was `text-align: left` with `max-width: 285px` inside an otherwise
+centred card — which would look worse on the now full-width tablet card. Scoped override:
+
+```css
+.cp-v2 .best-subheading { max-width: none; text-align: center; }
+```
+
+**Dangling separator.** "Free shipping • 30-day money-back guarantee • Easy returns" wrapped with
+"• Easy returns" opening line 2. Fixed in copy, not CSS, using the skill's own rule — tie each bullet
+to the word *before* it with U+00A0 so a line can never start with one:
+`Free shipping • 30-day money-back guarantee • Easy returns`
+
+## Verification
+
+- Section file: 1 clean diff hunk; schema re-parsed as JSON; no CRLF introduced.
+  Post-push `checksumMd5` = `67c99c5d5331cdc97743ef9a3184ee93` (9537 bytes) = local md5.
+- Template: **205 → 205 keys, exactly 1 diff** (`best_value_subheading`). Guard PASS.
+  Post-push `checksumMd5` = `3a7c9149307fb43e3001aba4e6eeb3aa` (12422 bytes) = local md5.
+
+## Remaining on the collection page
+
+- Card images still carry empty `width=""` / `height=""` → cards jump on first load (finding 1a).
+  Fix is the `image_tag` filter, as `feature-highlight.liquid` already does.
+- Mobile: descriptions are centred 4–5 line blocks; left-aligning would read better.
+- Header `.section-header` still has ~100px below it before the cards.
+- Dead settings: `custom_title` ×2, `best_value_text` on ErgoRelief.
+- `feature_highlight_UWkmXn.image_alt` unset → alt reads "Feature Image".
+- Page still has no `<h1>` and the collection description never renders (finding P1).
