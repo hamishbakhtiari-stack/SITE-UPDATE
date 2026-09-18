@@ -500,3 +500,73 @@ to the word *before* it with U+00A0 so a line can never start with one:
 - Dead settings: `custom_title` ×2, `best_value_text` on ErgoRelief.
 - `feature_highlight_UWkmXn.image_alt` unset → alt reads "Feature Image".
 - Page still has no `<h1>` and the collection description never renders (finding P1).
+
+---
+
+# CHANGE 6 — Comparison table  (pushed 2026-09-18)
+
+Owner approved switching to the real `<table>` and asked for "All-day comfort" to be ✓ for all three.
+
+## What was wrong
+
+The section renders the table **twice** — a div grid and a real `<table>`.
+`cstm-style.css:2487` `.comparison-table-wrapper table.comparison-table { display: none }` has **no media
+query**, so the `<table>` was dead at every width, including the complete mobile stacked-card layout
+already written for it. Note the mobile rule `.comparison-table { display: block }` (0,1,0) could never
+win against that `display:none` (0,2,1) either — which is why it never applied.
+
+The visible div grid had three faults, all measured/rendered:
+1. **≤749px** — needs 520px in a 350px space; ComfortBundle entirely off-screen behind a sideways scroll.
+2. **750–1024px** — `.comp_table_main_row { background:#1f8b7b }` puts green ✓ on teal, very low contrast.
+3. **All widths** — `.blankrow_th` hardcoded heights (68.39 / 48.8 / 47px) no longer match the header, so
+   every label sits ~13px off its marks, plus a green sliver under the last row on mobile.
+
+## The fix
+
+Opt-in, because blast radius is 2 (`collection.json`, the dead orphan, also uses this section):
+new `use_table_layout` checkbox, default **false**, enabled only on our template.
+
+```css
+.ct-v2 .comparison_table_cstm { display: none; }
+.ct-v2 .comparison-table-wrapper table.comparison-table { display: table; }
+@media screen and (max-width: 991px) {
+  .ct-v2 .comparison-table-wrapper table.comparison-table { display: block; }
+}
+```
+
+The media query is **required**: without it the desktop `display:table` would also beat the ≤991
+`display:block` rule and destroy the mobile stacked layout.
+
+## Measured
+
+| width | div grid (before) | real table (after) | delta |
+|---|---|---|---|
+| 390 | 618 | 1291 | **+673** |
+| 768 | 637 | 1308 | **+671** |
+| 1280 | 741 | 702 | **−39** |
+
+Mobile is 673px taller. Accepted deliberately: the previous mobile state hid the ComfortBundle column
+entirely, and long-but-readable beats short-but-invisible. Desktop is shorter *and* correctly aligned.
+
+A third option was built and measured — keep the compact grid, kill the min-widths so it fits 390px.
+It came in at **609px (−9px)**, but after one pass the row alignment and the ComfortBundle pill were
+still wrong, so it was not offered as finished. Recorded in case compact is wanted later.
+
+## Copy
+
+- **"All-day comfort" was ○ / ○ / ✓** — told readers neither single product gives all-day comfort, while
+  both are on sale on the same page. Now ✓ / ✓ / ✓ at the owner's instruction. Noted to him that the row
+  no longer differentiates anything; he accepted that.
+- Schema default `row_title` is still `"7-day reset"` (retired lowercase form) — a newly added row would
+  inherit it. Left alone; flagged.
+- "View the Full System" renders title-cased by `text-transform: capitalize`. Cosmetic, left.
+- ○ vs ✗ is his call — text glyphs in the section, not icon files. Not touched.
+
+## Verification
+
+- CRLF file (569 CRLF, 0 bare LF). Pushed as a TEXT **variable** with `\r\n` preserved — never a block
+  string, which normalises line endings. Post-push file re-checked: 0 bare LF introduced.
+- Section diff: exactly **3 hunks**; schema re-parsed as JSON; `use_table_layout` id confirmed.
+  `checksumMd5` = `bf1985ffffc1a32ffebb2bda61bdb6e2` (14276 bytes) = local md5.
+- Template: **205 → 206 keys, exactly 3 diffs** (two column values + the new setting). Guard PASS.
+  `checksumMd5` = `2eab3a44c434d9e73e699e91edbb4249` (12454 bytes) = local md5.
