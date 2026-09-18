@@ -6,13 +6,20 @@ Reviewed: 2026-09-18. **Review only — nothing pushed.**
 
 ## Theme state (checked, do not assume)
 
-| | |
-|---|---|
-| Theme `164061970689` "SitComfort — CRO fold redesign (Claude)" | **now MAIN / live** |
+| Theme | ID | Role |
+|---|---|---|
+| SitComfort — CRO fold redesign (Claude) | `164061970689` | **MAIN / live — never write** |
+| SitComfort — Collection page CRO (Claude, DO NOT PUBLISH) | `164124164353` | **UNPUBLISHED — working theme** |
 
-The PDP project's working theme has since been published. The skill's theme-map lists this ID as
-"the unpublished duplicate" — that is stale. **A fresh unpublished duplicate is needed before any
-write.** All reads below are from the live theme as baseline.
+The PDP project's working theme (`164061970689`) has since been published, so the skill's theme-map
+entry calling it "the unpublished duplicate" is stale.
+
+Working duplicate created 2026-09-18T06:27:37Z from live. Copy verified clean — `checksumMd5` matches
+live exactly on `templates/collection.custom-collection.json` (`4f65aaab…`),
+`sections/comparison-table.liquid` (`afcee9a8…`) and `assets/cstm-style.css` (`493811c5…`).
+
+**All writes go to `164124164353`. Publishing is the owner's decision, never mine.**
+All findings below were read from the live theme as baseline.
 
 ## Scope note
 
