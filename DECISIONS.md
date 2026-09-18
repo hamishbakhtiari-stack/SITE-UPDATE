@@ -177,3 +177,50 @@ Ethics commentary on the review cards.
 
 Owner picks what to action. Then: fresh unpublished duplicate → build locally → key-by-key parsed
 diff → guard → push → re-pull `checksumMd5` and compare to local `md5sum`.
+
+---
+
+# CHANGE 1 — FAQ copied from the ComfortBundle PDP  (pushed 2026-09-18)
+
+**Instruction:** make the collection FAQ exactly like the ComfortBundle PDP — copy, layout, all details.
+
+**Target:** theme `164124164353` (unpublished). Live theme untouched and re-verified after the push
+(`12406` / `4f65aaab…`, still MAIN).
+
+**What was done.** `sections/faq_xz3t44` in `templates/collection.custom-collection.json` was replaced
+wholesale with `sections/faq_bMxpUE` from `templates/product.ComfortBundle.json`. Asserted
+programmatically that the two section objects are now **exactly equal**. Layout needed no work: both
+pages already render the same shared `sections/FAQ.liquid`, which carries the PDP's `.faq-v2` fixes
+(`white-space: pre-line`, the 45° cross). The section key `faq_xz3t44` was kept so `order` is untouched.
+
+**Verification**
+- Round-trip check first: re-serialising the untouched baseline reproduced it **byte-identically**, so the
+  diff is only the intended change.
+- Key-by-key parsed diff: **200 → 204 keys, 45 diffs, all under `/sections/faq_xz3t44/`. Zero diffs
+  elsewhere.** Each of the other five sections asserted byte-identical. `order` unchanged.
+- Guard `check_template.py` → PASS (22 assertions).
+- Pushed as a TEXT GraphQL **variable**, not a `"""` block string — avoids the double-escaping trap
+  entirely (the file has 818 quotes, 347 newlines, 26 backslashes).
+- `checksumMd5` after push = `780299163b5623540d5b17eea6b27af8` = local `md5sum` of the pushed bytes.
+  Confirmed by an **independent re-pull**, not just the mutation response.
+- U+2011 in the comparison table's `bottom_heading` confirmed intact.
+
+**Side effects, all intended (the PDP's values):**
+- 5 FAQ items → **6** (adds "How do I access the 7-Day Reset?").
+- `icon_style` `arrow` → `plus`, which activates the `.faq-v2` 45° cross rotation.
+- Heading `Frequently asked / questions` → `Frequently Asked / Questions`.
+- `bottom_text` now carries a real link: `Have more questions? <a href="/pages/contact">Contact us</a>`.
+- Fixes findings **4a** and **4b** as a by-product: the retired "7-Day SitComfort Reset" (x2) and the
+  lowercase "7-day reset" are gone. Verified zero retired forms remain in the FAQ.
+- `4c` (`show_logo: true` with no `logo_image`) persists — the PDP has the same, so it is inherited
+  by copying exactly, not introduced.
+- `4d` (no `aria-expanded`) unchanged — it lives in the shared section file, not the template.
+
+**⚠ One thing that cannot be "exactly like the PDP" — needs your call.**
+`button_link` was copied verbatim as `/cart/add?id=49378080227585&quantity=1&return_to=/cart`.
+On the PDP that opens the cart drawer, because the `custom_liquid_cartDrawerAjax` delegate inside the
+PDP's `main` section intercepts `a[href*="/cart/add"]`. **That delegate does not exist on the collection
+page.** So here the same link adds the bundle and hard-navigates to `/cart` — no drawer. It works, but
+it is a different experience, and it is the one detail where exact parity is not achievable by copying
+the setting. Previous value was `shopify://products/comfortbundle-complete-system` (went to the PDP).
+One field to change either way.
