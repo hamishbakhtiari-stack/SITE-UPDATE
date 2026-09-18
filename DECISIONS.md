@@ -173,6 +173,20 @@ Checked and **not** a defect: the arrow icon does rotate on open — base
 Pricing / anchoring / value-stacking. Consumer law. Who pays return postage. Icon design.
 Ethics commentary on the review cards.
 
+## ICONS — restated by the owner, 2026-09-18, absolute
+
+*"never ever invent or create an icon you are terrible at that"*
+
+Never invent, generate, create, substitute, restyle or recolour an icon. Ever. Use only the icon
+assets already in the theme, as they are. Relabelling the *text* beside an existing icon is copy work
+and is fine; touching the icon itself is not.
+
+**Harness mocks:** do not use grey placeholder blocks where his icons go. The Shopify CDN is blocked
+in this environment so real icons cannot load — render the reserved 60x60 box as an outlined box
+carrying the icon's **filename**, so a mock can never be misread as a substituted icon. A caption is
+not sufficient on its own; this has now caused concern twice (grey circles on the PDP harness, grey
+squares on the collection feature-highlight mock).
+
 # Next step
 
 Owner picks what to action. Then: fresh unpublished duplicate → build locally → key-by-key parsed
