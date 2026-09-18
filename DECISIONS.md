@@ -238,3 +238,84 @@ page.** So here the same link adds the bundle and hard-navigates to `/cart` — 
 it is a different experience, and it is the one detail where exact parity is not achievable by copying
 the setting. Previous value was `shopify://products/comfortbundle-complete-system` (went to the PDP).
 One field to change either way.
+
+---
+
+# CHANGE 2 — Feature Highlight tile copy  (pushed 2026-09-18)
+
+**Owner's position:** inclined to keep the section, invited a challenge. Challenge made; he approved
+the copy change and rejected replacing the section with the PDP's version. Outcome: **section, layout
+and all six icons kept. Six `title` fields changed. Nothing else.**
+
+**Target:** theme `164124164353` (unpublished). Live re-verified untouched after the push
+(`12406` / `4f65aaab…`, still MAIN).
+
+## The challenge, and the evidence behind it
+
+1. **Icon/label mismatch (a real defect).** `Mask_group_3.png` is the envelope — proven by the owner's
+   own PDP screenshot, where that same file is labelled "Australian customer support". On the
+   collection page it was labelled **"Built for Desk Workers"**. Envelope over a desk-worker claim.
+2. **Four of six tiles restated copy already on the page**, and the FAQ push (Change 1) made it worse:
+   - "Fast shipping from Australia" ↔ FAQ "Free express shipping across Australia… from our Sydney warehouse"
+   - "Satisfaction guarantee" **and** "30-Day Risk-Free Trial" ↔ card "30-day money-back guarantee" ↔ FAQ
+     "30-day money-back guarantee" — **four names for one promise on one page**
+   - "Built for Desk Workers" ↔ section 1's "Designed for people who sit 6+ hours a day", and this
+     section's own heading
+3. **"Ergonomic Designed" was ungrammatical**, and casing was mixed Title Case / sentence case.
+4. **The gap:** nothing on the collection page said stock, returns and support are physically in
+   Australia — the differentiator against overseas dropshippers, already settled as the right message
+   on the PDP.
+
+## Why the PDP section was NOT copied wholesale (measured)
+
+Measured in the iframe harness at a true 390px against the four real CSS files:
+
+| variant | section height @390px | vs current |
+|---|---|---|
+| current (6 tiles) | 1119 px | — |
+| PDP's 4 tiles | 1006 px | **−113 px** |
+| approved copy change (6 tiles) | 1119 px | **0 px** |
+
+The PDP's 4 tiles are 113px shorter, but `.feature-grid` is `repeat(3, 1fr)` above 991px
+(`cstm-style.css:920`), so **4 tiles render 3 + 1 with an orphan on desktop**. Six divides evenly by
+both 3 and 2; four does not. It would also have dropped the two product tiles and pulled in the PDP's
+photo. Rejected on that basis.
+
+*Parked, different page:* the PDP's own 4 tiles therefore render 3+1 above 991px. The owner's
+screenshot looked like a clean 2×2 because it was a ~944px viewport at 2× DPR, which hits the
+`≤991px → repeat(2, 1fr)` rule in `resposive.css:246`.
+
+## What changed
+
+| icon (UNCHANGED) | before | after |
+|---|---|---|
+| `Mask_group.png` | Ergonomic Designed | Ergonomically designed |
+| `Mask_group_3.png` (envelope) | Built for Desk Workers | Australian customer support |
+| `Mask_group_5.png` (shield) | Satisfaction guarantee | Returns go to Sydney, not overseas |
+| `Mask_group_1.png` (truck) | Fast shipping from Australia | Ships from Sydney |
+| `premium-memory-foam-icon.png` | Premium Memory Foam | Premium memory foam |
+| `Mask_group_2.png` (calendar) | 30-Day Risk-Free Trial | 30 days to change your mind |
+
+Settles the guarantee naming on one phrase ("30 days to change your mind" + the FAQ's
+"30-day money-back guarantee"), and fixes finding **3c**.
+
+## Verification
+
+- Round-trip of the new baseline reproduced it **byte-identically** before editing.
+- **204 → 204 keys, exactly 6 diffs, every one a `/settings/title`, all inside
+  `feature_highlight_UWkmXn`.** Zero diffs elsewhere; the other five sections asserted byte-identical;
+  `order` and `block_order` unchanged.
+- **All six `icon` values asserted identical before and after** — the build aborts if any icon changes.
+- Guard extended to 34 assertions and now **pins all six icon paths**, so a future write cannot
+  silently change an icon. PASS.
+- Pushed as a TEXT GraphQL variable. Post-push `checksumMd5` =
+  `a4858fbd35a20ffd0a725848dd00bc38` = local `md5sum`, confirmed by an independent re-pull.
+
+## Still open in this section
+
+- `image_alt` is unset, so the main photo's alt is the literal string "Feature Image" (finding 3a).
+  Raised; not approved in this change, so not touched. One theme-editor field.
+- `heading` "Designed for People / Who Sit All Day" near-duplicates section 1's line. Raised as a
+  separate question; owner has not ruled, and kept as is.
+- **3b** (heading levels h2 → h6 → h4 inside the section) lives in `feature-highlight.liquid`, not the
+  template — out of scope for a copy change.
