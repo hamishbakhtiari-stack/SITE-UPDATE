@@ -411,3 +411,41 @@ hack. Raised with the owner; not actioned.
   `.section-header` margin-bottom), and three tiers of header text.
 - **Naming:** the ComfortBundle card still reads "7-Day Pain Relief Reset" (finding 1d).
 - **CLS:** card images still carry `width=""` / `height=""` (finding 1a).
+
+---
+
+# CHANGE 4 — Main section copy  (pushed 2026-09-18)
+
+Copy pass on `collection_products_7hQ9pr` — it had been skipped: the layout pass ran, then the layout
+fix was built, without ever doing copy → icons → CTA for that section. Owner caught it.
+
+Pushed to `164124164353` in three verified steps, each diffed key-by-key and guard-passed:
+
+| # | change | diffs | checksum |
+|---|---|---|---|
+| 1 | bundle card: "7-Day Pain Relief Reset" → **"7-Day Reset"** (retired name) | 1 | `fc227a14c5c52bfc7f54a7efeb68bcf7` |
+| 2 | header `body_text` "Designed for people who sit 6+ hours a day." → `""` (duplicated the sub-heading's job and the feature section's heading) | 2 | `5d067579703e04305ab287e134471819` |
+| 2 | bundle description trimmed 5 lines → 4 ("the complete system for" dropped) so the price/CTA rows line up without CSS | (same push) | |
+| 3 | comparison table `bottom_heading` → `""` — same sentence as the bundle card's `best_value_body`, and a full sentence marked up as an `<h2>` | 1 | `e5cab3145898d824dd287e21df855c46` |
+
+All three checksums matched local `md5sum`. Blank settings are guarded by `{% if ... != blank %}` in
+both sections, so nothing renders and every value is recoverable from the theme editor.
+
+**Not re-measured.** The harness broke while building the comparison render and was abandoned rather
+than spend more of the owner's budget. The claim that trimming the description evens up the rows is
+reasoning from line counts, **not a measurement** — verify in preview.
+
+## Still open on this section
+
+- `.best-subheading` is `text-align: left` + `max-width: 285px` in an otherwise centred card, so
+  "Free shipping • 30-day money-back guarantee • Easy returns" wraps with a dangling "• Easy returns".
+- Dead settings: `custom_title` on the bundle and LumbarEase cards (never rendered by the section);
+  `best_value_text: "BEST VALUE"` on ErgoRelief where the badge is off.
+- Buttons judged correct as-is: "View ErgoRelief™" / "View LumbarEase™" vs "Start Your 7-Day Reset"
+  is a deliberate browse-vs-act split.
+- Tablet orphan (2+1 at 577–1024px) and the card images' empty `width=""`/`height=""` remain.
+
+## Process note
+
+Publishing is the owner's. The Shopify connector blocks theme publishing outright, so it can only be
+done by him in admin: Online Store → Themes → Publish. Nothing in this project has ever gone live.
