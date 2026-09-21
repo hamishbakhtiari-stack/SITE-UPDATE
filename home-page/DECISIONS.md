@@ -978,3 +978,35 @@ Hamish about what he wants different.
 
 **Still true and still unused:** rule 7 (build theme-file bodies with `ensure_ascii=True`) is kept
 in `locked.json` — it is about the push mechanism, not about the hero, and it earned its place.
+
+---
+
+## S6c — Standing rule: what the home hero is for (2026-09-21) — PERMANENTLY CLOSED
+
+Hamish, in his own words:
+
+> *"Mine is clwarer, i dont care if cta is not in cold, people should look at my home page and
+> tell why I exist , mine has ebwbrow , a conplete sitting system, etc"*
+
+**The rule.** The home page's job is to make a stranger understand why SitComfort exists. CTA
+position relative to the fold is not a goal, and is never a reason to remove anything.
+
+**These three stay, and are not to be touched:**
+
+1. The eyebrow — `subheading`: "The 7-Day relief system". Names the category before anything else.
+2. The system line — `body_text`: "A complete support system for people who sit 6+ hours a day."
+   The words *complete support system* are the point.
+3. The product-names line — `separator_label`: "ErgoRelief™ cushion • LumbarEase™ support •
+   Guided 7-Day Reset". Says what is physically in the box.
+
+**Closed topics on the home page, from here on.** Fold position. Scroll depth. Above-the-fold CTA
+placement. Shortening the hero to move the button up. None of these are to be raised again as an
+argument for changing home-page copy.
+
+**Why this is written down.** My entire hero rework was built on the fold premise, and the
+premise was wrong for this page. The mockup, Phase 1, and the parked Phase 2 all inherited it.
+Anything still carrying that reasoning is void, not pending.
+
+**Phase 2 is parked, not queued.** It was designed partly around the same fold logic. If the
+rating row and the badges come back, it will be as an additive proposal justified on its own
+terms, and only when Hamish asks.
