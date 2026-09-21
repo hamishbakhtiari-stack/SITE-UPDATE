@@ -58,7 +58,63 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
-### 2026-09-21 — §5 "Engineered for real support": all proposed changes shipped
+### 2026-09-21 — §5 REVERTED IN FULL. Section is back to its pre-review state.
+
+Hamish sent renders of what I shipped: the card images blew up to several hundred pixels, the
+cards ballooned, the row broke. He asked for a full undo. Done, both files, verified:
+
+| file | size | md5 | |
+|---|---|---|---|
+| `sections/comparison-Section.liquid` | 8867 | `f895d180f30e7af98ad57c5090679ada` | identical to the original |
+| `templates/index.json` | 18993 | `0338f0ea79ccd2158402da5e05d8418e` | identical to pre-§5 |
+
+Nothing from that work survives. Sections 7, 8, 10 and the FAQ are untouched by this revert.
+
+#### What I broke, and the exact mechanism
+
+Replacing `<img src="{{ product.featured_image | img_url: 'medium' }}">` with `image_tag` was the
+error. The original `<img>` carried **no `width`/`height` attributes**, so the theme's CSS alone
+decided the rendered size. `image_tag` writes intrinsic `width` and `height` attributes onto the
+tag from the source image. This theme's `.product-image-wrap img` rules evidently do not pin a
+width, so those attributes became the size and the image rendered at its intrinsic dimensions
+instead of ~180px. Every card grew with it.
+
+`img_url: 'medium'` being a fixed 240px was a real finding. The fix was not. A 240px image in a
+~180px box was a minor sharpness issue on retina; what I shipped in its place destroyed the
+layout. **The cure was far worse than the disease, and the disease was cosmetic.**
+
+#### Rule this produces — this is the second time
+
+`references/lessons.md` #8 already says: *render before pushing, even for a change that is
+"obviously" just CSS.* I did not render. I pushed markup changes to three product cards on
+reasoning alone, and told Hamish "worth a preview now" — making him the renderer.
+
+**Never again ship a change to image markup, or to any markup that CSS is currently sizing,
+without seeing it rendered first.** Specifically:
+- Swapping a bare `<img>` for `image_tag` is NOT a like-for-like change. It adds `width`, `height`,
+  `srcset` and `sizes`. On a theme whose CSS assumes an unsized `<img>`, that changes layout.
+- If a render cannot be produced here, the change does not ship. Describe it and let Hamish
+  decide, rather than pushing and asking him to check.
+- Bundling a risky markup change with four safe copy changes cost him all five. **Separate the
+  risky edit into its own push** so a revert does not take the good work with it.
+
+#### The findings that were real and remain unfixed
+
+Recorded so they are not lost, but **nothing is to be actioned without approval and a render**:
+
+1. Subheading "Most customers choose the full system" — contradicted by sales data (bundle: 0
+   orders in 730 days vs 72 and 68). **Template-only, zero layout risk.**
+2. All three card buttons open a new tab via a hard-coded `target="_blank"`. Fixable by clearing
+   the three `button_url` values. **Template-only, zero layout risk.**
+3. Mobile heading orphans the em dash onto line 2. Fixable with a U+00A0. **Template-only.**
+4. Card title/subtitle repetition, and the outer-card misalignment caused by one title wrapping.
+   **Needs the section file — do not touch without a render.**
+5. Images at a fixed 240px. **Real but minor. Not worth the risk. Leave it.**
+
+Items 1-3 carry no layout risk at all and could ship separately if he wants them. Items 4 and 5
+should stay closed unless he asks.
+
+### 2026-09-21 — §5 "Engineered for real support": all proposed changes shipped (REVERTED — see above)
 
 Two pushes. Verified by checksum, and every other template re-read and confirmed unchanged.
 

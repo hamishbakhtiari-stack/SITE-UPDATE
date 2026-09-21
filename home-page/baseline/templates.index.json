@@ -167,7 +167,7 @@
             "featured_product": "ergorelief",
             "best_value": false,
             "title": "ErgoRelief™",
-            "subtitle": "Memory foam seat cushion with a tailbone cut-out that takes the pressure off your lower body during long sitting sessions — at your desk, in the car, or on the couch.",
+            "subtitle": "Pressure-relieving seat cushion",
             "image": "shopify://shop_images/ErgoRelief.webp",
             "show_reset_tag": false,
             "reset_tag": "7-Day Reset Included",
@@ -178,7 +178,7 @@
             "feature_4": "",
             "feature_5": "",
             "button_label": "View ErgoRelief™",
-            "button_url": ""
+            "button_url": "shopify://products/ergorelief"
           }
         },
         "card_gCtPhR": {
@@ -187,7 +187,7 @@
             "featured_product": "comfortbundle-complete-system",
             "best_value": true,
             "title": "ComfortBundle™",
-            "subtitle": "ErgoRelief™ and LumbarEase™ together, plus a guided 7-Day Reset — for people who've tried everything and are still uncomfortable by 10am.",
+            "subtitle": "Complete support system",
             "image": "shopify://shop_images/ComfortBundle.webp",
             "show_reset_tag": true,
             "reset_tag": "7-Day Reset included",
@@ -198,7 +198,7 @@
             "feature_4": "Breathable materials",
             "feature_5": "",
             "button_label": "View full system",
-            "button_url": ""
+            "button_url": "shopify://products/comfortbundle-complete-system"
           }
         },
         "card_Uq9cab": {
@@ -206,8 +206,8 @@
           "settings": {
             "featured_product": "lumbarease",
             "best_value": false,
-            "title": "LumbarEase™",
-            "subtitle": "Curved lumbar support with adjustable straps that holds your lower back's natural curve, so the slump that starts an hour into your day never sets in.",
+            "title": "LumbarEase™ ",
+            "subtitle": "Targeted lumbar support",
             "image": "shopify://shop_images/LumbarEase.webp",
             "show_reset_tag": false,
             "reset_tag": "7-Day Reset Included",
@@ -218,7 +218,7 @@
             "feature_4": "",
             "feature_5": "",
             "button_label": "View LumbarEase™",
-            "button_url": ""
+            "button_url": "shopify://products/lumbarease"
           }
         }
       },
@@ -230,9 +230,9 @@
       "name": "Product Comparison",
       "settings": {
         "bg_color": "#ffffff",
-        "heading": "Engineered for real support —",
+        "heading": "Engineered for real support —",
         "heading_span": "not just softness",
-        "subheading": "From targeted relief to complete support — start where your pain starts.",
+        "subheading": "Most customers choose the full system for complete relief",
         "padding_top_desktop": 50,
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 50,
