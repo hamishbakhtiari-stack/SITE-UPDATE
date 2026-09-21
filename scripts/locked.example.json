@@ -1,0 +1,35 @@
+{
+  "_why": "Settings that were hard-won on the ComfortBundle PDP. Any push that changes one of these is a regression unless the owner asked for it. Update this file in the same breath as a deliberate change, and note it in DECISIONS.md.",
+
+  "settings": {
+    "sections.main.settings.media_size": "small",
+    "sections.main.settings.constrain_to_viewport": true,
+    "sections.main.settings.media_fit": "contain",
+    "sections.main.settings.padding_top": 8,
+    "sections.main.settings.padding_bottom": 24,
+    "sections.main.blocks.text_RdmgPL.settings.text": "Fix how you sit, not just what you sit on."
+  },
+
+  "css_must_contain": [
+    "--constrained-height:320px!important",
+    ".product__title h1{font-size:15px",
+    ".product__text.subtitle{font-size:26px",
+    "--media-radius:14px!important",
+    ".one-product-content{display:contents!important}",
+    "grid-template-areas:\"i t\" \"i b\"",
+    ".product__info-container .price .price-item{line-height:1.2!important}"
+  ],
+
+  "block_must_contain": {
+    "custom_liquid_cartDrawerAjax": [
+      "sc-cta-delegate",
+      "a[href*=\"/cart/add\"]",
+      "cta-banner-button-wrap",
+      "custom-faq-bottom",
+      "system-preview-btn-wrap"
+    ]
+  },
+
+  "first_block": { "main": "custom_liquid_heroAnchor" },
+  "first_section": "sc_trust_strip"
+}

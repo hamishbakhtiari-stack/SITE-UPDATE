@@ -1,0 +1,15 @@
+{
+  "_why": "Home page (templates/index.json) invariants. Seeded 2026-09-21 from the live theme 164124164353, byte-verified (md5 5d7e33bffcd39ae15a15d3903fe7b8a0). Nothing here is 'hard-won' yet - these are structural facts that a rewrite could clobber silently. Add a line every time a decision is made, and update it in the same commit when Hamish deliberately changes one.",
+
+  "settings": {
+    "sections.custom_hero_section_Yh4kcV.settings.btn_primary_url": "shopify://products/comfortbundle-complete-system",
+    "sections.custom_hero_section_Yh4kcV.settings.btn_secondary_url": "#Howit_works",
+    "sections.image_text_TcNMzf.settings.button_link": "shopify://products/comfortbundle-complete-system",
+    "sections.how_it_works_btbqYq.settings.button_link": "shopify://products/comfortbundle-complete-system",
+    "sections.faq_XyiMyE.settings.button_link": "shopify://products/comfortbundle-complete-system",
+    "sections.cta_section_G9JXf9.settings.button_link": "shopify://products/comfortbundle-complete-system",
+    "sections.comparison_section_ytnPWC.blocks.card_gCtPhR.settings.best_value": true
+  },
+
+  "first_section": "custom_hero_section_Yh4kcV"
+}
