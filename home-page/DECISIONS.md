@@ -1185,3 +1185,49 @@ Guard PASS. Exactly one setting changed.
 
 **Desktop deliberately left alone.** The 120px below the hero buttons on desktop is the hero's
 intended airy spacing and Hamish has only been reviewing mobile. Not changed without seeing it.
+
+---
+
+## S7d — Desktop: smaller badges, under the CTA, gap closed (2026-09-21)
+
+Hamish: *"the badges on mobile are fine but in desktop version they should be smaller and sit
+below CTA"* — with a desktop screenshot of the current hero he doesn't like.
+
+Three faults in that screenshot, all desktop-only:
+
+1. Badges at 80px, too heavy for desktop.
+2. The grid was `max-width:900px; margin:0 auto` — centred on the **page**, so it floated in the
+   middle rather than sitting under the CTA, which lives in the hero's left column.
+3. A large dead gap between the buttons and the badges.
+
+**Changed:**
+
+| | Before | After |
+|---|---|---|
+| `custom_hero_section_Yh4kcV.pb_desktop` | 120 | 36 |
+| badge grid (desktop) | `max-width:900px; margin:0 auto` | `max-width:600px; margin:0` |
+| badge image (desktop) | 80px | 56px |
+| label (desktop) | 15px | 14px |
+| gap (desktop) | 12px | 16px |
+
+600px is not arbitrary — `.hero-banner__content` is `max-width:600px` in `cstm-style.css`, so the
+badge grid now occupies exactly the hero's own content column and lines up under the buttons.
+
+**Mobile is untouched:** 66px badges, full width, 3-up, and its own
+`.hero-banner{padding-bottom:14px !important}` override still in force.
+
+**A coupling worth remembering.** Because the hero's mobile media query is invalid (S7c), the
+`pb_desktop` value governs **both** breakpoints. Dropping it 120 → 36 would have changed mobile
+too, except that the badge_row override pins mobile to 14px with `!important`. So the two changes
+are a pair: if that override is ever removed, mobile's bottom padding silently becomes whatever
+`pb_desktop` is. Recorded in `locked.json`, and `pb_desktop` is now a guarded value.
+
+**Side effect, stated plainly.** The hero's background image is `object-fit: contain`, so a
+shorter section renders a slightly smaller photo. Reducing `pb_desktop` by 84px shrinks the hero,
+and the photo with it. That is the intended trade — the dead space was the complaint — but it is a
+visual change to the photo, not only to the spacing, and it needs Hamish's eyes.
+
+**Push record.** `f895d769d5e58ac9e888c3d8a17715ee` → `cd46e12b6bb4df268cad556af9df7a20`
+(20743 B), verified by `checksumMd5`. Live unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+Exactly two settings changed; every other hero setting asserted byte-identical, so no copy moved.
+Guard PASS after adding `pb_desktop`.
