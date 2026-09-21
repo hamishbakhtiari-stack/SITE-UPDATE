@@ -1363,3 +1363,72 @@ key. Guard PASS.
 **Still open on this section:** the `corner-image` wave sits `bottom: -10px; right: 0` and is
 clipped by the section edge on desktop; it is hidden entirely below 1024px. Worth a look, not
 touched.
+
+---
+
+## S9 — One number for the daily reset, site-wide + Introducing copy (2026-09-21)
+
+Hamish: *"lets first update the copy, FAQ should be 2-3 min too, update it in all pages"*, then
+approved the proposed section copy with *"lets do the copy"*.
+
+**The audit.** Parsed all 30 templates and walked every string value. The daily-reset duration was
+stated in **12 places across 8 templates**, with **four different numbers**:
+
+| Claim | Where |
+|---|---|
+| "Two minutes a day" | index — Introducing bullet |
+| "2–3 mins/day" | index — How it works |
+| "under 5 minutes a day" | all three PDP 7-Day Reset tabs |
+| "5–10 minutes" | index FAQ, collection FAQ, ComfortBundle FAQ, faq-page, 7-day-sitting FAQ + hero, 7-day-reset hero |
+
+All are being set to **2–3 minutes**, per Hamish.
+
+Deliberately NOT changed, because they mean something else: "Soft cushions feel great for ten
+minutes" (a different claim), "20-30 minutes into a desk day" (onset of pain), "the 20-Minute Rule"
+(a Day-4 technique), "Each day takes a few minutes" (compatible, not contradictory).
+
+**Method.** Replacements were applied to each template's **raw stored body** as literal string
+substitutions, not by re-serialising parsed JSON — so every other byte is untouched by
+construction, and formatting differences between templates (some end with a trailing newline,
+index does not) cannot be disturbed. Each result was re-parsed as JSON before pushing and verified
+by `checksumMd5` after.
+
+**Done and verified byte-exact (5 of 8):**
+
+| Template | md5 |
+|---|---|
+| `page.faq-page.json` | `8c0f118c75d300f7576d9a9444f60bb1` |
+| `page.7-day-sitting.json` | `fc803e84c9c4dfaad029637ae0f67728` |
+| `page.7-day-reset.json` | `9e97e8ba39db6d6d398f7b68ccf8ff6f` |
+| `collection.custom-collection.json` | `1319a5d901d1fb389819db42d5cc02e1` |
+| `index.json` | `665d900dd1a79d0e77e21a616de16331` |
+
+**Still outstanding (3):** `product.ComfortBundle.json`, `product.ergoRelief.json`,
+`product.lumbarEase.json` — each has "● Takes under 5 minutes a day" in its 7-Day Reset tab, and
+ComfortBundle also has the 5–10 FAQ. Until these land the contradiction still exists, just moved.
+
+**The Introducing section copy (index), approved:**
+
+| | Before | After |
+|---|---|---|
+| subheading | …guided daily videos delivered to your phone. | …one short video a day, straight to your inbox. |
+| bullet 1 | `<strong>Adaptive support -</strong> Memory foam…` | `<strong>Adaptive support</strong> — Memory foam…` |
+| bullet 2 | …Two minutes a day. Seven days. A measurable difference. | …Two to three minutes a day. Seven days. No app, no login. |
+| bullet 3 | …Better posture that sticks — long after day 7 | …Better posture that holds long after day 7. |
+
+Reasoning: "delivered to your phone" implied an app, contradicting the FAQ's "no app, no login";
+"a measurable difference" promised measurement the page never delivers, so it was swapped for the
+no-app fact, which is concrete and differentiating; bullet 3 was missing its full stop and its
+internal em dash fought the label dash. The em dash now sits **outside** `<strong>` so punctuation
+is not bolded.
+
+**Heading left alone.** "7-Day relief system" does repeat the hero eyebrow verbatim, but this is
+the only place the system is named, and the eyebrow is a locked value. Flagged, not changed.
+
+**A push was rejected first, and it was my error repeating itself.** `collection.custom-collection`
+came back `Invalid JSON` because I wrote `\\\"` where the file needs `\"` in
+`<a href="/pages/contact">` — the identical escaping slip from S6. The mutation is atomic so
+nothing was written. **This is now the second time.** Any file containing an escaped quote gets that
+line checked character by character before the call.
+
+Live theme unchanged throughout at `5d7e33bffcd39ae15a15d3903fe7b8a0`.

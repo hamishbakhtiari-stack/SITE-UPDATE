@@ -86,21 +86,21 @@
           "type": "icon_text",
           "settings": {
             "icon": "shopify://shop_images/Ellipse_12.png",
-            "text": "<p><strong>Adaptive support -</strong> Memory foam that fits your body, not the other way around.</p>"
+            "text": "<p><strong>Adaptive support</strong> — Memory foam that fits your body, not the other way around.</p>"
           }
         },
         "icon_text_NYKAek": {
           "type": "icon_text",
           "settings": {
             "icon": "shopify://shop_images/Ellipse_12.png",
-            "text": "<p><strong>Guided daily reset -</strong> Two minutes a day. Seven days. A measurable difference.</p>"
+            "text": "<p><strong>Guided daily reset</strong> — Two to three minutes a day. Seven days. No app, no login.</p>"
           }
         },
         "icon_text_jWaqKf": {
           "type": "icon_text",
           "settings": {
             "icon": "shopify://shop_images/Ellipse_12.png",
-            "text": "<p><strong>Habit reinforcement -</strong> Better posture that sticks — long after day 7</p>"
+            "text": "<p><strong>Habit reinforcement</strong> — Better posture that holds long after day 7.</p>"
           }
         }
       },
@@ -117,7 +117,7 @@
         "image": "shopify://shop_images/SitComfort.webp",
         "heading": "Introducing the SitComfort™",
         "heading_span": "7-Day relief system.",
-        "subheading": "Support your body — then reset your habits with guided daily videos delivered to your phone.",
+        "subheading": "Support your body — then reset your habits with one short video a day, straight to your inbox.",
         "body-text": "",
         "button_label": "See the full system",
         "button_link": "shopify://products/comfortbundle-complete-system",
@@ -451,7 +451,7 @@
           "type": "faq",
           "settings": {
             "question": "How do I access the 7-Day Reset?",
-            "answer": "It's emailed to you after your order — no app, no login.\n\nEach day is one short video and one adjustment to make, about 5–10 minutes."
+            "answer": "It's emailed to you after your order — no app, no login.\n\nEach day is one short video and one adjustment to make, about 2–3 minutes."
           }
         },
         "faq_tYLwqY": {
