@@ -1432,3 +1432,19 @@ nothing was written. **This is now the second time.** Any file containing an esc
 line checked character by character before the call.
 
 Live theme unchanged throughout at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+
+**S9 continued — PDPs.** `product.lumbarEase.json` → `4635b2742ba60225a979da2a954ae2dd`
+(27880 B) and `product.ergoRelief.json` → `a27e12b15c0aab8999fc25fc68c87418` (27846 B), both
+verified by `checksumMd5`, both with "● Takes under 5 minutes a day" → "● Takes 2–3 minutes a day".
+Sources were confirmed against the live working-theme checksums before building, so neither was
+built on a stale copy.
+
+**`product.ComfortBundle.json` is the last outstanding file** (39409 B). It needs two changes: the
+same collapsible-tab bullet, and its FAQ `faq_Mt6Leh` "about 5–10 minutes" → "about 2–3 minutes".
+Prepared locally and verified to parse: target `650bdbd03485b525ec44973562464eaa`, 39406 B.
+
+**A note on method cost, for next time.** Whole-file rewrites are the only way Shopify lets you
+change a template, so a one-line copy fix on a 39 KB PDP means re-sending all 39 KB by hand. That is
+where the two escaping errors this session came from. For a change this small on a file this large,
+the theme editor is the lower-risk tool; the API path is worth it when several values change at
+once, as on the home page.
