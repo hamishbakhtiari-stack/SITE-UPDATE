@@ -66,12 +66,18 @@
       "settings": {
         "bg_color": "#f9f7f5",
         "heading": "Sitting all day is quietly <span>  straining </span>   your body.",
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 100,
+        "padding_top_desktop": 65,
+        "padding_bottom_desktop": 65,
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50,
         "corner_image": "shopify://shop_images/corner-image.png"
-      }
+      },
+      "custom_css": [
+        "@media screen and (min-width: 750px) { .benefit-item-image { width: 140px; height: 140px; padding: 24px; } }",
+        "@media screen and (min-width: 750px) { .benefit-grid { margin-top: 28px; gap: 24px; } }",
+        "@media screen and (min-width: 750px) { .benefit-item h4 { font-size: 19px; line-height: 27px; max-width: 232px; } }",
+        "@media screen and (min-width: 1025px) { .heading-h2 { font-size: 42px; line-height: 52px; } }"
+      ]
     },
     "image_text_TcNMzf": {
       "type": "image-text",

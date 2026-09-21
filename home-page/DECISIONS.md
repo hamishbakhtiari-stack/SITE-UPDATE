@@ -1299,3 +1299,67 @@ works and it is scoped, but the right long-term home is a proper snippet or a re
 intact so signed-off mobile could not drift. Guard PASS.
 
 **Not verified:** the tablet render. Needs Hamish's eyes at iPad width.
+
+---
+
+## S8 — Benefit section: desktop size (2026-09-21)
+
+Hamish: *"feedback on copy and layout? my feedback, I think this section on desktop is too big"*.
+
+**Copy verdict: keep it.** The heading — "Sitting all day is quietly straining your body." — is the
+strongest line on the page; "quietly" does the work. The three labels are consistent noun phrases
+and sit correctly as problem-agitation before the product is introduced. The one with the most bite
+is "Lower back pain by midday" because it has a time anchor; the other two are slightly more
+abstract. Not changed — no instruction to, and copy changes here need Hamish's call.
+
+Noted but not touched: the heading value carries sloppy whitespace —
+`<span>  straining </span>   your body.` — double and triple spaces. HTML collapses them, so there
+is no visual effect. Left alone rather than spend a guarded-value change on nothing.
+
+**Layout: he is right, and the numbers say why.** Measured from `cstm-style.css`, not from the
+screenshot:
+
+| | Before | After (desktop) |
+|---|---|---|
+| section padding | 100 top + 100 bottom | 65 + 65 |
+| `.benefit-item-image` | 180×180, 30px padding | 140×140, 24px padding |
+| `.benefit-item h4` | 24px/35px, max-width 254px | 19px/27px, max-width 232px |
+| `.benefit-grid` | margin-top 30, gap 30 | 28 / 24 |
+| `.heading-h2` (≥1025px) | 50px/60px | 42px/52px |
+
+That was roughly 590px of section height to deliver three short phrases, 200px of it empty padding.
+Now roughly 430px.
+
+**Mechanism: per-section `custom_css`.** Shopify supports a `custom_css` array on a section in the
+template JSON — the PDP already uses it on `apps_JXNAik`. Shopify scopes every rule to that one
+section instance, so `cstm-style.css` is untouched and any other template using `benefit-section`
+is unaffected. **Media queries work inside it** — confirmed by this push succeeding and the file
+verifying byte-exact.
+
+This is a much better tool than the previous pattern of stuffing overrides into `badge_row`'s
+style block, and it is the right home for per-section styling from here on. The tablet/mobile hero
+overrides in `badge_row` cannot move to it, though — they target the *hero* section, not the
+section carrying the CSS.
+
+Every rule is gated `min-width: 750px` (or 1025px for the heading) so the signed-off mobile layout
+cannot move.
+
+**A push was rejected first, correctly.** `padding_top_desktop: 64` returned
+`Setting 'padding_top_desktop' must be a step in the range` — the schema declares `"step": 5`, so
+only multiples of 5 are legal. Changed to 65. The mutation is atomic, so nothing was written and no
+verify was needed to confirm the file was untouched.
+
+**Rule 9.** Before setting a `range` value, read its `step` in the section schema. Shopify validates
+it server-side and rejects the whole file.
+
+**Push record.** `7f1ab390847cb149ed21379fe66c8564` → `3e45b721f022f1daadccc33fe7e60ddb`
+(21586 B), verified by `checksumMd5`. Live unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+Assertions: every other section byte-identical, the three benefit blocks (labels and icons)
+byte-identical so no copy moved, only the two desktop paddings changed plus the new `custom_css`
+key. Guard PASS.
+
+**Not verified:** the render. Needs Hamish's eyes on desktop.
+
+**Still open on this section:** the `corner-image` wave sits `bottom: -10px; right: 0` and is
+clipped by the section edge on desktop; it is hidden entirely below 1024px. Worth a look, not
+touched.
