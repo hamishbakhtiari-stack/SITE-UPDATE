@@ -331,27 +331,28 @@
           "settings": {
             "icon": "shopify://shop_images/Mask_group.png",
             "title": "Ergonomic Designed"
-          }
+          },
+          "disabled": true
         },
         "feature_VgjLa6": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_3.png",
-            "title": "Built for Desk Workers"
+            "title": "Australian customer support"
           }
         },
         "feature_nY8GdY": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_5.png",
-            "title": "Satisfaction guarantee"
+            "title": "Returns go to Sydney, not overseas"
           }
         },
         "feature_dXanbn": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_1.png",
-            "title": "Fast shipping from Australia"
+            "title": "Ships from Sydney"
           }
         },
         "feature_ACCmT7": {
@@ -359,23 +360,24 @@
           "settings": {
             "icon": "shopify://shop_images/premium-memory-foam-icon.png",
             "title": "Premium Memory Foam"
-          }
+          },
+          "disabled": true
         },
         "feature_UDAbBF": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_2.png",
-            "title": "30 Days Risk - Free Trial"
+            "title": "30 days to change your mind"
           }
         }
       },
       "block_order": [
-        "feature_ichrJD",
-        "feature_VgjLa6",
-        "feature_nY8GdY",
         "feature_dXanbn",
-        "feature_ACCmT7",
-        "feature_UDAbBF"
+        "feature_nY8GdY",
+        "feature_UDAbBF",
+        "feature_VgjLa6",
+        "feature_ichrJD",
+        "feature_ACCmT7"
       ],
       "name": "Feature Highlight",
       "settings": {
@@ -385,11 +387,12 @@
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50,
         "image_position": "left",
-        "main_image": "shopify://shop_images/Designer_32_1_2_1.webp",
-        "corner_image": "shopify://shop_images/corner-image.png",
-        "heading": "Designed for people",
-        "heading_span": "who sit all day",
-        "subheading": ""
+        "main_image": "shopify://shop_images/6-1.webp",
+        "image_alt": "SitComfort ErgoRelief seat cushion and LumbarEase lumbar support fitted to an office chair at a home desk, with both product boxes on the desk",
+        "corner_image": "shopify://shop_images/corner-image.webp",
+        "heading": "Australian,",
+        "heading_span": "end to end",
+        "subheading": "Designed in Australia, stocked and shipped from Sydney. If something's wrong you email a person, and if it's not right it goes back to an Australian address."
       }
     },
     "faq_XyiMyE": {

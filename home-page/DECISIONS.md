@@ -58,6 +58,67 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §8 Feature Highlight brought across from the PDP
+
+Home's "Designed for people / who sit all day" is the same section *type* as the PDP's
+"Australian, / end to end" (`feature-highlight`). Hamish asked for the PDP's version, so the
+content came across: heading, subheading, main image + alt text, and the four Australian trust
+features in the PDP's render order.
+
+18 of 306 keys changed, all inside `feature_highlight_J9ftbk`. `order` unchanged.
+Verified: 18879 bytes, md5 `f211fda23ef3e9828ed2333b434e156f`, matching on re-read.
+
+**Blocks were mapped by the icon each one already holds, so not a single icon path changed** —
+asserted programmatically in the build script, not by eye:
+
+| home block | icon (unchanged) | was | now |
+|---|---|---|---|
+| `feature_dXanbn` | `Mask_group_1.png` | Fast shipping from Australia | Ships from Sydney |
+| `feature_nY8GdY` | `Mask_group_5.png` | Satisfaction guarantee | Returns go to Sydney, not overseas |
+| `feature_UDAbBF` | `Mask_group_2.png` | 30 Days Risk - Free Trial | 30 days to change your mind |
+| `feature_VgjLa6` | `Mask_group_3.png` | Built for Desk Workers | Australian customer support |
+| `feature_ichrJD` | `Mask_group.png` | Ergonomic Designed | **disabled** |
+| `feature_ACCmT7` | `premium-memory-foam-icon.png` | Premium Memory Foam | **disabled** |
+
+Six features down to four, matching the PDP. The two that dropped are disabled, not deleted, so
+they stay in the theme editor and can be switched back on.
+
+Settings: `main_image` `Designer_32_1_2_1.webp` → `6-1.webp`; `corner_image` `corner-image.png` →
+`corner-image.webp` (the PDP's asset); `image_alt` added (the section supports it and home had
+none — a real accessibility/SEO gain); heading, heading_span and subheading now the PDP's.
+Background and all four padding values were already identical, so they were left alone.
+
+#### It will NOT look identical to the PDP, and here is exactly why
+
+The PDP's appearance for this section does not come from the section file. It comes from CSS
+inside `custom_liquid_heroAnchor`, a block in the PDP's `main` section, which the home page does
+not have. `assets/custom.js` is empty and there is no global equivalent. The PDP-only rules are:
+
+```
+@media (min-width:992px){ .feature-highlight-section .feature-grid{grid-template-columns:repeat(2,1fr)!important} }
+@media (max-width:749px){ .feature-highlight-section .feature-main-image{max-width:260px!important; margin:auto} }
+.feature-highlight-section .feature-main-image img{border-radius:14px!important}
+.feature-grid .feature-item:nth-child(3) .feature-icon img{content:url("data:image/svg+xml,…30-calendar…")!important}
+.feature-grid .feature-item:nth-child(4) .feature-icon img{content:url("data:image/svg+xml,…envelope…")!important}
+```
+
+On top of that, `feature-highlight.liquid` itself branches on the template:
+
+```liquid
+{% if template == 'product.ComfortBundle' %}   …constrained 260/380px image tag…
+{% else %}                                     …plain full-width image tag…
+```
+
+So on the home page: the image renders full width with no 14px radius, the feature grid uses the
+theme default rather than a forced 2-up, and **features 3 and 4 show Hamish's own
+`Mask_group_2.png` and `Mask_group_3.png` instead of the generated 30-calendar and envelope SVGs
+the PDP substitutes in**.
+
+The icon difference was left as-is deliberately: substituting his icons for generated SVGs is a
+standing "never". If he wants the PDP's exact look, the layout rules can be carried over without
+touching the shared section file — a `custom-liquid` section on the home page holding a scoped
+`<style>`, the same mechanism `sc_trust_strip` uses on the PDP. **Not done; needs his call.**
+
 ### 2026-09-21 (later) — every home-page buy CTA goes to the product page, not the cart
 
 Hamish: *"cta in home page should direct them to product biundle page this should apply for all
