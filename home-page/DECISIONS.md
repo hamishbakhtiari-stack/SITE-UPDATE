@@ -58,6 +58,57 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §7 "Real people. Real relief." brought across from the PDP
+
+Template JSON only. `video-reviews.liquid` hard-codes its `vr-v2` class, so the home page was
+already getting the v2 styling — no section file change needed, zero blast radius.
+14 of 313 keys changed. Verified: 19238 bytes, md5 `15d90726c25ee00b668254719679a668`.
+
+#### The videos were the real find
+
+The Files API settles an open question carried out of the PDP project (`WIKI.mp4` / `HOLLIE2.mp4`
+"unconfirmed — needs a click in preview"). Both exist and are READY. More importantly, the home
+page was pointing at the **.MOV** originals, which Shopify only ever transcoded to a single
+low-res rendition:
+
+| | home was | home now | renditions |
+|---|---|---|---|
+| Wiki | `Wiki.MOV` | `WIKI.mp4` | **268x480 only** → 270x480, 404x720, **606x1080**, m3u8 |
+| Hollie | `Hollie.MOV` | `HOLLIE2.mp4` | **268x480 only** → 270x480, 404x720, **606x1080**, m3u8 |
+| Helen | `Helen.mp4` | unchanged | already the good one |
+| Luiza | `Luzio_8b8fc2d5….mp4` | `Luzio.mp4` | see below |
+
+`video-reviews.liquid` deliberately picks the **widest** mp4 source for the popup
+(`best_src` loop, with a comment explaining Shopify lists SD first). On the home page that loop
+had nothing to choose from — one 268px rendition — so Wiki and Hollie were playing at 268px wide
+in a popup sized to `max-width:92vw`. They now play at 606x1080. Durations match (48s / 49s), so
+it is the same footage re-uploaded, not a different take.
+
+**Luiza is a genuinely different cut, not just a better encode.** Home was on the 84s version;
+the PDP's `Luzio.mp4` is **126s**. Both READY, both full-rendition. The PDP's is what shipped
+there, so it came across — but 126s is long for a home-page testimonial and this is a content
+choice, not a technical one. **Flagged for Hamish.** The 84s cut also exists as
+`Luzio_07927f04-8bb2-4fc2-9899-168a063ba00b.mp4` if he wants it back.
+
+#### Everything else
+
+- **Name chips added.** The section has a `name` setting per video that renders a `.vr-name` chip
+  on the thumbnail; home had never set it. Now Luiza / Wiki / Hollie / Helen, as on the PDP. It
+  also feeds the thumbnail's `alt` (`vr_alt = block.settings.name | default: 'Customer video review'`),
+  so this improves accessibility too.
+- **Judge.me preview badge added** (`judge_me_reviews_preview_badge_video`), matching the PDP. The
+  schema allows `@app` blocks and the section renders them in `.rating-wrapper` under the heading.
+- **Sarah L.'s quote now closes.** Home had an opening `"` and no closing one — resolves a parked
+  item from the baseline.
+- `bg_color` `#fafafa` → `#f4f6f5`, the PDP's.
+- **Thumbnails, review images, names and bios: unchanged**, asserted in the build script.
+
+Parked, still true: `wiki.webp` and `Hollie.webp` were cut from the older low-res videos, so the
+thumbnails may look softer than the new 606x1080 footage behind them. Hamish's call — photography
+is his. Also still open from the PDP project: "Wiki" may be a handle rather than a name.
+
+Not visually verified — no render, and the Judge.me block will not render in a local harness.
+
 ### 2026-09-21 — §8 feature grid: 2 x 2 on desktop, via an opt-in setting
 
 Hamish: keep the bundle content, *"ONLY MAKE SURE THE LAYOUT IS SIMIALR, IT SHJOULD BE 2X2 IN DESKTOP"*.

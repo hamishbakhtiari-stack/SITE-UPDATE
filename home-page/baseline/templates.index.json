@@ -250,35 +250,39 @@
         "video_iGktiw": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/Luzio_8b8fc2d5-bc14-4286-ae4d-026249a6cd4b.mp4",
-            "thumbnail": "shopify://shop_images/Luizo.webp"
+            "video": "shopify://files/videos/Luzio.mp4",
+            "thumbnail": "shopify://shop_images/Luizo.webp",
+            "name": "Luiza"
           }
         },
         "video_zYCAQC": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/Wiki.MOV",
-            "thumbnail": "shopify://shop_images/wiki.webp"
+            "video": "shopify://files/videos/WIKI.mp4",
+            "thumbnail": "shopify://shop_images/wiki.webp",
+            "name": "Wiki"
           }
         },
         "video_MeXztt": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/Hollie.MOV",
-            "thumbnail": "shopify://shop_images/Hollie.webp"
+            "video": "shopify://files/videos/HOLLIE2.mp4",
+            "thumbnail": "shopify://shop_images/Hollie.webp",
+            "name": "Hollie"
           }
         },
         "video_VkkqYi": {
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/Helen.mp4",
-            "thumbnail": "shopify://shop_images/helen.webp"
+            "thumbnail": "shopify://shop_images/helen.webp",
+            "name": "Helen"
           }
         },
         "review_DNHPTC": {
           "type": "review",
           "settings": {
-            "text": "\"The cushion helped straight away, but the 7-Day Reset showed me how to set everything up properly. After a few days, I stopped shifting around as much.",
+            "text": "\"The cushion helped straight away, but the 7-Day Reset showed me how to set everything up properly. After a few days, I stopped shifting around as much.\"",
             "image": "shopify://shop_images/sarah.jpg",
             "name": "Sarah L.",
             "bio": "Verified customer"
@@ -301,6 +305,10 @@
             "name": "Jessica K.",
             "bio": "Verified customer"
           }
+        },
+        "judge_me_reviews_preview_badge_video": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
       "block_order": [
@@ -308,13 +316,14 @@
         "video_zYCAQC",
         "video_MeXztt",
         "video_VkkqYi",
+        "judge_me_reviews_preview_badge_video",
         "review_DNHPTC",
         "review_GnbLJQ",
         "review_6jFL7A"
       ],
       "name": "Video + Reviews",
       "settings": {
-        "bg_color": "#fafafa",
+        "bg_color": "#f4f6f5",
         "heading": "Real people.",
         "heading_span": "Real relief.",
         "padding_top_desktop": 100,
