@@ -459,7 +459,7 @@
         "bottom_text": "Have more questions? <a href=\"/pages/contact\">Contact us</a>",
         "bottom_subtext": "",
         "button_text": "Ready to try it? Start your 7-Day Reset",
-        "button_link": "/cart/add?id=49378080227585&quantity=1&return_to=/cart",
+        "button_link": "shopify://products/comfortbundle-complete-system",
         "icon_style": "plus",
         "padding_top": 100,
         "padding_bottom": 100,
@@ -479,7 +479,7 @@
         "heading": "Reset your sitting. [br]Reclaim your comfort.",
         "subheading": "Free express shipping from Sydney · [br]2–3 business days · 30-day money-back guarantee",
         "button_text": "Get the full system",
-        "button_link": "/cart/add?id=49378080227585&quantity=1&return_to=/cart",
+        "button_link": "shopify://products/comfortbundle-complete-system",
         "corner_image": "",
         "center_layout": true
       }

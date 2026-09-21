@@ -58,6 +58,36 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 (later) — every home-page buy CTA goes to the product page, not the cart
+
+Hamish: *"cta in home page should direct them to product biundle page this should apply for all
+CTAs here"*. This reverses the `/cart/add` decision from earlier the same day. **Closed topic:**
+the home page sends people to the ComfortBundle product page; it does not add to cart directly.
+
+Audited every link setting on the page. Only two needed changing — the rest already pointed at the
+product page:
+
+| section | setting | action |
+|---|---|---|
+| `custom_hero_section_Yh4kcV` | `btn_primary_url` | already the bundle page — unchanged |
+| `custom_hero_section_Yh4kcV` | `btn_secondary_url` | `#Howit_works` — an on-page scroll anchor for "See how it works", not a buy CTA. Left alone. |
+| `image_text_TcNMzf` | `button_link` | already the bundle page — unchanged |
+| `how_it_works_btbqYq` | `button_link` | already the bundle page — unchanged |
+| `comparison_section_ytnPWC/card_QeERNL` | `button_url` | `shopify://products/ergorelief` — the ErgoRelief card's own "View ErgoRelief™" button. Left alone; pointing it at the bundle would be wrong. |
+| `comparison_section_ytnPWC/card_gCtPhR` | `button_url` | already the bundle page — unchanged |
+| `comparison_section_ytnPWC/card_Uq9cab` | `button_url` | `shopify://products/lumbarease` — same reasoning as the ErgoRelief card. Left alone. |
+| **`faq_XyiMyE`** | **`button_link`** | **`/cart/add?…` → `shopify://products/comfortbundle-complete-system`** |
+| **`cta_section_G9JXf9`** | **`button_link`** | **`/cart/add?…` → `shopify://products/comfortbundle-complete-system`** |
+
+2 of 303 keys changed. `order` unchanged. Verified: 18517 bytes,
+md5 `ad639d51866b14f55232f8814c2741aa`, matching on a fresh read from Shopify.
+
+Side effect worth noting: the cart-drawer question from the previous entry is now moot on the home
+page. Nothing there adds to cart, so there is no drawer-vs-page-load difference to resolve, and no
+reason to put the delegate script on the home page.
+
+Guard updated in the same commit — both links are now locked to the product page URL.
+
 ### 2026-09-21 — CTA banner + FAQ brought across from the ComfortBundle PDP
 
 Pushed to working theme `164208705793`. Template JSON only; **no section file was touched**, so
@@ -104,7 +134,7 @@ gave no open/closed feedback. `plus` fixes that.
 This retires the "7-Day SitComfort Reset Program" / "7-Day SitComfort Reset" wording that was in
 the old home FAQ answers, and the U+2011 in "non‑slippery" is gone with the rewritten answer.
 
-**Behavioural difference to be aware of.** The `/cart/add` href opens the cart *drawer* on the
+**Behavioural difference to be aware of.** *(Superseded later the same day — the home page no longer uses `/cart/add` at all. Kept for the record.)* The `/cart/add` href opens the cart *drawer* on the
 PDP because `custom_liquid_cartDrawerAjax` (a block inside the PDP's `main` section) intercepts
 it. That delegate does not exist on the home page, and `assets/custom.js` is empty, so there is
 no global equivalent. On the home page the link is a plain navigation: Shopify adds the item and
