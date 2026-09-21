@@ -58,6 +58,57 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 text-only pass (after the revert). 3 fixes, no markup touched.
+
+Hamish chose the text-only option. **`sections/comparison-Section.liquid` was not touched** and
+remains at `f895d180f30e7af98ad57c5090679ada`.
+
+5 keys changed. Verified: 18905 bytes, md5 `fbb4e3666bca1f669694e60be2b9ed12`.
+
+1. `heading` — `Engineered for real support\u00a0—`. Same words, the space before the em dash is
+   now U+00A0, so the dash cannot orphan onto line 2 on mobile.
+2. `subheading` — "Most customers choose the full system for complete relief" →
+   "From targeted relief to complete support — start where your pain starts." Removes the claim
+   contradicted by the store's own data (bundle: 0 orders in 730 days vs 72 and 68).
+3. Three `button_url` values cleared → the `{% elsif %}` branch runs, which carries no
+   `target="_blank"`. Buttons stay in the same tab.
+
+**Pre-flight on #3, written down before pushing.** Clearing `button_url` moves the anchor to
+`{% elsif product != blank %}`. If `product` did not resolve, that branch is skipped and *no
+button renders at all*. Evidence it resolves: Hamish's own desktop screenshot shows `$89 / $71 /
+Save $18.00` and `5.0 (15)` on the cards — every one of those is printed from `product`. If it
+were nil they would all be blank. Both branches emit the same `<a class="btn-globel
+btn-globel--solid">` with the same label, so only `href` and `target` differ. No visual change.
+
+The build script also **asserted** that `block_order`, and every one of `title`, `subtitle`,
+`image`, `icon`, `feature_1..5`, `button_label`, `show_reset_tag`, `reset_tag`, `best_value` and
+`featured_product` were byte-identical before and after — i.e. nothing markup-adjacent moved.
+
+Still deliberately NOT done: card titles, subtitles, image resolution, feature copy, the middle
+card offset. All need the section file or a height measurement. **Blocked on building and proving
+the render harness.**
+
+---
+
+## Process rules added after the §5 failure — these are binding
+
+1. **Two risk classes, never mixed in one push.** Text-only template settings cannot restructure a
+   layout. Markup and CSS changes can. They travel separately so a revert costs one thing.
+2. **Before changing markup, read the CSS that sizes it.** The §5 failure happened because
+   `cstm-style.css` was skipped twice to save context — and that file holds
+   `.product-image-wrap img`, the rule that would have shown the image had no width pinned and
+   that `image_tag`'s intrinsic `width`/`height` would therefore take over.
+3. **Prove the instrument before trusting it.** The first thing any new render harness renders is
+   the section *unchanged*, checked against a screenshot Hamish has already seen. If it does not
+   match reality, the harness is wrong and gets thrown out — it never gets used to validate a
+   change first.
+4. **One risky change per push.**
+5. **Hamish is not the renderer.** "Worth a preview now" was verification outsourced to him after
+   the fact. If it cannot be verified here, it does not ship: describe it and let him decide.
+6. `references/render-harness.md` exists and was ignored for this entire project. **Read it before
+   any layout work.** It documents the iframe technique, the Chromium path, the box-sizing reset
+   and the CSS load order.
+
 ### 2026-09-21 — §5 REVERTED IN FULL. Section is back to its pre-review state.
 
 Hamish sent renders of what I shipped: the card images blew up to several hundred pixels, the
