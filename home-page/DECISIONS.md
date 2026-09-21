@@ -58,6 +58,71 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 "Engineered for real support" — review findings (NOTHING CHANGED YET)
+
+Reviewed on request. No push. `comparison-Section.liquid` (8867 B, **CRLF**) is a different file
+from the PDP's `comparison-products.liquid` and the collection's `comparison-table.liquid`.
+Blast radius not yet fully verified — **grep every template before editing it.**
+
+**1. The subheading is contradicted by the store's own sales data.** "Most customers choose the
+full system for complete relief." ShopifyQL, last 730 days, grouped by product:
+
+| product | orders | gross |
+|---|---|---|
+| ErgoRelief™ Seat Cushion | 72 | $4,872.40 |
+| LumbarEase™ Lumbar Support | 68 | $3,999.60 |
+| **ComfortBundle™ Complete System** | **0** | **$0** |
+
+Not "fewer" — the bundle has never sold. This confirms the note carried out of the PDP project.
+The claim should go or change; it is the highest-value fix in the section.
+
+**2. Every card button opens a new tab.** The section hard-codes `target="_blank"` on the
+`button_url` branch. All three cards set `button_url`, so all three hit it. The `{% elsif %}`
+fallback to `product.url` has **no** `target="_blank"`, keeps the custom `button_label`, and
+resolves to the same URLs. **Clearing the three `button_url` values fixes this with no section
+file change** — verified the destinations match (`shopify://products/<handle>` == `product.url`).
+
+**3. The hand-picked card images never render, and the ones that do are 240px.**
+
+```liquid
+{% if product.featured_image != blank %}
+  <img src="{{ product.featured_image | img_url: 'medium' }}" ...>
+{% else %}
+  <img src="{{ block.settings.image | image_url }}" class="pro-img" ...>
+```
+
+All three products have featured media (1024x1024, 682x682, 682x682), so
+`ErgoRelief.webp` / `ComfortBundle.webp` / `LumbarEase.webp` in the block settings are dead
+settings. And `img_url: 'medium'` is Shopify's fixed **240x240** named size, upscaled into a
+~380px card — roughly 1.6x on a 1x screen, ~3.2x on a 2x phone. Also the deprecated `img_url`
+filter, with no `srcset`, `sizes` or `loading="lazy"`, unlike every other image in the theme.
+Fixing this needs a section file edit.
+
+**4. `title` overrides are dead too.** `{% if product.title != blank %}` wins, so the headings
+render as full product titles, not the short names in the settings:
+"ComfortBundle™ Complete System" above the subtitle "Complete support system" — the same words
+twice. Same for the other two. (Also makes the `LumbarEase™ ` trailing-space parked item moot.)
+
+**5. Feature lists are lopsided and vague.** ErgoRelief 2, ComfortBundle 4, LumbarEase 2, with
+blank slots 3-5. Copy is generic — "Pressure relief", "Lower body alignment" — against the PDP's
+"High-density memory foam — holds its shape instead of flattening over time".
+
+**6. Latent:** the sale badge `<span>` renders unconditionally and is only filled when a
+compare-at exists, so removing a compare-at price would leave an empty badge chip. All three are
+on sale today, so it is not currently visible.
+
+**7. Minor:** `padding_top_desktop` 50 vs `padding_bottom_desktop` 100 — asymmetric, and the
+section above it closes with 100, so there is a 150px gap above and 100px below.
+
+Live values the cards read: ErgoRelief $71 (was $89), 5.0 from 15 reviews · ComfortBundle $117
+(was $168), 4.98 from 50 · LumbarEase $62 (was $79), 5.0 from 15.
+
+**Unverified:** the star-rating markup outputs `product.metafields.reviews.rating.value` in one
+place and the bare `product.metafields.reviews.rating_count` metafield object in another. Whether
+those render as numbers or as a raw JSON blob needs a look in preview — not asserted either way.
+
+Pricing/anchoring deliberately not discussed: closed topic.
+
 ### 2026-09-21 — Judge.me badge removed from the home page (CLOSED)
 
 It rendered "No reviews". Cause: the Judge.me **preview badge** reads its rating from the product
