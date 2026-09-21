@@ -58,6 +58,65 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 "Engineered for real support": all proposed changes shipped
+
+Two pushes. Verified by checksum, and every other template re-read and confirmed unchanged.
+
+| file | size | md5 | |
+|---|---|---|---|
+| `sections/comparison-Section.liquid` | 9175 | `c94991ffdbb720952a62d65e52bfb330` | matches local, CRLF preserved |
+| `templates/index.json` | 19288 | `fe62b3c82ebdb730e31e0bf7b6ab69c0` | matches local, 9 keys changed |
+| `product.ComfortBundle.json` | 39409 | `ee9abc87…` | unchanged |
+| `collection.json` | 12354 | `4ced7bb0…` | unchanged |
+| `collection.custom-collection.json` | 12454 | `2eab3a44…` | unchanged |
+| `product.ergoRelief.json` | 27848 | `241b858f…` | unchanged |
+| `product.lumbarEase.json` | 27882 | `b8396197…` | unchanged |
+
+Blast radius checked before editing the section file: `page.about-us`, `page.7-day-reset`,
+`page.7-day-sitting`, `page.faq-page` and `collection.custom-collection` were read and none uses
+`comparison-Section`. Both section edits are backwards compatible anyway (override-wins-if-set,
+and a pure image-quality change), so a template that does not set an override renders identically.
+
+**Section file (2 edits, CRLF preserved):**
+1. Heading precedence flipped — `block.settings.title` now wins when set, else the product title.
+   Fixes the ~18px card misalignment and the title/subtitle echo in one change.
+2. `img_url: 'medium'` (fixed 240px) replaced with `image_url` + `image_tag`, `widths:
+   '180, 270, 360, 540, 720'`, `sizes: '(min-width: 990px) 190px, (min-width: 750px) 30vw, 70vw'`,
+   `loading: 'lazy'`. **Which image wins was deliberately NOT changed** — the product photo is still
+   preferred over the block override, so the lifestyle shots Hamish currently sees stay. Swapping
+   to the `.webp` product shots would be a photography decision, and photography is his.
+
+**Template (9 keys):**
+3. Heading now `Engineered for real support\u00a0—` — a non-breaking space welds the em dash to
+   "support" so it can't orphan onto line 2 on mobile.
+4. Subheading → "From targeted relief to complete support — start where your pain starts."
+   His own line from the collection page. The false "most customers choose the full system" claim
+   is gone.
+5. Card subtitles → the collection pages' copy. Taken from **`collection.custom-collection.json`**,
+   not `collection.json`, because that version says "7-Day Reset" rather than the retired
+   "7-Day Pain Relief Reset", and is shorter.
+6. All three `button_url` cleared → the `{% elsif %}` branch runs, which has no `target="_blank"`,
+   keeps the custom `button_label` and resolves to the same product URLs. **New-tab bug fixed with
+   no code change.**
+7. `LumbarEase™ ` trailing space removed (it now renders, so it mattered).
+
+Card headings are now the short names: ErgoRelief™ / ComfortBundle™ / LumbarEase™ — all one line,
+so the three cards should align.
+
+**Mobile height — ESTIMATE, not a harness measurement.** The subtitles go from 1 line to roughly 5
+each at ~256px card width (measured off Hamish's phone screenshot), ~15px type at 1.5 line-height:
+**about +270px across the three cards.** Flagged to him. Not measured in the iframe harness because
+the real webfont is unavailable here and a fallback font would give the wrong line count — his
+theme preview is the more accurate check.
+
+**NOT done, and why:**
+- **Feature list copy.** Criticised in the review but no specific replacement was ever proposed, so
+  nothing was invented. Still generic nouns; open.
+- **The middle card sitting ~30px low.** No fix was proposed — cause not established. Open.
+
+Guard updated: the three `button_url` values are locked empty, and the heading is locked with its
+U+00A0, so a later edit that reintroduces either defect fails the pre-push check.
+
 ### 2026-09-21 — §5 review, part 3: copy
 
 **Heading: keep.** "Engineered for real support — not just softness" makes a claim and draws a

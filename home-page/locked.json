@@ -1,5 +1,5 @@
 {
-  "_why": "Home page (templates/index.json) invariants. Seeded 2026-09-21 from the live theme 164124164353, byte-verified (md5 5d7e33bffcd39ae15a15d3903fe7b8a0). Nothing here is 'hard-won' yet - these are structural facts that a rewrite could clobber silently. Add a line every time a decision is made, and update it in the same commit when Hamish deliberately changes one. 2026-09-21: the CTA banner and FAQ button links changed from shopify://products/comfortbundle-complete-system to the direct /cart/add href, matching the PDP, at Hamish's request; center_layout and icon_style added at the same time. 2026-09-21 (later): Hamish reversed the /cart/add decision - every buy CTA on the home page sends people to the ComfortBundle product page, not straight to cart. Both links are back on shopify://products/comfortbundle-complete-system and are guarded there. 2026-09-21: feature-highlight.liquid gained a two_up_desktop checkbox (default false); the home page opts in for a 2x2 desktop grid. PDP and collection do not set it and are unaffected. 2026-09-21: do NOT re-add a Judge.me preview badge to the home page - it reads its rating from the product it sits on, and index has no product context, so it renders 'No reviews'. It belongs on the PDP only.",
+  "_why": "Home page (templates/index.json) invariants. Seeded 2026-09-21 from the live theme 164124164353, byte-verified (md5 5d7e33bffcd39ae15a15d3903fe7b8a0). Nothing here is 'hard-won' yet - these are structural facts that a rewrite could clobber silently. Add a line every time a decision is made, and update it in the same commit when Hamish deliberately changes one. 2026-09-21: the CTA banner and FAQ button links changed from shopify://products/comfortbundle-complete-system to the direct /cart/add href, matching the PDP, at Hamish's request; center_layout and icon_style added at the same time. 2026-09-21 (later): Hamish reversed the /cart/add decision - every buy CTA on the home page sends people to the ComfortBundle product page, not straight to cart. Both links are back on shopify://products/comfortbundle-complete-system and are guarded there. 2026-09-21: feature-highlight.liquid gained a two_up_desktop checkbox (default false); the home page opts in for a 2x2 desktop grid. PDP and collection do not set it and are unaffected. 2026-09-21: do NOT re-add a Judge.me preview badge to the home page - it reads its rating from the product it sits on, and index has no product context, so it renders 'No reviews'. It belongs on the PDP only. 2026-09-21 (S5): the three card button_url values must stay EMPTY - the section hard-codes target=_blank on that branch only, so setting them reopens the new-tab bug. The heading carries a U+00A0 before the em dash to stop it orphaning onto line 2 on mobile; a plain space reintroduces the defect.",
   "settings": {
     "sections.custom_hero_section_Yh4kcV.settings.btn_primary_url": "shopify://products/comfortbundle-complete-system",
     "sections.custom_hero_section_Yh4kcV.settings.btn_secondary_url": "#Howit_works",
@@ -10,7 +10,11 @@
     "sections.comparison_section_ytnPWC.blocks.card_gCtPhR.settings.best_value": true,
     "sections.cta_section_G9JXf9.settings.center_layout": true,
     "sections.faq_XyiMyE.settings.icon_style": "plus",
-    "sections.feature_highlight_J9ftbk.settings.two_up_desktop": true
+    "sections.feature_highlight_J9ftbk.settings.two_up_desktop": true,
+    "sections.comparison_section_ytnPWC.settings.heading": "Engineered for real support —",
+    "sections.comparison_section_ytnPWC.blocks.card_QeERNL.settings.button_url": "",
+    "sections.comparison_section_ytnPWC.blocks.card_gCtPhR.settings.button_url": "",
+    "sections.comparison_section_ytnPWC.blocks.card_Uq9cab.settings.button_url": ""
   },
   "first_section": "custom_hero_section_Yh4kcV"
 }

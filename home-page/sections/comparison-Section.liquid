@@ -1,0 +1,264 @@
+<section 
+  class="product-comparison-section"
+  style="
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  "
+>
+  <div class="page-width text-center">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="heading-h2">{{ section.settings.heading }}
+        {% if section.settings.heading_span != blank %}
+         <span>{{ section.settings.heading_span }}</span>
+        {% endif %}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="cards-wrapper">
+      
+      {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.featured_product] %}
+       
+        <div class="card {% if block.settings.best_value %}best-value{% endif %}">
+          
+          {% if block.settings.best_value %}
+            <div class="badge value-badge">Best Value</div>
+          {% endif %}
+
+          {% if block.settings.title != blank %}
+             <h3>{{ block.settings.title }}</h3>
+          {% else %}
+           <h3>{{ product.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.subtitle != blank %}
+            <p class="subtitle">{{ block.settings.subtitle }}</p>
+          {% endif %}
+
+          {% if block.settings.image != blank or product.featured_image != blank %}
+            <div class="product-image-wrap">
+              {% if product.featured_image != blank %}
+                {{
+                  product.featured_image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '180, 270, 360, 540, 720',
+                    sizes: '(min-width: 990px) 190px, (min-width: 750px) 30vw, 70vw',
+                    alt: product.title
+                }}
+              {% else %}  
+                 <img src="{{ block.settings.image | image_url: width: 800 }}" class="pro-img" alt="" loading="lazy">
+              {% endif %}
+
+              {% if block.settings.show_reset_tag %}
+                <div class="reset-badge">
+                    <span>{{ block.settings.reset_tag }}</span>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="features">
+            {% for i in (1..5) %}
+                {% assign key = "feature_" | append: i %}
+                {% assign text = block.settings[key] %}
+
+                {% if text != blank %}
+                    <div class="feature-item">
+                    {% if block.settings.icon != blank %}
+                        <img src="{{ block.settings.icon | image_url }}" alt="">
+                    {% endif %}
+                    <span>{{ text }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="main-new-badge">
+            <div class="star-rating">
+              {% if product != blank and product.metafields.reviews.rating.value != blank %}
+                <span class="stars">★★★★★</span> 
+                <span class="rating-num">{{ product.metafields.reviews.rating.value }}</span>
+                {% if product.metafields.reviews.rating_count != blank %}
+                  <span class="rating-count">({{ product.metafields.reviews.rating_count }})</span>
+                {% endif %}
+              {% else %}
+                {% comment %} <span class="stars">★★★★★</span> <span class="rating-num">4.9</span> <span class="rating-count">(1,243)</span> {% endcomment %}
+              {% endif %}
+            </div>
+            
+            <div class="price-field">
+                {% if product.compare_at_price > product.price %}
+                  <div class="price-tag price--regular">
+                    {% if product != blank %}
+                      {{ product.compare_at_price | money_without_trailing_zeros }}
+                    {% else %}
+                      {% comment %} $129.00 {% endcomment %}
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="price-tag price--comarison">
+                  {% if product != blank %}
+                    {{ product.price | money_without_trailing_zeros }}
+                  {% else %}
+                    {% comment %} $129.00 {% endcomment %}
+                  {% endif %}
+                </div>
+
+                <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+                  {% if product.compare_at_price > product.price %}
+                    Save {{ product.compare_at_price | minus: product.price | money }}
+                  {% endif %}
+                  {% comment %} {{ 'products.product.on_sale' | t }} {% endcomment %}
+                </span>
+              </div>
+          </div>
+
+          {% if block.settings.button_url != blank %}
+            <a href="{{ block.settings.button_url }}" class="btn-globel btn-globel--solid" target="_blank">
+              {{ block.settings.button_label }}
+            </a>
+          {% elsif product != blank %}
+            <a href="{{ product.url }}" class="btn-globel btn-globel--solid">
+              {% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}View Product{% endif %}
+            </a>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+@media(max-width:749px){
+  .product-comparison-section {
+    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Product Comparison",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Engineered For Real Support"
+    },
+    {
+      "type": "text",
+      "id": "heading_span",
+      "label": "Heading Span Text",
+      "default": "Highlight Text"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub Heading",
+      "default": "Most Customers Choose The Full System"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top Desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom Desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top Mobile",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom Mobile",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "limit": 3,
+      "settings": [
+        { 
+          "type": "product", 
+          "id": "featured_product", 
+          "label": "Select Product"
+        },
+        { "type": "checkbox", "id": "best_value", "label": "Best Value", "default": false },
+        { "type": "text", "id": "title", "label": "Heading Override", "info": "Leave blank to use native product title" },
+        { "type": "text", "id": "subtitle", "label": "Sub Heading" },
+        { "type": "image_picker", "id": "image", "label": "Image Override", "info": "Leave blank to use native product featured image" },
+        {
+          "type": "checkbox",
+          "id": "show_reset_tag",
+          "label": "Show Reset Tag",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "reset_tag",
+          "label": "Reset Tag Text",
+          "default": "7-Day Reset Included"
+        },
+        { "type": "image_picker", "id": "icon", "label": "Feature Bullet Icon" },
+        { "type": "text", "id": "feature_1", "label": "Feature 1" },
+        { "type": "text", "id": "feature_2", "label": "Feature 2" },
+        { "type": "text", "id": "feature_3", "label": "Feature 3" },
+        { "type": "text", "id": "feature_4", "label": "Feature 4" },
+        { "type": "text", "id": "feature_5", "label": "Feature 5" },
+        { "type": "text", "id": "button_label", "label": "Button Label" },
+        { "type": "url", "id": "button_url", "label": "Button Link Override", "info": "Leave blank to automatically link to the product details page" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Comparison",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
