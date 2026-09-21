@@ -58,6 +58,61 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 card review 3 of 3: ComfortBundle (card_gCtPhR). Section complete.
+
+Text-only. Section file untouched (`f895d180…`). 2 keys changed.
+Verified: 19118 bytes, md5 `c09cf9aa993654b9fa159e62180e295e`.
+
+**Hamish's instruction: don't say "complete system" twice.** The heading is `product.title` —
+"ComfortBundle™ Complete System" — and cannot change without the section file, so the subtitle had
+to drop both words. It said "Complete support system". Counted before and after in the build:
+**complete x2 / system x2 → x1 / x1**, now only in the heading.
+
+**Changed**
+
+| key | before | after |
+|---|---|---|
+| `subtitle` | Complete support system | ErgoRelief™ + LumbarEase™ together |
+| `feature_5` | *(empty)* | One makes the other work |
+
+The new subtitle also closes the biggest gap found in the original review: **the card never said
+what was in the bundle.** A visitor scanning three cards could not tell the middle one contained
+the other two. It does now, in the most prominent line available.
+
+`feature_5` is his own PDP wording — `one_product_PTdiHH` → `feature_pJJif9` "One makes the other
+work" — which is the actual argument for the pair over either alone, and reads as a closer under
+the new subtitle.
+
+`reset_tag` "7-Day Reset included" left untouched: correct naming, and it already carries the
+Reset, so the subtitle did not need to repeat it. Features 1-4 untouched — "Spine alignment" and
+"Pressure relief" restating the side products is *correct* on a bundle card; that is the claim.
+
+**All three cards now show 5 features.** The original 2 / 4 / 2 asymmetry is gone — the bundle no
+longer looks fuller only because the outer cards were kept short.
+
+---
+
+## §5 "Engineered for real support" — final state
+
+| | |
+|---|---|
+| `templates/index.json` | 19118 bytes, `c09cf9aa993654b9fa159e62180e295e` |
+| `sections/comparison-Section.liquid` | 8867 bytes, `f895d180f30e7af98ad57c5090679ada` — **never modified** |
+
+Shipped across four text-only pushes: heading NBSP, subheading replaced, three `button_url`
+cleared, and all three cards' subtitles rewritten plus every empty feature slot filled.
+
+**Still open — all require the section file, none attempted:**
+1. `title` and `image` overrides are dead on all three cards (product data wins). This is also why
+   ErgoRelief's rows sit ~18px above LumbarEase's — one product title wraps, the other does not.
+2. Product images render through `img_url: 'medium'`, a fixed 240px. Minor; **leave it.**
+3. The middle card sits ~30px lower than the outer two. Cause never established.
+4. `card_Uq9cab.feature_1` "Lumbar support" still echoes its heading — the weakest line left in
+   the section. Text-only, but outside the agreed per-card scope. Raise separately.
+
+**Blocked on building and proving the render harness** (`references/render-harness.md`) against a
+screenshot Hamish has already seen. Nothing touching markup ships before that.
+
 ### 2026-09-21 — §5 card review 2 of 3: LumbarEase (card_Uq9cab)
 
 Text-only, same scope as ErgoRelief. Section file untouched (`f895d180…`).
