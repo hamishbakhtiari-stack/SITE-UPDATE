@@ -58,6 +58,26 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — Judge.me badge removed from the home page (CLOSED)
+
+It rendered "No reviews". Cause: the Judge.me **preview badge** reads its rating from the product
+in scope. On the PDP that is ComfortBundle (47 reviews, 4.98 avg). `templates/index.json` has no
+product context, so the block falls through to its empty state and prints "No reviews" — worse
+than showing nothing, on the one section whose whole job is social proof.
+
+Deleted rather than disabled: its `settings` were `{}`, so there was nothing to preserve, and it
+can never work on this template. The build script asserts `settings == {}` before deleting.
+
+5 of 311 keys changed. Verified: 18993 bytes, md5 `0338f0ea79ccd2158402da5e05d8418e`.
+Grep confirms no `judge` reference remains anywhere in the home template.
+
+**Closed topic: no Judge.me preview badge on the home page.** Recorded in `locked.json` too. If a
+star rating is ever wanted there it needs a shop-level widget (Judge.me's "all reviews"/shop
+rating), not the product preview badge.
+
+Lesson for this project: an `@app` block that works on one template is not portable to another.
+Check what context the app block reads before copying it across.
+
 ### 2026-09-21 — §7 "Real people. Real relief." brought across from the PDP
 
 Template JSON only. `video-reviews.liquid` hard-codes its `vr-v2` class, so the home page was
@@ -96,8 +116,8 @@ choice, not a technical one. **Flagged for Hamish.** The 84s cut also exists as
   on the thumbnail; home had never set it. Now Luiza / Wiki / Hollie / Helen, as on the PDP. It
   also feeds the thumbnail's `alt` (`vr_alt = block.settings.name | default: 'Customer video review'`),
   so this improves accessibility too.
-- **Judge.me preview badge added** (`judge_me_reviews_preview_badge_video`), matching the PDP. The
-  schema allows `@app` blocks and the section renders them in `.rating-wrapper` under the heading.
+- ~~**Judge.me preview badge added**~~ — **reverted the same day**; it rendered "No reviews" on
+  the home page. See the entry above.
 - **Sarah L.'s quote now closes.** Home had an opening `"` and no closing one — resolves a parked
   item from the baseline.
 - `bg_color` `#fafafa` → `#f4f6f5`, the PDP's.
