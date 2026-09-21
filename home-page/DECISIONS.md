@@ -58,6 +58,63 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 review, part 3: copy
+
+**Heading: keep.** "Engineered for real support — not just softness" makes a claim and draws a
+contrast. Only the mobile dash break needs fixing (part 2).
+
+**Every card says the same thing twice.** Title and subtitle restate the category:
+
+| rendered title | subtitle | repeated |
+|---|---|---|
+| ErgoRelief™ Seat Cushion | Pressure-relieving seat cushion | "seat cushion" |
+| ComfortBundle™ Complete System | Complete support system | "complete … system" |
+| LumbarEase™ Lumbar Support | Targeted lumbar support | "lumbar support" |
+
+On the LumbarEase card "lumbar" appears **four times** in ~8 words of copy: title (LumbarEase,
+Lumbar), subtitle (lumbar), feature 1 (Lumbar support). The subtitle is the only line free to add
+information and it spends it repeating the title.
+
+**The bundle card never says what is in the bundle.** It reads "Complete support system" plus four
+abstract nouns. Nowhere does it say **ErgoRelief™ + LumbarEase™**. A visitor scanning three cards
+cannot tell the middle one contains the other two — the only hint is the "7-Day Reset included"
+badge. This is the section's biggest persuasion gap and it is a copy fix, not a layout one.
+
+**Features are category labels, not benefits.** "Pressure relief", "Lower body alignment", "Lumbar
+support", "Posture positioning", "All-day comfort", "Breathable materials" — nouns with no
+mechanism and no payoff, against the PDP's "High-density memory foam — holds its shape instead of
+flattening over time" and "Adjustable dual straps — stay tight instead of sliding down the
+backrest". Two of the bundle's four features ("Pressure relief", "Spine alignment") just restate
+the side products', so the bundle looks richer mainly because the outer cards were kept to two.
+
+**Buttons are fine.** "View ErgoRelief™ / View Full System / View LumbarEase™" — consistent and
+appropriately low-commitment for a chooser. Note the theme applies `text-transform: capitalize`,
+so casing typed into `button_label` does not matter.
+
+#### Recommendation: the copy this section needs is already on the collection page
+
+`templates/collection.json` → `collection_products_czKeWp` holds Hamish's own, better versions:
+
+- sub_heading: *"From targeted relief to complete support — start where your pain starts."*
+  Makes no customer-behaviour claim, and does the job the current subheading fails at.
+- ErgoRelief: *"Memory foam seat cushion with a tailbone cut-out that takes the pressure off your
+  lower body during long sitting sessions — at your desk, in the car, or on the couch."*
+- ComfortBundle: *"ErgoRelief™ and LumbarEase™ together, plus a guided 7-Day Pain Relief Reset —
+  the complete system for people who've tried everything else and are still uncomfortable by 10am."*
+- LumbarEase: *"Curved lumbar support with adjustable straps that holds your lower back's natural
+  curve, so the slump that starts an hour into your day never sets in."*
+
+Two caveats: these are 2–3 lines each against the current one-liners, so card heights grow — needs
+measuring against the mobile-height rule before shipping. And "7-Day Pain Relief Reset" is retired
+naming; it would become "7-Day Reset".
+
+#### Parked, NOT this section
+
+`templates/collection.json` points its bundle card at product handle `comfortbundle` and its
+buttons at `shopify://products/comfortbundle™` (with a ™). The real handle is
+`comfortbundle-complete-system`. Both look wrong and would mean a dead link on the live collection
+page. Not verified, not in scope here — raise when we reach the collection page.
+
 ### 2026-09-21 — §5 review, part 2: findings from Hamish's live screenshots
 
 He sent a desktop and a mobile render of the section. Same section as the review above
