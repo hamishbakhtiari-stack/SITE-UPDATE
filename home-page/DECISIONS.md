@@ -1070,3 +1070,65 @@ Assertions held: every other section byte-identical, all `block_order` untouched
 order undisturbed apart from the insertion. Guard PASS.
 
 **Not verified:** how it looks. No render harness. Needs Hamish's eyes on preview.
+
+---
+
+## S7b — Badge row fixed: teal band removed, PDP treatment adopted (2026-09-21)
+
+Hamish sent two screenshots: the home page with the badges sitting on a **teal band** as white
+tiles, and the ErgoRelief PDP showing what he actually wants — badge above, label below, three
+columns, on white, with a hairline rule top and bottom.
+
+**Two separate defects, both mine.**
+
+**1. The teal band.** `config/settings_data.json` defines `scheme-1` as background `#1a7a6e` — the
+brand teal. I had set `badge_row` to `"color_scheme": "scheme-1"` on the guess that scheme-1 meant
+"default white". It does not. Now `scheme-2` (`#ffffff`, black text).
+
+The `<style>` override I had written to neutralise it (`[id$='__badge_row'] .color-scheme-1
+{background:transparent !important}`) did not take effect — the band rendered teal regardless. Not
+investigated further, because the correct fix was never a CSS override; it was using the right
+scheme. The section's own CSS now also sets `.sc-badges{background:#ffffff}` as a second line of
+defence.
+
+**The scheme table, so this is never guessed again:**
+
+| scheme | background | text |
+|---|---|---|
+| scheme-1 | `#1a7a6e` (brand teal) | `#ffffff` |
+| **scheme-2** | **`#ffffff`** | `#000000` |
+| scheme-3 | `#fafafa` | `#000000` |
+| scheme-4 | `#121212` | `#ffffff` |
+| scheme-5 | `#334fb4` | `#ffffff` |
+
+**2. The wrong image files.** The PDP block is `icon_with_text_yQWCyd` inside `main-product`, and
+it uses `shopify://shop_images/free-ship.png`, `30-day.png`, `easy-return.png`. I had used
+`1_e9a7bfbe….webp`, `2_b49003e3….webp`, `3_a6ed0058….webp` — the same artwork, but with white
+baked into the file, which is exactly why they read as white tiles on the teal. Now using the
+PDP's PNGs.
+
+**The layout now mirrors the PDP:** three equal columns at every width, badge centred above its
+label, hairline rules above and below, 900px max width, centred. 80px badges on desktop, 62px on
+mobile.
+
+Note the PDP's `icon-with-text` is a **block of `main-product`**, not a section, so it cannot be
+reused on the home page. `sections/multicolumn.liquid` was considered and rejected: it only offers
+1 or 2 columns on mobile (`columns_mobile`), and the PDP reference is 3 across on mobile.
+
+**Copy.** Labels are the home page's own wording — "Express shipping from Australia", "30-day
+money-back guarantee", "Easy returns". Deliberately *not* copied character-for-character from the
+PDP, whose "30‑day" carries the retired U+2011 non-breaking hyphen.
+
+**The guard did its job.** `check_template.py` refused the push:
+`sections.badge_row.settings.color_scheme: 'scheme-2' (expected 'scheme-1')`. The lock was wrong,
+not the change, so it was corrected in the same commit — which is the documented procedure for a
+deliberate change to a guarded value.
+
+**Push record.** Theme `164208705793`: `c7d2e73f153d8ce89121009bd4c957d9` →
+`1154ed692c59e06099e2bca240345669` (20752 B), verified by `checksumMd5`. Live theme unchanged at
+`5d7e33bffcd39ae15a15d3903fe7b8a0`. Assertions: only `badge_row.custom_liquid` and
+`badge_row.color_scheme` changed; the hero section asserted byte-identical; order and every
+`block_order` untouched.
+
+**New rule 8.** Never guess a `color_scheme` value. Read `config/settings_data.json` →
+`current.color_schemes` first. Scheme numbering is per-store and carries no standard meaning.
