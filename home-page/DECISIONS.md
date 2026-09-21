@@ -1231,3 +1231,71 @@ visual change to the photo, not only to the spacing, and it needs Hamish's eyes.
 (20743 B), verified by `checksumMd5`. Live unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
 Exactly two settings changed; every other hero setting asserted byte-identical, so no copy moved.
 Guard PASS after adding `pb_desktop`.
+
+---
+
+## S7e — iPad: the hero had no tablet rules at all (2026-09-21)
+
+Hamish: *"what about ipads?"* with a tablet screenshot showing "See How It Works" sitting **behind
+the hero photo**.
+
+**Diagnosis — and it is a pre-existing theme bug, not something this session introduced.**
+
+`assets/resposive.css` is where the hero's responsive behaviour actually lives. Its hero rules are
+all inside `@media screen and (max-width: 749px)`:
+
+```css
+.hero-banner__bg      { position: static; }        /* photo stops being a background */
+.hero-banner__overlay { display: none !important; }
+.hero-banner__content { max-width: 100%; }
+.hero-banner         { padding-top: 0 !important; }
+.hero-banner__inner   { margin-top: 30px; }
+```
+
+Between **750px and 1024px there are no hero rules anywhere in the theme.** Tablets therefore fall
+through to the desktop layout:
+
+- `.hero-banner__bg` absolutely positioned, `object-position: right`
+- `.hero-banner__overlay` = `linear-gradient(270deg, transparent 36.85%, #ffffff 46.38%)`, so white
+  covers only the left ~53.6%
+- `.hero-banner__content { max-width: 600px }` — about **78%** of a 768px iPad
+
+Everything between 54% and 78% of the width sits on the photo with no white behind it. That is
+exactly the button in the screenshot. Nothing about it is vertical, and this session's changes were
+all vertical, so it predates them.
+
+**Fix.** Extend the theme's own proven ≤749px treatment up to 1024px, replicated
+declaration-for-declaration rather than invented, inside `badge_row`'s style block — which renders
+only from the home template, so `page.about-us`, `page.7-day-reset` and `page.7-day-sitting` keep
+the old behaviour. The photo stacks above the text on tablet, exactly as it already does on phones.
+
+Badges at tablet: grid uncapped, 62px, sitting between the 56px desktop and 66px mobile sizes.
+
+**Why not just widen the white gradient.** At 768px the hero photo is `object-fit: contain` and
+ends up nearly full-width. Pushing the white far enough right to clear a 600px content column
+(~82%) would bury almost the whole photo. Stacking is the only treatment that keeps both the words
+and the picture.
+
+**Correction to S7c, now that the real stylesheet has been read.** S7c said the hero's mobile
+`padding-top` behaved because of settings. It does not — `resposive.css` carries
+`.hero-banner { padding-top: 0 !important; }` at ≤749px. That, not `pt_mobile`, is why there is no
+gap above the photo on phones. The selector-less media query inside `custom-hero-section.liquid` is
+still invalid and still does nothing; the conclusion in S7c was right, the mechanism named for the
+top was not.
+
+Also found: `resposive.css` hard-codes
+`#hero-banner-template--22073865371905__custom_hero_section_Yh4kcV { padding-bottom: 60px; }` — a
+**different template id** from this theme's, so it is almost certainly dead. Either way the
+badge_row override is `!important` and wins. Left alone.
+
+**A smell worth naming.** `badge_row`'s style block is becoming a de-facto home-page stylesheet: it
+now carries badge styling, a mobile hero padding override, and a whole tablet hero treatment. It
+works and it is scoped, but the right long-term home is a proper snippet or a repaired
+`custom-hero-section.liquid`. Not today — that file renders four templates.
+
+**Push record.** `cd46e12b6bb4df268cad556af9df7a20` → `7f1ab390847cb149ed21379fe66c8564`
+(21107 B), verified by `checksumMd5`. Live unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`. Only
+`badge_row.custom_liquid` changed; hero settings asserted byte-identical; the ≤749px block asserted
+intact so signed-off mobile could not drift. Guard PASS.
+
+**Not verified:** the tablet render. Needs Hamish's eyes at iPad width.
