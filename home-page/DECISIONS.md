@@ -58,6 +58,64 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §1 Hero review, and a CORRECTION to it
+
+**CORRECTION — my headline finding was wrong.** I claimed the broken media query in
+`custom-hero-section.liquid` meant the hero used desktop padding on mobile, wasting 188px above
+the fold. Hamish's mobile render disproves it: there is **almost no gap between the header and the
+hero image**, and the gap below the guarantee list is roughly the configured mobile value, not
+120px. So the hero's mobile padding is behaving about as configured — another stylesheet
+(`cstm-style.css` / `resposive.css`, neither of which I have read) is evidently handling it.
+
+The broken CSS is still really there:
+
+```css
+@media screen and (max-width: 749px) {
+    {                                  <- no selector, rule is discarded
+      padding-top: var(--pt-mobile) !important;
+```
+
+But it is a **latent** bug, not an active one. Its effect is masked. Fixing it could *change*
+current mobile spacing on all four templates rather than improve it. **Do not touch it** without
+first reading the CSS that is actually doing the work. Exactly the rule I wrote down after the §5
+failure, and I skipped it again by asserting layout from code without a render.
+
+**RETRACTED — the em dash.** I predicted "Sit longer without pain —" would orphan the dash onto
+line 2 on mobile. It does not. It renders "Sit longer without / pain — in 7 days." with the dash
+mid-line. No fix needed.
+
+**SOFTENED — the dead overlay.** `overlay_color`, `overlay_opacity` and `overlay_direction` are
+read by the CSS but absent from the schema, so the overlay div renders at opacity 0. Still true.
+But on mobile the photo is a block *above* the text, not behind it, so there is no contrast
+problem. Desktop not seen. Not worth acting on.
+
+**STILL TRUE, verified independently of rendering — the schema is invalid JSON.**
+
+```json
+"id": "guarantee_label",
+"label": "Guarantee Label",     <- trailing comma, no following key
+},
+```
+
+Confirmed by parsing it. One character. Affects the theme editor, not the storefront.
+
+**NEW, from the render — the primary CTA is below the fold on mobile.** Measured as proportions of
+the first screen (approximate, read off the screenshot):
+
+| band | share of first screen |
+|---|---|
+| announcement bar + header | ~27% |
+| hero photo | ~33% |
+| subheading / heading / body / separator label | ~33% |
+| "Start Your 7-Day Reset" | begins at ~95%, cut off by the browser toolbar |
+
+The photo alone takes a third of the first screen. Text-only levers that would lift the button:
+the separator label wraps to 2 lines, and the body text wraps to 2 lines; tightening either saves
+roughly a line each. **Not proposed as copy — Hamish's call.**
+
+Also noted: the hero body text says "A complete support system", which is the same phrase he just
+asked to stop repeating on the ComfortBundle card. Consistency point, not raised as a fix.
+
 ### 2026-09-21 — §5 card review 3 of 3: ComfortBundle (card_gCtPhR). Section complete.
 
 Text-only. Section file untouched (`f895d180…`). 2 keys changed.
