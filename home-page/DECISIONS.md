@@ -58,6 +58,51 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 card review 1 of 3: ErgoRelief (card_QeERNL)
+
+Text-only. Section file untouched (`f895d180f30e7af98ad57c5090679ada`).
+4 keys changed. Verified: 18988 bytes, md5 `2bd3e40a7311e1a287d506e365ac8f79`.
+
+**Review findings**
+
+- Two settings on this card are dead: `title` ("ErgoRelief™") loses to `product.title`, and
+  `image` (`ErgoRelief.webp`) loses to `product.featured_image`. Editing either in the theme
+  editor does nothing. Root cause is the section file; **not touched.**
+- The four visible lines repeated themselves — `seat` x2, `cushion` x2, `pressure` x2 in ~10 words.
+  Heading "ErgoRelief™ Seat Cushion", subtitle "Pressure-relieving seat cushion", feature_1
+  "Pressure relief". Three of four lines carried one idea.
+- Only 2 of 5 feature slots used; the Liquid loops `(1..5)` so three rendered nothing.
+- Measured off Hamish's desktop screenshot (approximate): **~90px of dead space below the
+  ErgoRelief button**, against ~38px on the bundle card — the direct consequence of 2 features
+  vs 4 in an equal-height row.
+
+**Changed**
+
+| key | before | after |
+|---|---|---|
+| `subtitle` | Pressure-relieving seat cushion | Takes the weight off your tailbone |
+| `feature_3` | *(empty)* | Foam that won't flatten |
+| `feature_4` | *(empty)* | Breathable mesh, stays cool |
+| `feature_5` | *(empty)* | Fits most chairs and car seats |
+
+Features 3-5 are shortened from the PDP's own ErgoRelief list
+(`comparison_products_DgmnVi` → `box1_item1`, `box1_item2`, `box1_item5`), picked because they
+answer the three standard cushion objections: it'll flatten, it'll get hot, it won't fit my chair.
+All are <= 32 characters, the one-line budget for the ~213px feature text column.
+
+`feature_1` "Pressure relief" and `feature_2` "Lower body alignment" left **unchanged** — that was
+the agreed scope (fill 3-5, rewrite subtitle), not a rewrite of his existing two.
+
+Build asserted that `block_order`, section settings, and every other key on all three cards were
+byte-identical; ComfortBundle and LumbarEase cards completely untouched.
+
+**Height: ESTIMATE.** 3 feature rows ~18px each = ~+54px on this card. On desktop it likely fills
+the ~90px of dead space rather than growing the row. On mobile, where cards stack, ~+54px is real.
+Not harness-measured.
+
+Still open on this card, needs the section file: the dead `title` override, which is also why
+ErgoRelief's rows sit ~18px above LumbarEase's.
+
 ### 2026-09-21 — §5 text-only pass (after the revert). 3 fixes, no markup touched.
 
 Hamish chose the text-only option. **`sections/comparison-Section.liquid` was not touched** and
