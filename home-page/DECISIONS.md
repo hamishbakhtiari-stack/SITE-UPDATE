@@ -1010,3 +1010,63 @@ Anything still carrying that reasoning is void, not pending.
 **Phase 2 is parked, not queued.** It was designed partly around the same fold logic. If the
 rating row and the badges come back, it will be as an additive proposal justified on its own
 terms, and only when Hamish asks.
+
+---
+
+## S7 — The three badges replace the three dot points (2026-09-21)
+
+Hamish: *"Can you add those 3 badges now?"* — and, confirmed against his earlier plan, the badges
+take the place of the three guarantee dot points rather than sitting beside them.
+
+**What changed, in `templates/index.json` only:**
+
+1. `custom_hero_section_Yh4kcV.settings.guarantee_label` → blank. That removes the
+   `<ul>` of "Express shipping from Australia / 30-day money-back guarantee / Easy returns".
+2. New section `badge_row` (type `custom-liquid`), inserted in `order` at index 1, directly after
+   the hero. It carries the three badge images at 78×78, left-aligned, inside `page-width` with a
+   600px max-width so they line up under the hero's content column.
+
+The eyebrow, the "complete support system" line and the product-names line are all untouched, per
+the S6c standing rule.
+
+**Shopify refused the tidier version, and that is worth recording.** The first attempt put the
+three `<img>` tags straight into `guarantee_label`, which would have placed them inside the hero
+exactly where the dot points were. The Admin API rejected the whole push:
+
+> Setting 'guarantee_label' is invalid. All top level nodes must be `<p>`, `<ul>`, `<ol>` or
+> `<h1>`-`<h6>` tags and Tag `<img>` is not permitted
+
+That is a server-side rule on `richtext` settings. Nothing was written — the mutation is atomic,
+and a verify confirmed the file was still the reverted baseline. So the badges cannot live in that
+field, and the only route into the hero's own markup is editing
+`sections/custom-hero-section.liquid`, which renders **four** templates: `index`,
+`page.about-us`, `page.7-day-reset`, `page.7-day-sitting`. Not worth four pages for a gap size.
+
+**The honest downside.** Because it is a separate section, the badges sit below the hero's own
+bottom padding — about 52px under the buttons on mobile, 120px on desktop — rather than the ~20px
+the dot points had. Needs a look; the fix, if wanted, is the hero's `pb_mobile` / `pb_desktop`,
+not a negative-margin hack.
+
+**Also checked and rejected:** `sections/icon-subhead.liquid` sounded like a badge row but renders
+a single image plus a heading. No existing section does a three-badge row.
+
+**Markup safety.** Every image carries `width`/`height` attributes *and* inline
+`width`/`height`/`object-fit`. The stylesheet was read first: nothing in `cstm-style.css` targets
+an `img` inside the hero content, and inline styles win regardless. This is the exact inverse of
+the comparison-section failure, which was an image with no pinned width at all.
+
+The section's own `<style>` neutralises the `color-scheme-1 gradient` background via
+`[id$='__badge_row']`, an attribute-suffix selector, because the rendered wrapper id carries a
+template prefix that cannot be known ahead of time.
+
+**Escaping.** All HTML uses single-quoted attributes, so the setting value contains no `"` at all
+and nothing depends on quote-escaping surviving the trip to the Admin API. Rule 7 (`ensure_ascii`)
+still applied to the body.
+
+**Push record.** Theme `164208705793`: `c09cf9aa993654b9fa159e62180e295e` (19118 B) →
+`c7d2e73f153d8ce89121009bd4c957d9` (20245 B), verified by `checksumMd5` on a fresh read. Live
+theme `164124164353` re-checked in the same query: unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+Assertions held: every other section byte-identical, all `block_order` untouched, existing render
+order undisturbed apart from the insertion. Guard PASS.
+
+**Not verified:** how it looks. No render harness. Needs Hamish's eyes on preview.

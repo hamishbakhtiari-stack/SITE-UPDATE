@@ -15,11 +15,21 @@
         "highlight_text": "in 7 days.",
         "body_text": "<p>A complete support system for people who sit 6+ hours a day.</p>",
         "separator_label": "ErgoRelief™ cushion • LumbarEase™ support • Guided 7-Day Reset",
-        "guarantee_label": "<ul><li> Express shipping from Australia</li><li>30-day money-back guarantee</li><li> Easy returns      </li></ul>",
+        "guarantee_label": "",
         "btn_primary_label": "Start your 7-Day Reset",
         "btn_primary_url": "shopify://products/comfortbundle-complete-system",
         "btn_secondary_label": "See how it works",
         "btn_secondary_url": "#Howit_works"
+      }
+    },
+    "badge_row": {
+      "type": "custom-liquid",
+      "name": "Guarantee Badges",
+      "settings": {
+        "custom_liquid": "<style>[id$='__badge_row'] .color-scheme-1,[id$='__badge_row'] .gradient{background:transparent !important;}</style><div class='page-width'><div style='max-width:600px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;'><img src='https://cdn.shopify.com/s/files/1/0812/9416/4225/files/1_e9a7bfbe-6c51-426d-af7b-c5c285a90c4c.webp?v=1787200285' alt='Free shipping' width='78' height='78' style='width:78px;height:78px;object-fit:contain;display:block;flex:0 0 auto;'><img src='https://cdn.shopify.com/s/files/1/0812/9416/4225/files/2_b49003e3-783c-47ab-8014-b7b1a65950f5.webp?v=1787200372' alt='30-day money-back guarantee' width='78' height='78' style='width:78px;height:78px;object-fit:contain;display:block;flex:0 0 auto;'><img src='https://cdn.shopify.com/s/files/1/0812/9416/4225/files/3_a6ed0058-58b3-4e38-a083-a532340b93d5.webp?v=1787200471' alt='Easy returns' width='78' height='78' style='width:78px;height:78px;object-fit:contain;display:block;flex:0 0 auto;'></div></div>",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "benefit_section_xTeUz3": {
@@ -495,6 +505,7 @@
   },
   "order": [
     "custom_hero_section_Yh4kcV",
+    "badge_row",
     "benefit_section_xTeUz3",
     "image_text_TcNMzf",
     "how_it_works_btbqYq",
