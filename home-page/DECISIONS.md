@@ -865,3 +865,82 @@ guarded against exactly this change, so they were re-pointed at the `/cart/add` 
 
 Not verified: rendered appearance. Needs a look in theme preview, or a harness render.
 
+
+---
+
+## S6 — Hero, Phase 1: three text settings, no markup (2026-09-21)
+
+**Scope.** `templates/index.json` only, `custom_hero_section_Yh4kcV`, three settings. Risk class:
+text-only. `sections/custom-hero-section.liquid` was NOT opened and NOT touched — it is shared by
+`index`, `page.about-us`, `page.7-day-reset` and `page.7-day-sitting`, so anything done to it has
+a four-template blast radius.
+
+| Setting | Before | After |
+|---|---|---|
+| `subheading` | `The 7-Day relief system` | *(blank)* |
+| `separator_label` | `ErgoRelief™ cushion • LumbarEase™ support • Guided 7-Day Reset` | *(blank)* |
+| `body_text` | `<p>A complete support system for people who sit 6+ hours a day.</p>` | `<p>A cushion, a lumbar support, and a 7-day plan to retrain how you sit.</p>` |
+
+**Why blanking is safe.** All three are wrapped in `{%- if section.settings.X != blank -%}` in the
+section file, so an empty value removes the element and its wrapper entirely rather than leaving
+an empty box. No CSS change, no markup change, no new selector.
+
+**Why each one.**
+
+- `subheading` — the eyebrow read "The 7-Day relief system" directly above a headline ending
+  "in 7 days." Same promise twice, in two type sizes, before the reader has been told what the
+  product is.
+- `separator_label` — a two-line trademark list plus its divider rule sat between the body copy
+  and the CTA. It pushed the button down without answering anything a cold visitor is asking on
+  first screen. The product names are reassurance, not a headline; they belong below the CTA.
+  (Phase 2 is where they go back, after the badge row.)
+- `body_text` — "A complete support system for people who sit 6+ hours a day" describes the
+  audience, not the product. The replacement names the three things in the box.
+
+**Expected effect, and what it is not.** Removing the eyebrow (~30px) and the divider + label
+block (~61px) takes roughly 91px out from above the CTA on a 390px viewport. On the numbers, that
+should move "Start your 7-Day Reset" from about 52px below the fold to about 39px above it.
+
+**This is arithmetic, not a measurement.** There is still no proven render harness, so the fold
+figure is a calculation from the mockup's box model, not something observed. It needs a look in
+theme preview on a real phone before it is treated as fact.
+
+**Push record.**
+
+- Working theme `164208705793` (UNPUBLISHED) — `templates/index.json`
+  `c09cf9aa993654b9fa159e62180e295e` (19118 B) → `5d1180fb0d021404731a676972288e5c` (19034 B).
+- Verified by `checksumMd5` on a fresh read: matches local `md5sum` exactly.
+- Live theme `164124164353` re-checked in the same query: unchanged at
+  `5d7e33bffcd39ae15a15d3903fe7b8a0`, 18026 B.
+- `diff_template.py` against the previous baseline: exactly 3 diffs, all three the ones above.
+  `order` unchanged, every `block_order` unchanged, 311 keys before and after.
+- `check_template.py` against `locked.json`: PASS.
+
+**A push went out wrong and was corrected — process rule added.**
+
+The first attempt landed at 19033 bytes, one short, md5 `d3aa8e74…`. The three hero changes were
+correct; the corruption was elsewhere. Cause: the body was transcribed into the GraphQL variable
+with non-ASCII characters written literally, and the U+00A0 in
+`comparison_section_ytnPWC.settings.heading` ("Engineered for real support —") arrived as a
+plain space. That is a guarded value, and `locked.json` says in as many words why it must be a
+non-breaking space: a plain space lets the em dash orphan onto line 2 on mobile.
+
+Confirmed by hypothesis test before re-pushing — substituting a plain space into the local
+candidate reproduced the server's md5 and byte count exactly. Re-pushed with the corrected body;
+the second push verified byte-exact.
+
+**Rule 7 (new).** Any theme-file body sent over GraphQL is built with
+`json.dumps(body, ensure_ascii=True)`, so every non-ASCII character travels as an explicit
+`\uXXXX` escape. Invisible characters — U+00A0, U+2011, U+200B — do not survive being typed by
+hand, and `check_template.py` cannot catch it because the guard runs against the candidate on
+disk, not against what actually goes over the wire. The `checksumMd5` verify is the only thing
+that catches this class of error, which is why it is not optional.
+
+**Not done, deliberately.** Phase 2 (a `custom-liquid` section under the hero carrying the rating
+row, the three badges, and the product-names line) is designed but not started — it needs the go
+-ahead. Hero photo height, the invalid schema JSON in the section file, the dead overlay settings
+and the latent selector-less media query are all still untouched.
+
+**Still open.** Whether to add a short "Dispatched from Sydney" line under the badge row in Phase
+2. Badge Option B loses "from Australia", and that is the thing that separates SitComfort from the
+overseas sellers.
