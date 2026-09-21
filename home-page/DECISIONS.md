@@ -1132,3 +1132,56 @@ deliberate change to a guarded value.
 
 **New rule 8.** Never guess a `color_scheme` value. Read `config/settings_data.json` →
 `current.color_schemes` first. Scheme numbering is per-store and carries no standard meaning.
+
+---
+
+## S7c — Rules removed, gap closed (2026-09-21)
+
+Hamish: *"Much better, now you need to remove two lines, move it up and fill the empty gap"* —
+the two hairline rules out, and the dead white space between the buttons and the badges gone.
+
+**Changed:** `badge_row.settings.custom_liquid` only. The hero section's settings were asserted
+byte-identical; no `.liquid` file touched.
+
+1. `border-top` / `border-bottom` removed from `.sc-badges__grid`.
+2. The grid's own top padding dropped to 0 (bottom 28px desktop / 26px mobile, so the grey
+   benefit section that follows does not crowd the labels).
+3. Mobile badges 62 → 66px, now that there is room.
+4. **The gap itself:** `.hero-banner{padding-bottom:14px !important}` inside a
+   `max-width:749px` media query.
+
+**Why the gap was ~120px and not 52px.** Measured off Hamish's screenshot: button bottom to the
+top rule was about 285 screenshot px at a 920/390 ≈ 2.36 scale, so roughly 121 CSS px. That is
+`pb_desktop` (120), not `pb_mobile` (52). The cause is the latent bug already logged against
+`sections/custom-hero-section.liquid`: its mobile media query is **selector-less** —
+
+```css
+@media screen and (max-width: 749px) {
+  {  padding-top: var(--pt-mobile) !important; ... }
+}
+```
+
+— so the whole block is invalid and the mobile padding override never applies. `pb_mobile: 52`
+has no effect; the desktop 120px governs mobile too.
+
+*(This partly reinstates a finding I retracted in S5. The retraction was about padding-**top**,
+where the rendered page showed no 120px gap above the photo. That observation stands. The
+bottom padding is a separate measurement and it does show 120px. Both can be true — the hero's
+background image is absolutely positioned, so the top is not a clean test of the rule.)*
+
+**Why the fix is an override and not a settings change.** `pb_mobile` is inert, so changing it
+does nothing. Lowering `pb_desktop` would fix mobile but wreck the desktop hero. Editing the
+`.liquid` to repair the media query would touch a file shared by four templates. The override
+lives in `badge_row`'s own `<style>`, which is rendered **only by the home template**, so
+`page.about-us`, `page.7-day-reset` and `page.7-day-sitting` are untouched.
+
+`!important` on a class selector beats the hero's non-important ID rule regardless of
+specificity, so the outcome is deterministic whichever rule was previously winning — the fix does
+not depend on my diagnosis being right.
+
+**Push record.** `1154ed692c59e06099e2bca240345669` → `f895d769d5e58ac9e888c3d8a17715ee`
+(20722 B), verified by `checksumMd5`. Live theme unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+Guard PASS. Exactly one setting changed.
+
+**Desktop deliberately left alone.** The 120px below the hero buttons on desktop is the hero's
+intended airy spacing and Hamish has only been reviewing mobile. Not changed without seeing it.
