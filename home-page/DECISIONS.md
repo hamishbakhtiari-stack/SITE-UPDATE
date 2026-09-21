@@ -58,6 +58,56 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 card review 2 of 3: LumbarEase (card_Uq9cab)
+
+Text-only, same scope as ErgoRelief. Section file untouched (`f895d180…`).
+4 keys changed. Verified: 19079 bytes, md5 `63feadce68da5fcfa4851e869ff371e8`.
+
+**Findings.** Worse repetition than ErgoRelief: **"lumbar" x3 and "support" x3** across the four
+visible lines. Three of the four were the same two words reordered —
+
+    LumbarEase™ Lumbar Support     (product.title)
+    Targeted lumbar support        (subtitle)
+    Lumbar support                 (feature_1)
+    Posture positioning            (feature_2)
+
+Also 2 of 5 feature slots used, same as ErgoRelief before the fix. `title` ("LumbarEase™ ", with
+its trailing space) and `image` are both dead — product data wins. The trailing space was **left
+alone**: it is inert while the section file stands, and cleaning it would be a diff with no effect.
+
+**Changed**
+
+| key | before | after |
+|---|---|---|
+| `subtitle` | Targeted lumbar support | Stops the slump before it starts |
+| `feature_3` | *(empty)* | Contoured to your lower back |
+| `feature_4` | *(empty)* | Straps that won't slide down |
+| `feature_5` | *(empty)* | Breathable, washable cover |
+
+From the PDP's own LumbarEase list (`comparison_products_DgmnVi` → `box2_item1`, `box2_item4`, and
+`box2_item2`+`box2_item3` merged into one line). Chosen for the three standard lumbar-support
+objections: wrong shape / digs in, it slides down the chair, it gets hot and can't be cleaned.
+`feature_4` is the real differentiator — the adjustable dual straps.
+
+The subtitle draws on his collection-page line "the slump that starts an hour into your day never
+sets in". All four are <= 32 characters, the one-line budget.
+
+Repetition after: lumbar x2, support x2 (from x3 and x3). The remainder is `feature_1`
+"Lumbar support", which still echoes the heading — **left unchanged, out of the agreed scope.**
+Worth raising with Hamish separately; it is the weakest line left on the card.
+
+`feature_5` deliberately reads "Breathable, washable cover" rather than repeating ErgoRelief's
+"Breathable mesh, stays cool" verbatim — both products have the same cover, but two identical
+lines side by side in a comparison row read as filler.
+
+Build asserted block_order, section settings and every other key on all three cards byte-identical;
+ErgoRelief and ComfortBundle untouched.
+
+**Height: ESTIMATE.** ~+54px on this card, same as ErgoRelief. Desktop likely absorbs it into the
+dead space below the button; mobile is real. Not harness-measured.
+
+**Remaining in §5:** the ComfortBundle card.
+
 ### 2026-09-21 — §5 card review 1 of 3: ErgoRelief (card_QeERNL)
 
 Text-only. Section file untouched (`f895d180f30e7af98ad57c5090679ada`).
