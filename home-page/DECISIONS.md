@@ -58,6 +58,52 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §5 review, part 2: findings from Hamish's live screenshots
+
+He sent a desktop and a mobile render of the section. Same section as the review above
+(`comparison_section_ytnPWC`). Measurements below are read off the screenshots and are
+**approximate** — worth confirming in the iframe harness before quoting them as final.
+
+**Correction to the earlier review.** I estimated the card images render into a ~380px box; they
+are about **180px** on desktop. `img_url: 'medium'` is 240px, so on a 1x desktop screen they are
+fine. The upscale is ~1.5x on a 2x desktop display and, at roughly 256px on the phone render,
+~2x on mobile. Still worth fixing, smaller than stated.
+
+**New: the heading breaks badly on mobile.** It renders as
+
+```
+Engineered for real support
+— not just softness
+```
+
+The em dash is orphaned onto line 2. Cause: `heading` ends `support —` with a normal space before
+the dash, and the Liquid emits `{{ heading }}` then whitespace then `<span>{{ heading_span }}</span>`,
+so the browser can break at that space. **Fix is one setting** — a non-breaking space (U+00A0)
+between "support" and "—" glues them together. No code change.
+
+**New: the two outer cards are misaligned all the way down, and the dead `title` override is why.**
+"ErgoRelief™ Seat Cushion" fits one line; "LumbarEase™ Lumbar Support" wraps to two. Everything
+below shifts by one line height (~18px in the screenshot): subtitles at y176 vs y194, ratings at
+y445 vs y462, prices y477 vs y494, buttons y531 vs y549. The two side cards are structurally
+identical (2 features each) and should line up exactly.
+
+This connects to finding #4 in the review above. `{% if product.title != blank %}` always wins, so
+the short names typed into the `title` settings ("ErgoRelief™", "ComfortBundle™", "LumbarEase™")
+never render. If the override worked, all three headings would be one line and the rows would
+align by themselves. **The dead override is the root cause of the misalignment, not a separate
+cosmetic issue.**
+
+**New: the middle card sits ~30px lower than the side cards.** Side cards top at y118 and bottom
+at y640; the ComfortBundle card runs y150 to y680 — only ~8px taller but offset ~32px down. Reads
+as a row that failed to align rather than a deliberately featured card. Needs harness measurement
+to say why (likely the "Best Value" badge sitting above the card edge).
+
+**Positive: mobile leads with ComfortBundle.** On the phone render the Best Value card is first,
+directly under the subheading, not third. Good ordering — worth keeping.
+
+**Mobile height:** the single ComfortBundle card nearly fills the viewport. Three stacked will be a
+long scroll. Not measured; flagging only.
+
 ### 2026-09-21 — §5 "Engineered for real support" — review findings (NOTHING CHANGED YET)
 
 Reviewed on request. No push. `comparison-Section.liquid` (8867 B, **CRLF**) is a different file
