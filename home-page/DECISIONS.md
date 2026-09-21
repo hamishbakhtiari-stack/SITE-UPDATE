@@ -944,3 +944,37 @@ and the latent selector-less media query are all still untouched.
 **Still open.** Whether to add a short "Dispatched from Sydney" line under the badge row in Phase
 2. Badge Option B loses "from Australia", and that is the thing that separates SitComfort from the
 overseas sellers.
+
+---
+
+## S6b — Hero Phase 1 reverted (2026-09-21)
+
+Hamish looked at it on his phone and said: *"Dont like it at all, my current is better."*
+
+Reverted. `templates/index.json` on theme `164208705793` is back to
+`c09cf9aa993654b9fa159e62180e295e` (19118 B), verified by `checksumMd5` on a fresh read, and
+`diff_template.py` against the pre-Phase-1 file shows 0 diffs across all 311 keys. Live theme
+`164124164353` re-checked in the same query: unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+The hero settings are exactly as they were before S6.
+
+**The fold target was actually met** — in his screenshot both buttons clear the fold, which is
+what Phase 1 was for. So this was not a failed mechanic. It was the wrong trade: the page got
+shorter and worse.
+
+**What I think went wrong, for the next attempt.** Three things came out in one push. The eyebrow
+and the product-names line were doing more than taking up space — between them they told a cold
+visitor what category this is and what is physically in the box, before the CTA. Removing both
+left a headline, one sentence and two buttons on a lot of white. Shorter, but generic: it could
+be any wellness brand.
+
+**Process note.** This was inside one risk class (text-only settings) so it did not violate rule
+1, but it bundled three independent copy decisions into a single reviewable unit. Rule 4 says one
+risky change per push; the spirit of it applies to copy too. Next time on the hero: change one
+element, look at it, then decide on the next.
+
+**Standing constraint added to `locked.json`.** Do not re-propose blanking the eyebrow or the
+product-names line as a bundle. The hero is not to be changed again without a specific brief from
+Hamish about what he wants different.
+
+**Still true and still unused:** rule 7 (build theme-file bodies with `ensure_ascii=True`) is kept
+in `locked.json` — it is about the push mechanism, not about the hero, and it earned its place.
