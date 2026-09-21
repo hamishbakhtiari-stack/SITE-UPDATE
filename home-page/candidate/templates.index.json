@@ -387,6 +387,7 @@
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50,
         "image_position": "left",
+        "two_up_desktop": true,
         "main_image": "shopify://shop_images/6-1.webp",
         "image_alt": "SitComfort ErgoRelief seat cushion and LumbarEase lumbar support fitted to an office chair at a home desk, with both product boxes on the desk",
         "corner_image": "shopify://shop_images/corner-image.webp",

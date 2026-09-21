@@ -58,6 +58,49 @@ Found while taking the baseline. Not acted on.
 
 ## Changes shipped
 
+### 2026-09-21 — §8 feature grid: 2 x 2 on desktop, via an opt-in setting
+
+Hamish: keep the bundle content, *"ONLY MAKE SURE THE LAYOUT IS SIMIALR, IT SHJOULD BE 2X2 IN DESKTOP"*.
+
+`feature-highlight.liquid` is shared by at least the home page, the ComfortBundle PDP and the
+collection page, so this used the `center_layout` pattern rather than a hard-coded change:
+
+- new setting `two_up_desktop`, a checkbox, **default `false`**
+- when on, the section gets an extra `fh-v2` class and emits
+  `@media (min-width:992px){ .feature-highlight-section.fh-v2 .feature-grid{ grid-template-columns:repeat(2,1fr)!important } }`
+  from its own `<style>` block
+- the rule is wrapped in `{% if %}`, so pages that don't opt in emit no extra CSS at all
+- `templates/index.json` sets `two_up_desktop: true`; nothing else does
+
+Specificity 0,3,0 plus `!important`, and the section's inline `<style>` loads after the head CSS,
+so it wins. The rule itself is not invented — it is the one already proven on the PDP (inside
+`custom_liquid_heroAnchor`), just scoped to an opt-in class instead of applying globally.
+
+Verified after push:
+
+| file | size | md5 | |
+|---|---|---|---|
+| `sections/feature-highlight.liquid` | 6621 | `68e918922f1c1b5fa719acc55871bdf7` | matches local |
+| `templates/index.json` | 18911 | `d34673154956c18cf0af49f882c4546f` | matches local, 1 key changed |
+| `templates/product.ComfortBundle.json` | 39409 | `ee9abc8743cd84586ba9d9286e1aa26d` | unchanged |
+| `templates/collection.json` | 12354 | `4ced7bb043407d51fbd415e54ad3b6fd` | unchanged |
+| `templates/collection.custom-collection.json` | 12454 | `2eab3a44c434d9e73e699e91edbb4249` | unchanged |
+| `templates/product.ergoRelief.json` | 27848 | `241b858f2101b3279f121f2c7ec3f25e` | unchanged |
+| `templates/product.lumbarEase.json` | 27882 | `b8396197463a1c7778a3dc96da5677c4` | unchanged |
+
+The section file's pre-existing `{% if template == 'product.ComfortBundle' %}` image branch was
+left exactly as it was — it is a hard-coded template check and the wrong pattern, but changing it
+was out of scope here. **Parked** for whenever §8 image sizing comes up.
+
+**Not visually verified.** The rule is the PDP's proven one, but no render was taken. Still open
+on this section: the PDP also constrains the main image (260px on phones, 14px radius) and swaps
+features 3 and 4 for generated SVG icons. Neither was carried over — the image sizing because it
+would change mobile height and that needs measuring first, the icons because substituting his
+icons is a standing "never".
+
+Note: the collection page's own feature-highlight still has six features and the
+"Designed for People / Who Sit All Day" heading. Untouched, and `two_up_desktop` is off there.
+
 ### 2026-09-21 — §8 Feature Highlight brought across from the PDP
 
 Home's "Designed for people / who sit all day" is the same section *type* as the PDP's
