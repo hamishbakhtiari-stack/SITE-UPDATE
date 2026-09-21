@@ -1448,3 +1448,48 @@ change a template, so a one-line copy fix on a 39 KB PDP means re-sending all 39
 where the two escaping errors this session came from. For a change this small on a file this large,
 the theme editor is the lower-risk tool; the API path is worth it when several values change at
 once, as on the home page.
+
+**S9 complete — and a much better push method found.**
+
+`product.ComfortBundle.json` was the last file and the hardest: 39 KB containing two embedded
+`<script>` blocks with triple-nested escaped quotes (`a[href^=\\\"/cart/add?\\\"]`). Hand-copying
+42 K of escaped text is exactly where both of this session's escaping failures came from, so it was
+not attempted.
+
+**Base64 was considered and rejected** — `OnlineStoreThemeFileBodyInputType` accepts it, but 52 K
+characters of base64 have no redundancy at all, so a single-character slip is invisible and the
+whole file has to be re-sent.
+
+**What worked: the `URL` body type.** `themeFilesUpsert` accepts
+`body: { type: URL, value: <staged upload url> }`, so the file never has to pass through a tool
+call as text:
+
+1. `stagedUploadsCreate(resource: FILE, mimeType: "application/json", httpMethod: POST)`
+2. `curl -F` the local file to the returned target with its signed parameters, file field last
+3. `themeFilesUpsert` with `type: URL` pointing at `resourceUrl`
+
+Google returned `ETag "650bdbd03485b525ec44973562464eaa"` on upload — the exact md5 expected — so
+the bytes were proven correct *before* the theme write. The theme then verified at the same md5,
+39406 B.
+
+Two quirks worth knowing: `upsertedThemeFiles` came back **empty with no userErrors** for a URL
+push, so success cannot be read from the mutation response — only the `checksumMd5` check confirms
+it. And outbound HTTP is partly blocked here: `cdn.shopify.com` fails, but
+`shopify-staged-uploads.storage.googleapis.com` is reachable (its 403 on the bucket root is a real
+HTTP response, not a proxy rejection).
+
+**Rule 10. For any theme file large enough that hand-copying is risky — and certainly anything with
+nested escapes — use the staged-upload + `type: URL` route. It removes transcription from the
+process entirely and the upload ETag proves the bytes before anything is written.** That supersedes
+the earlier note suggesting the theme editor for these; this is better than both.
+
+**Final site-wide audit**, all 30 templates re-fetched and every string walked:
+
+| Phrase | Count | Verdict |
+|---|---|---|
+| "2–3 minutes" | 10, across all 8 templates | the single number, as intended |
+| "2–3 mins" | 1 (index, How it works) | consistent |
+| "a few minutes" | 3 (PDP tabs) | compatible, left alone |
+| "20-30 minutes" | 1 (ErgoRelief, onset of pain) | different claim, left alone |
+
+**Stale numbers remaining: none.** No "5–10 minutes", no "under 5 minutes", no "Two minutes".
