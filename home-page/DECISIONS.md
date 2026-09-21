@@ -48,14 +48,73 @@ to be re-verified by grepping every template before touching any section file.
 Found while taking the baseline. Not acted on.
 
 - **§1 hero** — `guarantee_label` `<ul>` has stray whitespace: `<li> Express shipping…`, `<li> Easy returns      </li>`.
-- **§1 vs §9/§10** — "Start your 7-**D**ay Reset" (hero) vs "Start your 7-**d**ay reset" (FAQ, CTA banner). The lowercase form is retired naming.
+- **§1 vs §9/§10** — "Start your 7-**D**ay Reset" (hero) vs "Start your 7-**d**ay reset". Fixed in the FAQ 2026-09-21; the CTA banner button is now "Get the full system" so the issue no longer applies there. Hero still to review at §1.
 - **§2 benefits** — heading has stray spaces inside the span: `quietly <span>  straining </span>   your body.`
 - **§5 comparison** — `LumbarEase™ ` card title has a trailing space.
 - **§7 video reviews** — Sarah L.'s quote opens with a straight `"` and never closes; the other two use curly `“ ”`.
-- **§9 FAQ** — uses retired names "7-Day SitComfort Reset Program" and "7-Day SitComfort Reset". Standard is "7-Day Reset" / "7-Day Reset Program".
-- **§9 FAQ** — `non‑slippery` contains U+2011 (non-breaking hyphen). Preserve it byte-for-byte unless deliberately changed.
-- **§10 CTA banner** — `30-day  money back guarantee` has a double space; PDP wording is "money-back".
+- ~~**§9 FAQ** — retired names "7-Day SitComfort Reset Program" / "7-Day SitComfort Reset".~~ Resolved 2026-09-21: answers replaced with the PDP's.
+- ~~**§9 FAQ** — `non‑slippery` contains U+2011.~~ Gone with the rewritten answer, 2026-09-21.
+- ~~**§10 CTA banner** — `30-day  money back guarantee` double space.~~ Resolved 2026-09-21: subheading replaced with the PDP's.
 
 ## Changes shipped
 
-_None yet._
+### 2026-09-21 — CTA banner + FAQ brought across from the ComfortBundle PDP
+
+Pushed to working theme `164208705793`. Template JSON only; **no section file was touched**, so
+the PDP and About Us are byte-identical to before. 22 keys changed out of 303. `order` unchanged.
+
+Verified: local `templates/index.json` 18529 bytes md5 `06ec85986eda96947a6ad97535e5a98d`;
+Shopify reports the same size and checksum on re-read. Live theme still 18026 / `5d7e33bf…`.
+
+A load/dump round-trip of the live file reproduced Shopify's own bytes exactly, so the 22 key
+changes are provably the only byte differences in the file.
+
+**CTA banner** (`cta_section_G9JXf9`) — now matches `cta_section_tEApVF` on the PDP:
+
+| setting | was | now |
+|---|---|---|
+| `bg_color` | `#0d5c52` | `#0e6b5b` |
+| `heading` | Reset your sitting. Reclaim your comfort. | Reset your sitting. `[br]`Reclaim your comfort. |
+| `subheading` | Express shipping from Australia · 30-day  money back guarantee · Easy returns | Free express shipping from Sydney · `[br]`2–3 business days · 30-day money-back guarantee |
+| `button_text` | Start your 7-day reset | Get the full system |
+| `button_link` | `shopify://products/comfortbundle-complete-system` | `/cart/add?id=49378080227585&quantity=1&return_to=/cart` |
+| `center_layout` | (absent → false) | `true` |
+| `corner_image` | `shopify://shop_images/Mask_group_6.png` | `""` |
+
+`corner_image` was blanked because the PDP banner has none. The original value is recorded here;
+re-picking it in the theme editor restores it. Padding was already identical on both pages.
+
+**FAQ** (`faq_XyiMyE`) — the questions were the same on both pages, so the PDP's version came
+across whole. Home's five questions all existed on the PDP (only difference: a curly `’` vs a
+straight `'` in "What's included in the 7-Day Reset?"). The PDP had a sixth,
+"How do I access the 7-Day Reset?", which is now on the home page too.
+
+All six answers are the PDP's. Home's existing block IDs were reused rather than recreated, so
+nothing keyed to them can break; only the new question needed a new ID (`faq_Mt6Leh`, same ID it
+has on the PDP).
+
+Also changed: `bottom_text` now links Contact us (`<a href="/pages/contact">`), `button_text`
+"Start your 7-day reset" → "Start your 7-Day Reset" (fixes the retired lowercase naming),
+`button_link` → the same `/cart/add` href, and `icon_style` `arrow` → `plus`.
+
+`icon_style` is not only cosmetic: `FAQ.liquid`'s `.faq-v2` CSS rotates the `+` into a cross when
+an item opens, but has no rule for the arrow SVG — so on the home page the arrow never moved and
+gave no open/closed feedback. `plus` fixes that.
+
+This retires the "7-Day SitComfort Reset Program" / "7-Day SitComfort Reset" wording that was in
+the old home FAQ answers, and the U+2011 in "non‑slippery" is gone with the rewritten answer.
+
+**Behavioural difference to be aware of.** The `/cart/add` href opens the cart *drawer* on the
+PDP because `custom_liquid_cartDrawerAjax` (a block inside the PDP's `main` section) intercepts
+it. That delegate does not exist on the home page, and `assets/custom.js` is empty, so there is
+no global equivalent. On the home page the link is a plain navigation: Shopify adds the item and
+lands the customer on `/cart`. It works and needs no JavaScript, but it is a page load rather
+than a drawer. Putting the drawer on the home page would mean adding the delegate script as a
+custom-liquid section — a separate, deliberate change, not bundled into this one.
+
+**Guard updated in the same commit** (`home-page/locked.json`): both `button_link` values were
+guarded against exactly this change, so they were re-pointed at the `/cart/add` href, and
+`center_layout` / `icon_style` were added.
+
+Not verified: rendered appearance. Needs a look in theme preview, or a harness render.
+
