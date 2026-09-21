@@ -1493,3 +1493,35 @@ the earlier note suggesting the theme editor for these; this is better than both
 | "20-30 minutes" | 1 (ErgoRelief, onset of pain) | different claim, left alone |
 
 **Stale numbers remaining: none.** No "5–10 minutes", no "under 5 minutes", no "Two minutes".
+
+---
+
+## S10 — Introducing section: mobile reading order
+
+**Hamish:** *"just on introducing section, first I see the IMAGE THEN HEADING AND SUB HEADING IN MOBILE, IS THAT GOOD LAYOUT?"* → *"DO IT"*
+
+**The problem.** `sections/image-text.liquid` writes the markup as `[image-side][content-side]`. On desktop the section carries `layout: right`, which adds `row-reverse`, so the image lands on the right and the heading reads first. At ≤749px `resposive.css` sets `flex-direction: column !important`, `row-reverse` stops mattering, and the source order wins — so a phone gets the image before it gets any words.
+
+**What changed.** Mobile only (`max-width: 749px`), the order is now:
+
+heading → subheading → body text → image → bullets → CTA
+
+`.content-side` becomes `display: contents`, which promotes its children to flex items of `.image-text-wrapper`, and each one is given an explicit `order`. Desktop is untouched — every rule sits inside the one media query.
+
+Two supporting rules, both deliberate:
+- `gap: 0 !important` — the wrapper's 50px gap applied between image and content only while content was a single box. With six promoted children it would apply between all of them. The spacing inside the old content box came from the elements' own margins, and those still apply, so `gap: 0` reproduces today's rhythm. The image gets `margin: 0 0 28px 0` to replace what the gap was doing.
+- `align-items: stretch !important` — the inherited `center` would shrink each promoted child to its content width and centre it.
+
+**Where the CSS lives, and why it is not `custom_css`.** It is appended to the `badge_row` custom-liquid `<style>` block, every rule prefixed with `.image-text-section`. `badge_row` renders only on the home page and the home page has exactly one image-text section, so the prefix is exact scoping.
+
+The first attempt put these rules in a section-level `custom_css` array on `image_text_TcNMzf`, the same mechanism already working on `benefit_section_xTeUz3`. **Shopify rejected it silently.** This is worth writing down:
+
+> A `themeFilesUpsert` with `body: { type: URL }` is **asynchronous**. It returns an empty `upsertedThemeFiles` with **no `userErrors`** — success and failure look identical. Request `job { id done }` and poll it. A job that reports `done: true` while the file's `checksumMd5` is unchanged means the content was **rejected server-side and the reason was never surfaced**.
+
+Three pushes were burned before the job field revealed this. The suspect values are `display: contents` and/or `!important` — not isolated, because `benefit_section_xTeUz3`'s `custom_css` uses neither and was accepted the same day. Do not move these rules back into `custom_css` without proving acceptance by checksum first.
+
+**Pushed.** `templates/index.json` on working theme `164208705793`: `665d900dd1a79d0e77e21a616de16331` (21591 B) → `143f86b57c4dc76a82969a9b87337daf` (22047 B). Verified by `checksumMd5`. Live `164124164353` unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+
+**Not verified visually.** There is still no render harness. The reasoning above is from the section markup and `resposive.css`, not from a screenshot.
+
+**Left alone, still open:** the `.image-tag` mis-centring (`right: 50%` + `translate(-50%, 0)`), the grey bullet boxes running the full 60% column on desktop, the 40/60 split, the clipped `corner-image` wave, and the hero's selector-less media query shared by four templates.
