@@ -428,8 +428,7 @@
         "corner_image": "shopify://shop_images/corner-left.png",
         "button_text": "Get the Full System",
         "button_link": "shopify://products/comfortbundle-complete-system"
-      },
-      "disabled": true
+      }
     },
     "single_support_section_QU6dHr": {
       "type": "single-support-section",
