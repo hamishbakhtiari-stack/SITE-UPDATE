@@ -373,9 +373,7 @@
     "7days_P3eEBF": {
       "type": "7days",
       "name": "7 Day System",
-      "settings": {
-        "lock_text_override": "Days 4–7 unlock when you start the Reset — included with ErgoRelief™"
-      }
+      "settings": {}
     },
     "every_day_section_jYJzBQ": {
       "type": "every-day-section",

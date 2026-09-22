@@ -1,0 +1,184 @@
+<section
+  id="Systerproduct_7days"
+  class="system-preview-section"
+  style="
+    background: {{ settings.system_preview_bg_color }};
+    padding-top: {{ settings.system_preview_padding_top_desktop }}px;
+    padding-bottom: {{ settings.system_preview_padding_bottom_desktop }}px;
+  "
+>
+  <div class="page-width">
+
+    {% if settings.system_preview_heading != blank %}
+      <h2 class="heading-h2">
+        {{ settings.system_preview_heading }}
+      </h2>
+    {% endif %}
+
+    {% if settings.system_preview_subheading != blank %}
+      <div class="system-preview-subheading">
+        <p>{{ settings.system_preview_subheading }}</p>
+      </div>
+    {% endif %}
+
+    {% if settings.system_preview_dots != blank %}
+      <div class="dots-show">
+        <img src="{{ settings.system_preview_dots | image_url }}" alt="" loading="lazy">
+      </div>
+    {% endif %}
+
+    {% assign day_numbers = "1,2,3,4,5,6,7" | split: "," %}
+
+    {%- comment -%} Open days: rendered full size. {%- endcomment -%}
+    {%- capture sp_open_cards -%}
+      {%- for day in day_numbers -%}
+        {%- assign day_text    = 'day' | append: day | append: '_text'    -%}
+        {%- assign day_icon    = 'day' | append: day | append: '_icon'    -%}
+        {%- assign day_heading = 'day' | append: day | append: '_heading' -%}
+        {%- assign day_body    = 'day' | append: day | append: '_body'    -%}
+        {%- assign day_blur    = 'day' | append: day | append: '_blur'    -%}
+        {%- if settings[day_text] != blank and settings[day_blur] != true -%}
+          <div class="preview-card">
+            <div class="preview-card-inner">
+              <div class="preview-day"><span>{{ settings[day_text] }}</span></div>
+              <div class="perview-text">
+                {%- if settings[day_icon] != blank -%}
+                  <div class="preview-icon">
+                    <img src="{{ settings[day_icon] | image_url }}" alt="" loading="lazy">
+                  </div>
+                {%- endif -%}
+                {%- if settings[day_heading] != blank -%}
+                  <h3 class="preview-title">{{ settings[day_heading] }}</h3>
+                {%- endif -%}
+                {%- if settings[day_body] != blank -%}
+                  <div class="preview-text"><p>{{ settings[day_body] }}</p></div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- comment -%} Locked days: compact, blurred, padlock only. {%- endcomment -%}
+    {%- capture sp_locked_cards -%}
+      {%- for day in day_numbers -%}
+        {%- assign day_text    = 'day' | append: day | append: '_text'    -%}
+        {%- assign day_heading = 'day' | append: day | append: '_heading' -%}
+        {%- assign day_blur    = 'day' | append: day | append: '_blur'    -%}
+        {%- if settings[day_text] != blank and settings[day_blur] == true -%}
+          <div class="preview-card preview-card--locked">
+            <div class="preview-card-inner">
+              <div class="preview-day"><span>{{ settings[day_text] }}</span></div>
+              <div class="perview-text">
+                {%- if settings[day_heading] != blank -%}
+                  <h3 class="preview-title">{{ settings[day_heading] }}</h3>
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="lock-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="42" height="54" viewBox="0 0 42 54" fill="none" aria-hidden="true">
+                <path d="M4.848 54C3.504 54 2.36 53.528 1.416 52.584C0.472 51.64 0 50.497 0 49.155V22.845C0 21.505 0.472 20.362 1.416 19.416C2.36 18.472 3.504 18 4.848 18H9V12C9 8.658 10.165 5.823 12.495 3.495C14.823 1.165 17.658 0 21 0C24.342 0 27.178 1.165 29.508 3.495C31.838 5.825 33.002 8.66 33 12V18H37.155C38.495 18 39.638 18.472 40.584 19.416C41.528 20.36 42 21.504 42 22.848V49.155C42 50.495 41.528 51.638 40.584 52.584C39.64 53.528 38.497 54 37.155 54H4.848ZM4.848 51H37.155C37.693 51 38.135 50.827 38.481 50.481C38.827 50.135 39 49.693 39 49.155V22.845C39 22.307 38.827 21.865 38.481 21.519C38.135 21.173 37.693 21 37.155 21H4.845C4.307 21 3.865 21.173 3.519 21.519C3.173 21.865 3 22.308 3 22.848V49.155C3 49.693 3.173 50.135 3.519 50.481C3.865 50.827 4.308 51 4.848 51ZM24.198 39.198C25.066 38.332 25.5 37.266 25.5 36C25.5 34.734 25.066 33.668 24.198 32.802C23.33 31.936 22.264 31.502 21 31.5C19.736 31.498 18.67 31.932 17.802 32.802C16.934 33.668 16.5 34.734 16.5 36C16.5 37.266 16.934 38.332 17.802 39.198C18.668 40.066 19.734 40.5 21 40.5C22.266 40.5 23.332 40.066 24.198 39.198ZM12 18H30V12C30 9.5 29.125 7.375 27.375 5.625C25.625 3.875 23.5 3 21 3C18.5 3 16.375 3.875 14.625 5.625C12.875 7.375 12 9.5 12 12V18Z" fill="#1A7A6E" fill-opacity="0.7"/>
+              </svg>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {% if sp_open_cards != blank %}
+      <div class="sp-rowlabel"><span>What you&rsquo;ll do first</span></div>
+      <div class="system-preview-grid system-preview-grid--open">{{ sp_open_cards }}</div>
+    {% endif %}
+
+    {% if sp_locked_cards != blank %}
+      <div class="sp-rowlabel"><span>Then it builds</span></div>
+      <div class="system-preview-grid system-preview-grid--locked">{{ sp_locked_cards }}</div>
+      {% if settings.system_preview_lock_text != blank %}
+        <p class="sp-locknote">{{ settings.system_preview_lock_text }}</p>
+      {% endif %}
+    {% endif %}
+
+    {% if settings.system_preview_button_text != blank %}
+      <div class=" system-preview-btn-wrap">
+        {% if template =='product.ComfortBundle' %}
+          <a
+            href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1&return_to=/cart"
+            class="btn-globel btn-globel--solid"
+          >
+            {{ settings.system_preview_button_text }}
+          </a>
+        {%else %}
+          <a
+            href="{{ settings.system_preview_button_link }}"
+            class="btn-globel btn-globel--solid"
+          >
+            {{ settings.system_preview_button_text }}
+          </a>
+        {%endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .btn-globel.is-loading { opacity: 0.7; cursor: not-allowed; }
+
+  /* two-row layout: open days full size, locked days compact */
+  .system-preview-section .system-preview-grid { display: grid; gap: 24px; }
+  .system-preview-section .system-preview-grid--open   { grid-template-columns: repeat(3, 1fr); }
+  .system-preview-section .system-preview-grid--locked { grid-template-columns: repeat(4, 1fr); }
+
+  .system-preview-section .sp-rowlabel {
+    display: flex; align-items: center; gap: 14px; margin: 46px 0 16px;
+    color: #1A7A6E; font-size: 12px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .system-preview-section .sp-rowlabel:after {
+    content: ''; flex: 1; height: 1px; background: rgba(26,122,110,.2);
+  }
+
+  .system-preview-section .preview-card--locked .perview-text {
+    filter: blur(7px); -webkit-filter: blur(7px);
+    padding: 30px 16px; min-height: 126px;
+    display: flex; align-items: center; justify-content: center;
+    user-select: none; pointer-events: none;
+  }
+  .system-preview-section .preview-card--locked .preview-title { margin: 0; }
+  .system-preview-section .preview-card--locked .lock-overlay {
+    gap: 0; top: 42px;   /* sit below the day label, not over it */
+  }
+
+  .system-preview-section .sp-locknote {
+    text-align: center; margin: 20px 0 0; color: #3d4f49;
+    font-size: 15px; line-height: 1.5;
+  }
+
+  @media screen and (max-width: 989px) {
+    .system-preview-section {
+      padding-top: {{ settings.system_preview_padding_top_mobile }}px !important;
+      padding-bottom: {{ settings.system_preview_padding_bottom_mobile }}px !important;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .system-preview-section .system-preview-grid--open   { grid-template-columns: 1fr; gap: 16px; }
+    .system-preview-section .system-preview-grid--locked { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .system-preview-section .sp-rowlabel { margin: 32px 0 14px; font-size: 11px; }
+    .system-preview-section .preview-card--locked .perview-text { min-height: 112px; padding: 24px 12px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "7 Day System",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "7 Day System"
+    }
+  ]
+}
+{% endschema %}
