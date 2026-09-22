@@ -84,6 +84,12 @@ def main():
     bp['bullet-point-3'] = 'Anti-slip base stays put on any chair'
     bp['bullet-point-4'] = '7-Day Reset builds the habit in a week'
 
+    # 6b. Reset tab: this is the ErgoRelief page, not the bundle.
+    tab = blocks['collapsible_tab_fri6mY']['settings']
+    old = 'included free with every ComfortBundle™'
+    assert tab['content'].count(old) == 1
+    tab['content'] = tab['content'].replace(old, 'included with every ErgoRelief™')
+
     # 7. Quantity selector off (74 orders: 2 multi-unit, both two-product carts).
     blocks['quantity_selector']['disabled'] = True
 
