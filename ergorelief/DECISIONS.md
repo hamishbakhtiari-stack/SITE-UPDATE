@@ -51,3 +51,4 @@ Candidate: `candidate/product.ergoRelief.json`, built by `build_hero.py` (38 lea
 ## Parked (raise when we reach it)
 - Cart-drawer CTA delegate (`custom_liquid_cartDrawerAjax`): add when we reach the first lower-page CTA.
 - `system_preview_lock_text` (global) says Days 4–7 are "included with the ComfortBundle™" — check against ErgoRelief when we reach the 7-Day section.
+- Owner, 2026-09-22: "Ergo Relief doesn't have free shipping." Standing fact. `build_hero.py` now fails if any free-shipping wording shows up in the template. Checked: the template has none (trust row says "Express shipping from Australia"; the Shipping tab doesn't say free).

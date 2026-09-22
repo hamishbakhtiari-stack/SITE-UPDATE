@@ -94,6 +94,11 @@ def main():
     main_sec['block_order'] = head + rest
     assert sorted(main_sec['block_order']) == sorted(blocks), 'block_order / blocks mismatch'
 
+    # Standing fact: ErgoRelief does NOT ship free. No copy on this page may say so.
+    dumped = json.dumps(er, ensure_ascii=False).lower()
+    for bad in ('free shipping', 'free express', 'express free', 'ships free', 'free delivery'):
+        assert bad not in dumped, f'free-shipping claim found: {bad!r}'
+
     with open(OUT, 'w', encoding='utf-8') as fh:
         json.dump(er, fh, ensure_ascii=False, indent=2)
     print('wrote', OUT)
