@@ -16,5 +16,8 @@
     "--media-radius:14px!important",
     ".product__info-container .price .price-item{line-height:1.2!important}"
   ],
-  "first_block": { "main": "custom_liquid_heroAnchor" }
+  "first_block": {
+    "main": "custom_liquid_heroAnchor"
+  },
+  "first_section": "sc_trust_strip"
 }

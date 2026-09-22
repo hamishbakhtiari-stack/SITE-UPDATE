@@ -1,15 +1,5 @@
 {
   "sections": {
-    "sc_trust_strip": {
-      "type": "custom-liquid",
-      "name": "Trust Strip",
-      "settings": {
-        "custom_liquid": "<div class=\"sc-trust\">Sydney dispatch &middot; Express shipping &middot; 30-day money-back</div><style>.sc-trust{text-align:center;font-size:clamp(9px,2.6vw,11px);letter-spacing:.03em;text-transform:uppercase;padding:8px 10px;background:#f4f6f5;color:#3d4f49;font-weight:600;line-height:1.2}</style>",
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -745,7 +735,6 @@
     }
   },
   "order": [
-    "sc_trust_strip",
     "main",
     "related-products",
     "pws_image_with_text_U7pgnH",
