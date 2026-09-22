@@ -97,3 +97,12 @@ Owner: "should be easy, mirror of Comfort Bundle". It already was: both template
 - `sections/7days.liquid` is shared (index, ComfortBundle, ergoRelief, lumbarEase), so I added an OPT-IN `lock_text_override` text setting, blank by default; blank means the sitewide text as before. Only ErgoRelief sets it: "Days 4–7 unlock when you start the Reset — included with ErgoRelief™".
 - PUSHED section first, then template (commit ac7265a). Verified: sections/7days.liquid 4414dd377f5717eab38f9e9872d3dfec (8918 B) and template 0fc3a8fcdcbf21525e1c7a8db3532d5a (36433 B) both = local. index / ComfortBundle / lumbarEase templates unchanged. Live untouched.
 - LumbarEase open question for later: its page shows the ComfortBundle lock note too.
+
+## Section 5 — Every-day section `every_day_section_jYJzBQ` (DISABLED + PUSHED 2026-09-22)
+Owner asked if I agreed with turning it off; I did, with evidence: every tile repeats the hero or section 2; its note ("Designed to support your lower body… pairs best with LumbarEase™") appears word for word in single_support; its "Get the Full System" button repeats section 3's CTA directly above. Same call as ComfortBundle.
+- `disabled: true` (not deleted); can be switched back on in the theme editor.
+- Measured (harness, 402px): section was 660px on mobile, so the page is 660px shorter.
+- PUSHED (commit a9189ee). Verified checksumMd5 f9bf1049a0faac5d645ec18ef7f61087 = local, size 36457. Live untouched.
+
+## Running mobile height tally (harness, 402px)
+hero −157 (ATC), trust strip +29, section 2 −232, section 3 −321, section 5 −660 ⇒ page ~1,340px shorter so far.
