@@ -36,7 +36,7 @@ Mirrors the ComfortBundle PDP redesign process (skill: shopify-page-update).
 ## Log
 - 2026-09-22 — duplicated live theme; snapshotted ergoRelief + ComfortBundle templates. No writes yet.
 
-## Section 1 — Hero (proposed 2026-09-22, awaiting approval)
+## Section 1 — Hero (APPROVED + PUSHED 2026-09-22)
 Candidate: `candidate/product.ergoRelief.json`, built by `build_hero.py` (38 leaf diffs, all inside `main`; `order` unchanged; `main.block_order` reordered on purpose).
 - Photo layout = ComfortBundle: `media_size` medium→small, 320px constrained height on mobile, 14px rounded corners. Same photo; the owner handles photography.
 - Padding 52/100 → 8/24 (CB values).
@@ -52,3 +52,7 @@ Candidate: `candidate/product.ergoRelief.json`, built by `build_hero.py` (38 lea
 - Cart-drawer CTA delegate (`custom_liquid_cartDrawerAjax`): add when we reach the first lower-page CTA.
 - `system_preview_lock_text` (global) says Days 4–7 are "included with the ComfortBundle™" — check against ErgoRelief when we reach the 7-Day section.
 - Owner, 2026-09-22: "Ergo Relief doesn't have free shipping." Standing fact. `build_hero.py` now fails if any free-shipping wording shows up in the template. Checked: the template has none (trust row says "Express shipping from Australia"; the Shipping tab doesn't say free).
+- Reset tab (`collapsible_tab_fri6mY`): "included free with every ComfortBundle™" → "included with every ErgoRelief™". Approved.
+- PUSHED to working theme 164269687041 at 2026-09-22T20:34Z via `themeFilesUpsert` type URL (raw GitHub file at commit daa1935), so nothing was retyped by hand. Verified: checksumMd5 `aecffb111d6cf9b802f7db8f39e1d518` = local md5sum, size 30161 = local. Live theme 164208705793 still `a27e12b1…` (untouched). Guard `locked.json` PASS. 39 leaf diffs.
+- New baseline for section 2 onward = `candidate/product.ergoRelief.json`.
+- Owner to eyeball in preview: Judge.me stars spacing; the `free-ship.png` icon artwork.
