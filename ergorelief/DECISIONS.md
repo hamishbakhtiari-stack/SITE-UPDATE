@@ -77,3 +77,11 @@ Owner caught it: the ComfortBundle top bar was missing on ErgoRelief (I raised i
 - Mobile +29px (1 line at 402px, 10.5px uppercase, same styling as CB). ATC in harness 838 → 867.
 - `locked.json` now also requires `first_section: sc_trust_strip`.
 - PUSHED (commit 63d5ee9). Verified checksumMd5 d2daa6ee7c3830d7b1c05f70a4914aa2 = local, size 32528. Live untouched.
+
+## Section 3 — One product `one_product_PTdiHH` (PUSHED 2026-09-22)
+Owner: "bring most of the content here from bundle page, only title can stay unchanged".
+- From CB: subheading, badge ("Hips, lower back and spine in one line"), 4 blocks (Pressure off your tailbone / Your lower back keeps its curve / One makes the other work / Then it sticks), button text, and CB's one-product mobile CSS (heading+sub first, image at 70%, compact icon rows, CB's teal block icons), appended to ER heroAnchor.
+- Kept from ER: heading "Why [One Product] Isn't Enough"; section photo Designer_5 (his; 651×907, same ratio as CB's); button_link → ComfortBundle page (on CB the button adds the bundle itself); white bg (section 2 directly above is #f4f6f5, so CB's grey would merge them).
+- My one deviation: CB copy says "the lumbar support" / "the contoured cut-out" (the bundle buyer owns both). On ErgoRelief the reader doesn't, so named them: "ErgoRelief™'s contoured cut-out…", "LumbarEase™ holds it there…", "…lets LumbarEase™ do its job."
+- Measured (harness, 402px): 1722 → 1401px mobile (−321px).
+- PUSHED (commit 5b2ea51). Verified checksumMd5 81769fc16cb48190692381472b8c455c = local, size 36325. Live untouched. Guard PASS (added one-product CSS to css_must_contain).
