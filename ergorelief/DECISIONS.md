@@ -85,3 +85,6 @@ Owner: "bring most of the content here from bundle page, only title can stay unc
 - My one deviation: CB copy says "the lumbar support" / "the contoured cut-out" (the bundle buyer owns both). On ErgoRelief the reader doesn't, so named them: "ErgoRelief™'s contoured cut-out…", "LumbarEase™ holds it there…", "…lets LumbarEase™ do its job."
 - Measured (harness, 402px): 1722 → 1401px mobile (−321px).
 - PUSHED (commit 5b2ea51). Verified checksumMd5 81769fc16cb48190692381472b8c455c = local, size 36325. Live untouched. Guard PASS (added one-product CSS to css_must_contain).
+- CORRECTION (owner, 2026-09-22): "section 3 in ErgoRelief is not about ErgoRelief, it is about bundle and encouraging people to click to CTA and go to bundle page." My product-naming edits were wrong: they turned a bundle pitch into ErgoRelief copy. Reverted to CB blocks verbatim, and the section photo is now CB's Designer_4. Only differences from CB now: heading (kept), button_link (→ bundle page), bg white.
+  RULE: on single-product pages, section 3 is the BUNDLE upsell. Write for the bundle, not the page's product.
+- RE-PUSHED (commit a525d5c). Verified checksumMd5 ae0829d22afc3214c5fde4204c06d9f0 = local, size 36323. Live untouched.
