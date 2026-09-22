@@ -29,6 +29,11 @@ for k, v in cs['settings'].items():
 assert es['block_order'] == cs['block_order']
 es['blocks'] = copy.deepcopy(cs['blocks'])
 
+# Owner-approved deviation: name the bundle so a first-time reader knows what
+# "the lumbar support" in the blocks is. Still bundle copy, not ErgoRelief copy.
+es['settings']['subheading'] = ('The ComfortBundle™ pairs this cushion with LumbarEase™ lumbar support — '
+                                'so seat and spine are supported together, then reinforced over 7 days.')
+
 # CB's one-product CSS (mobile reorder, 70% image, compact icon rows, its icons).
 css = cb['sections']['main']['blocks']['custom_liquid_heroAnchor']['settings']['custom_liquid']
 start = css.index('@media screen and (max-width:749px){.one-product-content')
