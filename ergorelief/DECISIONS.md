@@ -56,3 +56,17 @@ Candidate: `candidate/product.ergoRelief.json`, built by `build_hero.py` (38 lea
 - PUSHED to working theme 164269687041 at 2026-09-22T20:34Z via `themeFilesUpsert` type URL (raw GitHub file at commit daa1935), so nothing was retyped by hand. Verified: checksumMd5 `aecffb111d6cf9b802f7db8f39e1d518` = local md5sum, size 30161 = local. Live theme 164208705793 still `a27e12b1…` (untouched). Guard `locked.json` PASS. 39 leaf diffs.
 - New baseline for section 2 onward = `candidate/product.ergoRelief.json`.
 - Owner to eyeball in preview: Judge.me stars spacing; the `free-ship.png` icon artwork.
+
+## Section 2 — Image with text `pws_image_with_text_U7pgnH` (APPROVED + PUSHED 2026-09-22)
+Owner: "give it a job". Job = the "softness isn't the fix" argument (from his product description). Template settings only; the section .liquid (CRLF) is shared with LumbarEase and was not touched.
+- Heading "ErgoRelief™ Seat Cushion" (repeated the page title) → "Softness isn't the fix." Eyebrow "Why ErgoRelief™ Feels Different" kept.
+- Intro → "Extra foam only softens the same pressure points. ErgoRelief™'s contour and cut-out change where your weight lands, so the ache doesn't build 20–30 minutes in."
+- 4 icon bullets disabled (all restated hero bullets; one used the retired "SitComfort… programme").
+- CTA bug fixed: "Buy ErgoRelief™" linked to this same page (reload, nothing added). Now "Add ErgoRelief to cart" → `/cart/add?id=48771729031425&quantity=1&return_to=/cart` (works without JS).
+- Added `custom_liquid_cartAddLink` to main (2nd block): ONLY the AJAX /cart/add script from CB's delegate block, so /cart/add links open the drawer. The full CB capture-phase delegate was NOT ported: its selectors (`.every-day-btn-wrap`, `.cta-banner-button-wrap`, `.custom-faq-bottom`…) would make the lower "Get the Full System" (ComfortBundle) buttons add ErgoRelief instead.
+- Measured (harness, 402px): section 998 → 766px mobile (−232px). Photo unchanged (can't view it from here).
+- PUSHED via themeFilesUpsert URL (commit da446b5). Verified checksumMd5 0b4f2bcf0da6efce42b58373b9cd4362 = local, size 31967. Live untouched (a27e12b1…). Guard PASS. 32 leaf diffs.
+- Owner to check in preview: tap the button → drawer opens with ErgoRelief.
+
+## Parked (added)
+- `single_support_section_QU6dHr` button "Add ErgoRelief™ To Cart" links to `shopify://products/ergorelief`, the same bug as section 2. Fix when we reach it.
