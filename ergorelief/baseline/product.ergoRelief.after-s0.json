@@ -164,7 +164,7 @@
         "custom_liquid_heroAnchor": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"hero-buy-section\"></div><style>.product__title h1{font-size:15px!important;line-height:1.3!important;font-weight:600!important;letter-spacing:.05em!important;text-transform:uppercase!important;opacity:.8!important}.product__text.subtitle{font-size:26px!important;line-height:1.15!important;font-weight:700!important;letter-spacing:-.02em!important;margin:.6rem 0 8px!important}.product__text.caption-with-letter-spacing{font-size:11px!important;letter-spacing:.05em!important;opacity:.7!important}.product-media-container{--media-radius:14px!important;border-radius:14px!important;overflow:hidden!important}.product-media-container .media{border-radius:14px!important;overflow:hidden!important}.bst{margin-top:0!important;margin-bottom:0!important}.bst p{margin:0!important}@media screen and (max-width:749px){.product-media-container.constrain-height{--constrained-height:320px!important;margin-left:auto!important;margin-right:auto!important}.product.grid{row-gap:.75rem!important}.product__media-wrapper{margin-bottom:0!important}}@media screen and (min-width:750px){.product-media-container.constrain-height{--constrained-height:9999px!important;margin-left:0!important;margin-right:auto!important}.product-media-container.constrain-height.media-fit-contain{width:88%!important}}@media screen and (max-width:749px){.product__info-container .price .price-item{line-height:1.2!important}.product__info-container .product__text:not(.subtitle):not(.caption-with-letter-spacing){font-size:16px!important;line-height:24px!important}}@media screen and (max-width:749px){[id$=\"__judge_me_reviews_preview_badge_qB9XCU\"]{margin-top:.5rem!important;margin-bottom:.5rem!important}}@media screen and (max-width:749px){.one-product-content{display:contents!important}.one-product-grid{gap:16px!important}.one-product-grid>.one-product-image{order:3!important}.one-product-content>.heading-h2{order:1!important}.one-product-content>.one-product-subheading{order:2!important}.one-product-content>.one-product-badge{order:4!important}.one-product-content>.one-product-blocks{order:5!important}.one-product-content>.btn-globel{order:6!important}.one-product-image{width:70%!important;max-width:70%!important;align-self:center!important;margin:0 auto!important}.one-product-image img{width:100%!important;height:auto!important;display:block!important}.one-product-blocks{gap:10px!important}.one-product-block{display:grid!important;grid-template-columns:44px 1fr;grid-template-areas:\"i t\" \"i b\";column-gap:12px;row-gap:2px;align-items:start;text-align:left!important;padding:14px!important}.one-product-icon{grid-area:i;margin:0!important}.one-product-icon img{width:44px!important;height:44px!important;display:block!important}.one-product-block h4{grid-area:t;margin:0!important}.one-product-block p{grid-area:b;margin:0!important}}@media screen and (max-width:749px){.one-product-badge{align-self:center!important;text-align:center!important}}.one-product-blocks .one-product-block:nth-child(1) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cpath fill='%23fff' d='M5 6h14a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5h-1.8v-2.6a3.2 3.2 0 0 0-6.4 0V18H7a5 5 0 0 1-5-5V9a3 3 0 0 1 3-3Z'/%3E%3C/g%3E%3C/svg%3E\")!important}.one-product-blocks .one-product-block:nth-child(2) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cg fill='%23fff' opacity='.45'%3E%3Crect x='12.5' y='3' width='4.2' height='2' rx='1'/%3E%3Crect x='10.8' y='5.6' width='4.8' height='2' rx='1'/%3E%3Crect x='9.6' y='8.2' width='5.2' height='2' rx='1'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Crect x='9.2' y='10.8' width='5.6' height='2' rx='1'/%3E%3Crect x='9.8' y='13.4' width='6' height='2' rx='1'/%3E%3Crect x='10.9' y='16' width='6.2' height='2' rx='1'/%3E%3Cpath d='M12.2 18.6h5.4l-1.3 2.9a1.1 1.1 0 0 1-1 .7h-.8a1.1 1.1 0 0 1-1-.7Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")!important}.one-product-blocks .one-product-block:nth-child(3) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cg fill='%23fff'%3E%3Crect x='15' y='2.8' width='5.6' height='10.4' rx='2.8'/%3E%3Cpath d='M4 15.2h15a2 2 0 0 1 2 2v1.6a2.4 2.4 0 0 1-2.4 2.4h-2.2v-1.1a2 2 0 0 0-4 0v1.1H6.4A2.4 2.4 0 0 1 4 18.8Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")!important}.one-product-blocks .one-product-block:nth-child(4) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' d='M20.4 12a8.4 8.4 0 1 1-2.9-6.4'/%3E%3Cpath fill='%23fff' d='M20.2 2.9l.5 5-4.9-1.1z'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round' d='M9.5 9.3h5.2l-3.1 6.6'/%3E%3C/g%3E%3C/svg%3E\")!important}</style>"
+            "custom_liquid": "<div id=\"hero-buy-section\"></div><style>.product__title h1{font-size:15px!important;line-height:1.3!important;font-weight:600!important;letter-spacing:.05em!important;text-transform:uppercase!important;opacity:.8!important}.product__text.subtitle{font-size:26px!important;line-height:1.15!important;font-weight:700!important;letter-spacing:-.02em!important;margin:.6rem 0 8px!important}.product__text.caption-with-letter-spacing{font-size:11px!important;letter-spacing:.05em!important;opacity:.7!important}.product-media-container{--media-radius:14px!important;border-radius:14px!important;overflow:hidden!important}.product-media-container .media{border-radius:14px!important;overflow:hidden!important}.bst{margin-top:0!important;margin-bottom:0!important}.bst p{margin:0!important}@media screen and (max-width:749px){.product-media-container.constrain-height{--constrained-height:320px!important;margin-left:auto!important;margin-right:auto!important}.product.grid{row-gap:.75rem!important}.product__media-wrapper{margin-bottom:0!important}}@media screen and (min-width:750px){.product-media-container.constrain-height{--constrained-height:9999px!important;margin-left:0!important;margin-right:auto!important}.product-media-container.constrain-height.media-fit-contain{width:88%!important}}@media screen and (max-width:749px){.product__info-container .price .price-item{line-height:1.2!important}.product__info-container .product__text:not(.subtitle):not(.caption-with-letter-spacing){font-size:16px!important;line-height:24px!important}}@media screen and (max-width:749px){[id$=\"__judge_me_reviews_preview_badge_qB9XCU\"]{margin-top:.5rem!important;margin-bottom:.5rem!important}}</style>"
           }
         },
         "custom_liquid_AwKGzJ": {
@@ -318,32 +318,32 @@
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/one.png",
-            "block_heading": "Pressure off your tailbone",
-            "block_subheading": "ErgoRelief™'s contoured cut-out keeps your weight off the spot that starts aching first."
+            "block_heading": "Relieves Lower Back Pain",
+            "block_subheading": "Targeted lumbar support reduces pressure on your spine"
           }
         },
         "feature_WHamjG": {
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/two.png",
-            "block_heading": "Your lower back keeps its curve",
-            "block_subheading": "LumbarEase™ holds it there, so you're not holding it with muscle all day."
+            "block_heading": "7 Day Posture Reset",
+            "block_subheading": "Retrains your body for better alignment in 7 Days"
           }
         },
         "feature_pJJif9": {
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/three.png",
-            "block_heading": "One makes the other work",
-            "block_subheading": "The seat sets your hips at the right angle — which is what lets LumbarEase™ do its job."
+            "block_heading": "Ergonomic Alignment",
+            "block_subheading": "Scientifically designed for optimal spine positioning"
           }
         },
         "feature_GpKMQT": {
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/iv.png",
-            "block_heading": "Then it sticks",
-            "block_subheading": "The 7-Day Reset retrains how you sit, so it holds when you're not thinking about it."
+            "block_heading": "Reduces Sitting Fatigue",
+            "block_subheading": "Stay comfortable during long work sessions"
           }
         }
       },
@@ -362,10 +362,10 @@
         "padding_bottom_mobile": 50,
         "section_image": "shopify://shop_images/Designer_5.webp",
         "image_position": "left",
-        "badge_text": "Hips, lower back and spine in one line",
+        "badge_text": "Full alignment achieved with complete system",
         "heading": "Why [One Product] Isn’t Enough",
         "highlight_color": "#1a7a6e",
-        "subheading": "Most people fix one area and ignore the rest. Full comfort comes from supporting seat and spine together — then reinforcing better habits over 7 days.",
+        "subheading": "Most people fix one area and ignore the rest. Full comfort comes from supporting seat + spine together — then reinforcing better habits over 7 days.",
         "button_text": "Get the Full System — $117",
         "button_link": "shopify://products/comfortbundle-complete-system"
       }

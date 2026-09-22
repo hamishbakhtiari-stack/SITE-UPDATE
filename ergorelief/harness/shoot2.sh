@@ -6,7 +6,7 @@ cat > "$F" <<H
 <iframe id="fr" src="$(basename "$P")" scrolling="no"></iframe><script>window.addEventListener('load',function(){setTimeout(function(){
 var d=document.getElementById('fr').contentDocument,w=d.defaultView,o=[];var s=d.getElementById('sec');
 o.push('SECTION h='+Math.round(s.getBoundingClientRect().height));
-s.querySelectorAll('.product-image-text__image,.product-image-text__subheading,.heading-h2,.product-image-text__item,.btn-globel').forEach(function(e){var r=e.getBoundingClientRect(),cs=w.getComputedStyle(e);o.push(e.className.slice(0,32)+' top='+Math.round(r.top)+' h='+Math.round(r.height)+' fs='+cs.fontSize+' lh='+cs.lineHeight+' fw='+cs.fontWeight)});
+s.querySelectorAll('.one-product-image,.heading-h2,.one-product-subheading,.one-product-badge,.one-product-block,.btn-globel,.product-image-text__image,.product-image-text__item').forEach(function(e){var r=e.getBoundingClientRect(),cs=w.getComputedStyle(e);o.push(e.className.slice(0,32)+' top='+Math.round(r.top)+' h='+Math.round(r.height)+' fs='+cs.fontSize+' lh='+cs.lineHeight+' fw='+cs.fontWeight)});
 var p=document.createElement('pre');p.id='probe';p.textContent=o.join('\n');document.body.appendChild(p)},800)});</script></body></html>
 H
 CH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome

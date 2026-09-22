@@ -14,7 +14,9 @@
     ".product__title h1{font-size:15px",
     ".product__text.subtitle{font-size:26px",
     "--media-radius:14px!important",
-    ".product__info-container .price .price-item{line-height:1.2!important}"
+    ".product__info-container .price .price-item{line-height:1.2!important}",
+    ".one-product-content{display:contents!important}",
+    "grid-template-areas:\"i t\" \"i b\""
   ],
   "first_block": {
     "main": "custom_liquid_heroAnchor"
