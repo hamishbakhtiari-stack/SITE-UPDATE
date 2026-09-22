@@ -1579,3 +1579,38 @@ These four rules went in as a section-level **`custom_css` array and were accept
 **Not verified visually.** Still no render harness.
 
 **Raised, not actioned:** Comparison (6) currently sits between How it works (5) and the 7-Day System preview (7). Those two are the same story at two depths; putting them back to back would explain the mechanism once, getting deeper, and let Comparison do its own job afterwards. Hamish has not decided on this.
+
+---
+
+## S12 — Section order: the mechanism gets told once
+
+**Hamish:** *"Good, change the order too"* — acting on the structural point raised in S11.
+
+Comparison moved from position 6 to position 7. Nothing else moved, and not one byte of any section's settings, blocks or `custom_css` changed — only the `order` array.
+
+| | Before | After |
+|---|---|---|
+| 5 | How it works | How it works |
+| 6 | **Comparison** | 7-Day System Preview |
+| 7 | 7-Day System Preview | **Comparison** |
+
+**Why.** How it works and the 7-Day System Preview are the same story at two depths — what you do, then what each of the seven days actually is. Comparison sat between them, so the page started explaining the mechanism, stopped to sell a product, then went back to explaining. The page now reads:
+
+Introducing (the promise) → How it works (what you do) → 7-Day System Preview (day by day) → Comparison (which product) → proof → features → FAQ → CTA
+
+Explain first, then ask someone to choose.
+
+**Backgrounds checked before the move**, since the sections are flush (`spacing_sections: 0`):
+
+| Position | Section | Background |
+|---|---|---|
+| 5 | How it works | `#f4f6f5` grey |
+| 6 | 7-Day System Preview | `#EAF4F1` mint — a **theme** setting, `system_preview_bg_color`, not a section setting |
+| 7 | Comparison | `#ffffff` |
+| 8 | Video reviews | `#f4f6f5` grey |
+
+No two adjacent sections share a colour. Grey into mint is the softest boundary on the page now; worth a look on the phone, but both sections carry their own heading so the break should still read.
+
+**Pushed.** `templates/index.json` on working theme `164208705793`: `e027dac3546181779a7dfa6e181f0ac6` → `932e25b771535f5fdfd36d18832a754e`, same 22536 B (a pure reorder). Verified by `checksumMd5`. Live `164124164353` unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+
+**One thing the move exposes, not actioned.** The 7-Day System Preview's subheading re-explains the whole program — *"The 7-Day Reset is a guided program delivered through 7 short videos sent to your email, plus a dedicated page…"* — and it now sits directly under How it works, which just said the same thing in three steps. That is the exact repetition S11 set out to remove, one section further down. It is a **theme-level** setting (`system_preview_subheading`), shared with the other templates that render this section, so trimming it changes those pages too. Hamish's call.
