@@ -106,8 +106,7 @@
 
     {% if settings.system_preview_button_text != blank %}
       <div class=" system-preview-btn-wrap">
-        {%- comment -%} Add this page's product to cart: always on ComfortBundle; opt-in elsewhere. {%- endcomment -%}
-        {% if template =='product.ComfortBundle' or section.settings.button_adds_product and product %}
+        {% if template =='product.ComfortBundle' %}
           <a
             href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1&return_to=/cart"
             class="btn-globel btn-globel--solid"
@@ -185,12 +184,6 @@
       "id": "lock_text_override",
       "label": "Lock note (this page only)",
       "info": "Leave blank to use the sitewide text from Theme settings."
-    },
-    {
-      "type": "checkbox",
-      "id": "button_adds_product",
-      "label": "Button adds this page's product to cart (this page only)",
-      "default": false
     }
   ],
   "blocks": [],
