@@ -90,3 +90,10 @@ Owner: "bring most of the content here from bundle page, only title can stay unc
 - RE-PUSHED (commit a525d5c). Verified checksumMd5 ae0829d22afc3214c5fde4204c06d9f0 = local, size 36323. Live untouched.
 - Subheading (owner approved, 2026-09-22): "The ComfortBundle™ pairs this cushion with LumbarEase™ lumbar support — so seat and spine are supported together, then reinforced over 7 days." It names the bundle so a first-time reader knows what "the lumbar support" in the blocks means, and it stays bundle copy. Evidence: 69 of 74 orders already contain ErgoRelief + LumbarEase, as separate line items.
 - PUSHED (commit 45d8418). Verified checksumMd5 9ca24cbf8b0ffab70d01af2de40f6bb7 = local, size 36319. Live untouched.
+
+## Section 4 — 7-Day Reset preview `7days_P3eEBF` (PUSHED 2026-09-22)
+Owner: "should be easy, mirror of Comfort Bundle". It already was: both templates have empty section settings; all content comes from the sitewide `system_preview_*` settings. No button renders on either page, because `system_preview_button_text` is blank sitewide.
+- One mismatch: the sitewide lock note "Days 4–7 unlock when you start the Reset — included with the ComfortBundle™" contradicted this page (hero + Reset tab say the Reset comes with ErgoRelief).
+- `sections/7days.liquid` is shared (index, ComfortBundle, ergoRelief, lumbarEase), so I added an OPT-IN `lock_text_override` text setting, blank by default; blank means the sitewide text as before. Only ErgoRelief sets it: "Days 4–7 unlock when you start the Reset — included with ErgoRelief™".
+- PUSHED section first, then template (commit ac7265a). Verified: sections/7days.liquid 4414dd377f5717eab38f9e9872d3dfec (8918 B) and template 0fc3a8fcdcbf21525e1c7a8db3532d5a (36433 B) both = local. index / ComfortBundle / lumbarEase templates unchanged. Live untouched.
+- LumbarEase open question for later: its page shows the ComfortBundle lock note too.
