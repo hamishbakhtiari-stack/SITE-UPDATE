@@ -70,3 +70,10 @@ Owner: "give it a job". Job = the "softness isn't the fix" argument (from his pr
 
 ## Parked (added)
 - `single_support_section_QU6dHr` button "Add ErgoRelief™ To Cart" links to `shopify://products/ergorelief`, the same bug as section 2. Fix when we reach it.
+
+## Section 0 — Trust strip `sc_trust_strip` (PUSHED 2026-09-22)
+Owner caught it: the ComfortBundle top bar was missing on ErgoRelief (I raised it at the start, then left it out of the hero push without saying so).
+- Copied from CB with one change: "Free shipping" → "Express shipping" (ErgoRelief doesn't ship free). Text: "Sydney dispatch · Express shipping · 30-day money-back".
+- Mobile +29px (1 line at 402px, 10.5px uppercase, same styling as CB). ATC in harness 838 → 867.
+- `locked.json` now also requires `first_section: sc_trust_strip`.
+- PUSHED (commit 63d5ee9). Verified checksumMd5 d2daa6ee7c3830d7b1c05f70a4914aa2 = local, size 32528. Live untouched.
