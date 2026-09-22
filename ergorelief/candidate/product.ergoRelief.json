@@ -319,7 +319,7 @@
           "settings": {
             "block_image": "shopify://shop_images/one.png",
             "block_heading": "Pressure off your tailbone",
-            "block_subheading": "ErgoRelief™'s contoured cut-out keeps your weight off the spot that starts aching first."
+            "block_subheading": "The contoured cut-out keeps your weight off the spot that starts aching first."
           }
         },
         "feature_WHamjG": {
@@ -327,7 +327,7 @@
           "settings": {
             "block_image": "shopify://shop_images/two.png",
             "block_heading": "Your lower back keeps its curve",
-            "block_subheading": "LumbarEase™ holds it there, so you're not holding it with muscle all day."
+            "block_subheading": "The lumbar support holds it there, so you're not holding it with muscle all day."
           }
         },
         "feature_pJJif9": {
@@ -335,7 +335,7 @@
           "settings": {
             "block_image": "shopify://shop_images/three.png",
             "block_heading": "One makes the other work",
-            "block_subheading": "The seat sets your hips at the right angle — which is what lets LumbarEase™ do its job."
+            "block_subheading": "The seat sets your hips at the right angle — which is what lets the lumbar support do its job."
           }
         },
         "feature_GpKMQT": {
@@ -360,7 +360,7 @@
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50,
-        "section_image": "shopify://shop_images/Designer_5.webp",
+        "section_image": "shopify://shop_images/Designer_4.webp",
         "image_position": "left",
         "badge_text": "Hips, lower back and spine in one line",
         "heading": "Why [One Product] Isn’t Enough",

@@ -2,9 +2,10 @@
 """Section 3 (one_product_PTdiHH): bring the ComfortBundle version across.
 
 Owner: 'bring most of the content here from bundle page, only title can stay'.
-Kept from ErgoRelief: heading, section_image (his photo), button_link (goes to the
-ComfortBundle page -- on CB the button adds the bundle itself), bg_color (white:
-section 2 directly above is #f4f6f5, so CB's grey would merge the two sections).
+This section SELLS THE BUNDLE (owner: 'is about bundle and encouraging people to click
+to Cta and go to bundle page'), so CB copy and photo are used verbatim.
+Kept from ErgoRelief: heading, button_link (goes to the ComfortBundle page -- on CB the
+button adds the bundle itself), bg_color (white: section 2 directly above is #f4f6f5).
 Everything else, blocks and CB's one-product mobile CSS, comes from CB.
 """
 import copy, json, re, sys
@@ -13,7 +14,7 @@ BASE = 'baseline/product.ergoRelief.after-s0.json'
 CB = 'baseline/product.ComfortBundle.json'
 OUT = 'candidate/product.ergoRelief.json'
 KEY = 'one_product_PTdiHH'
-KEEP = ('heading', 'section_image', 'button_link', 'bg_color')
+KEEP = ('heading', 'button_link', 'bg_color')
 
 
 def load(p):
@@ -27,18 +28,6 @@ for k, v in cs['settings'].items():
         es['settings'][k] = v
 assert es['block_order'] == cs['block_order']
 es['blocks'] = copy.deepcopy(cs['blocks'])
-
-# CB copy assumes the reader is buying both. On this page they are not, so name the
-# products; wording otherwise unchanged.
-swaps = {
-    'feature_pXURKz': ('The contoured cut-out keeps', "ErgoRelief™'s contoured cut-out keeps"),
-    'feature_WHamjG': ('The lumbar support holds it there', 'LumbarEase™ holds it there'),
-    'feature_pJJif9': ('what lets the lumbar support do its job', 'what lets LumbarEase™ do its job'),
-}
-for bid, (old, new) in swaps.items():
-    sub = es['blocks'][bid]['settings']['block_subheading']
-    assert sub.count(old) == 1, bid
-    es['blocks'][bid]['settings']['block_subheading'] = sub.replace(old, new)
 
 # CB's one-product CSS (mobile reorder, 70% image, compact icon rows, its icons).
 css = cb['sections']['main']['blocks']['custom_liquid_heroAnchor']['settings']['custom_liquid']
