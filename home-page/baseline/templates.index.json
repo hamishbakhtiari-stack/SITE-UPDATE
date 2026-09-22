@@ -135,23 +135,23 @@
           "settings": {
             "image": "shopify://shop_images/proper_suppor.png",
             "title": "Sit with proper support",
-            "subtitle": "Place ErgoRelief™ on your seat and LumbarEase™ at your lower back — setup takes under 60 seconds."
+            "subtitle": "Place ErgoRelief™ on your seat and LumbarEase™ at your lower back. Setup takes under 60 seconds."
           }
         },
         "step_yDHUTC": {
           "type": "step",
           "settings": {
             "image": "shopify://shop_images/Follow-daily.png",
-            "title": "Follow daily posture resets (2–3 mins/day)",
-            "subtitle": "Guided video each day recalibrates how you sit, not just how you feel."
+            "title": "Press play once a day",
+            "subtitle": "Two to three minutes of guided movement you can do at your desk, without getting changed or leaving your chair."
           }
         },
         "step_ymwWJz": {
           "type": "step",
           "settings": {
             "image": "shopify://shop_images/relief-7.png",
-            "title": "Feel measurable relief in 7 days",
-            "subtitle": "Most users notice a difference by day 3. By day 7, better posture becomes the new default."
+            "title": "Good posture becomes automatic",
+            "subtitle": "By day 7, the way you sit without thinking has changed. That's what the seven days are for."
           }
         }
       },
@@ -172,7 +172,13 @@
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50
-      }
+      },
+      "custom_css": [
+        "@media screen and (max-width: 749px) { .how-it-works-section .image-wrap { width: 110px; height: 110px; padding: 16px; } }",
+        "@media screen and (max-width: 749px) { .how-it-works-section .image-wrap img { height: 62px; } }",
+        "@media screen and (max-width: 749px) { .how-it-works-section .steps-wrapper { gap: 28px; } }",
+        "@media screen and (max-width: 576px) { .how-it-works-section h3 { max-width: 280px; } }"
+      ]
     },
     "comparison_section_ytnPWC": {
       "type": "comparison-Section",

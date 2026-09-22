@@ -1525,3 +1525,57 @@ Three pushes were burned before the job field revealed this. The suspect values 
 **Not verified visually.** There is still no render harness. The reasoning above is from the section markup and `resposive.css`, not from a screenshot.
 
 **Left alone, still open:** the `.image-tag` mis-centring (`right: 50%` + `translate(-50%, 0)`), the grey bullet boxes running the full 60% column on desktop, the 40/60 split, the clipped `corner-image` wave, and the hero's selector-less media query shared by four templates.
+
+---
+
+## S11 — How it works: copy and mobile sizing
+
+**Hamish:** *"Lets review how it works section, layout and copy, give me your feedback"* → *"Both together"*
+
+### The problem with the copy
+
+This section was the third place on the page explaining the same mechanism. Scroll order is Introducing (4) → How it works (5) → Comparison (6) → 7-Day System preview (7). Introducing already said *"one short video a day, straight to your inbox"* and *"Two to three minutes a day. Seven days. No app, no login."* How it works then repeated the duration in a step title and the seven days in another. The section was not the problem — it is the only place that says what a buyer actually *does* — the repetition was.
+
+So each step was rewritten to carry information that appears nowhere else on the page.
+
+| Step | Before | After |
+|---|---|---|
+| 1 title | Sit with proper support | *unchanged* |
+| 1 body | …at your lower back — setup takes under 60 seconds. | …at your lower back. Setup takes under 60 seconds. |
+| 2 title | Follow daily posture resets (2–3 mins/day) | Press play once a day |
+| 2 body | Guided video each day recalibrates how you sit, not just how you feel. | Two to three minutes of guided movement you can do at your desk, without getting changed or leaving your chair. |
+| 3 title | Feel measurable relief in 7 days | Good posture becomes automatic |
+| 3 body | Most users notice a difference by day 3. By day 7, better posture becomes the new default. | By day 7, the way you sit without thinking has changed. That's what the seven days are for. |
+
+Reasoning:
+
+- **Step 1** only lost its em dash, which was landing mid-wrap on a phone. It was already the strongest block: concrete, names both products, answers "is this a hassle".
+- **Step 2** dropped the bracket (a bracketed headline is a headline doing two jobs) and "posture resets", which is internal language. The new body answers a question nothing else on the page answered: *is this a workout, and do I have to go anywhere?* The duration survives, spelled out, so the 2–3 minutes standard still holds.
+- **Step 3** dropped **"measurable"** — the product measures nothing — and **"Most users notice a difference by day 3"**, a usage statistic on a site that deliberately shows no review stars because there are no reviews yet. Same gap, different place. Replaced with the mechanism: correction becoming default. That claim survives scrutiny and is a better reason to buy.
+
+Untouched: the heading, the CTA label, the button link, all paddings, all three icons, and the step order.
+
+### Mobile sizing
+
+Each step ran close to a full phone screen — a 150px circle, a two-line title, a three-line body, then a 45px gap — so three short ideas cost about two and a half screens. Four rules, mobile only:
+
+```
+@media (max-width: 749px) .image-wrap      { width/height 150 -> 110px; padding 20 -> 16px }
+@media (max-width: 749px) .image-wrap img  { height 80 -> 62px }
+@media (max-width: 749px) .steps-wrapper   { gap 45 -> 28px }
+@media (max-width: 576px) h3               { max-width 230 -> 280px }
+```
+
+The `max-width: 230px` cap in `resposive.css` was what forced the ragged wrap on every step title.
+
+### Rule 11, narrowed
+
+These four rules went in as a section-level **`custom_css` array and were accepted first try** — the same mechanism Shopify silently rejected in S10. The difference is the values, not the mechanism: S10 used `display: contents` and `!important`, these use ordinary properties and neither.
+
+> `custom_css` is fine for ordinary property overrides. Shopify prefixes each selector with the section's id, so it already outranks `resposive.css` — never add `!important` to buy specificity you already have. Anything exotic goes in the `badge_row` custom-liquid `<style>` block instead. Either way the checksum is the only proof.
+
+**Pushed.** `templates/index.json` on working theme `164208705793`: `143f86b57c4dc76a82969a9b87337daf` (22047 B) → `e027dac3546181779a7dfa6e181f0ac6` (22536 B). Verified by `checksumMd5`. Live `164124164353` unchanged at `5d7e33bffcd39ae15a15d3903fe7b8a0`.
+
+**Not verified visually.** Still no render harness.
+
+**Raised, not actioned:** Comparison (6) currently sits between How it works (5) and the 7-Day System preview (7). Those two are the same story at two depths; putting them back to back would explain the mechanism once, getting deeper, and let Comparison do its own job afterwards. Hamish has not decided on this.
