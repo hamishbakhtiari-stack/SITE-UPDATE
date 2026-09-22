@@ -124,3 +124,13 @@ CORRECTION: I said section 4 had no button. It does ("Start Your 7-Day Reset", f
 
 ## Running mobile height tally (harness, 402px)
 hero −157, trust strip +29, s2 −232, s3 −321, s5 −660, s6 −358 ⇒ ~1,700px shorter.
+
+## Sections 7–11 — mirrored from ComfortBundle (PUSHED 2026-09-22)
+Owner: "Real people … mirrored from bundle page, only number of reviews different; next section similar to bundle, only no free shipping; same to FAQ, review section and last banner — do all together." Built by `build_s7_11.py`. A per-section diff against CB lists only these differences:
+- 7 Real people (`video_reviews_V3QqMX`): identical to CB (0 differences). Review count comes from the Judge.me badge per product. The WIKI.mp4 / HOLLIE2.mp4 refs are CB's (still an open item from CB: click them in preview).
+- 8 Australian, end to end (`feature_highlight_kEKcXt`): CB heading/subheading/4 blocks/order + CB feature-highlight CSS (2-col desktop, 260px mobile image, CB's icons for blocks 3–4). Kept ER's own photo + corner image (CB's photo/alt show both products). ER's extra blocks "Ergonomic Designed" / "Premium Memory Foam" disabled, not deleted.
+- 9 FAQ: CB's 6 Q&As verbatim except the shipping answer ("Free express" → "Express") and the button (adds ErgoRelief). Note: 2 answers mention LumbarEase (chairs, firm/soft), verbatim from CB.
+- 10 Judge.me widget (`apps_JXNAik`): CB custom_css (white bg, clamp padding). Widget settings identical.
+- 11 Closing banner: CB verbatim except subheading ("Free express" → "Express") and button: "Start your 7-Day Reset" adding ErgoRelief (on CB, "Get the full system" adds its own product, the bundle).
+- Guard: build fails if the bundle variant id or any free-shipping phrase appears on the ErgoRelief page.
+- PUSHED (commit 42883d9). Verified checksumMd5 6305751ef461cb0fcb871214dc70887f = local, size 39058. Live untouched.
