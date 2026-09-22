@@ -106,3 +106,21 @@ Owner asked if I agreed with turning it off; I did, with evidence: every tile re
 
 ## Running mobile height tally (harness, 402px)
 hero −157 (ATC), trust strip +29, section 2 −232, section 3 −321, section 5 −660 ⇒ page ~1,340px shorter so far.
+
+## Section 6 — Single support `single_support_section_QU6dHr` (PUSHED 2026-09-22)
+Job: durability ("Built for All-Day Support — Not Just Day One"). Kept.
+- Mobile/tablet (≤991px, where the section stacks): diagram hidden, "Thoughtful Details" infographic (7-1…webp) kept. Owner's choice after sending screenshots. My first pick (diagram) was a guess from filenames and was wrong: the infographic shows the real product details. Desktop unchanged. CSS is in ER heroAnchor (the section is shared with LumbarEase).
+- Description: LumbarEase pitch → "Supportive enough to hold its shape through a full workday — so it keeps working after the first week, not just on day one."
+- Button bug fixed: linked to this page → `/cart/add?id=48771729031425…` "Add ErgoRelief to cart" (drawer via cartAddLink).
+- Owner confirmed: the cover IS breathable mesh; that bullet stays.
+- Measured (harness, 402px): 1491 → 1133px (−358px).
+- Noted, not touched: the section's inline CSS has a stray `}` that kills its 767px block (so the 14px text rules never apply, which is fine).
+
+## Section 4 follow-up — 7days button (PUSHED 2026-09-22)
+CORRECTION: I said section 4 had no button. It does ("Start Your 7-Day Reset", from the schema default; the key is absent in settings_data). On ErgoRelief it linked to the ComfortBundle page, contradicting the lock note. Owner: "do all".
+- `sections/7days.liquid`: opt-in `button_adds_product` checkbox (default false). The button adds this page's product when ticked; ComfortBundle behaves as before; index and lumbarEase are unchanged.
+- ER template sets it to true, so the button adds ErgoRelief, and the drawer opens via cartAddLink.
+- PUSHED section then template (commit 0fc6f97). Verified: 7days.liquid 02c80b6dfa5e34ed467f1ec638332684 (9261 B), template b6c67965189cf3b229d681791de96a92 (36629 B). index/CB/lumbarEase templates unchanged; live untouched.
+
+## Running mobile height tally (harness, 402px)
+hero −157, trust strip +29, s2 −232, s3 −321, s5 −660, s6 −358 ⇒ ~1,700px shorter.
