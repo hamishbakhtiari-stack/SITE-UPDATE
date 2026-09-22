@@ -6,6 +6,7 @@ tpl, key, out, theme, fonts = sys.argv[1:6]
 t = json.load(open(tpl)); s = t['sections'][key]; st = s['settings']
 items = ''
 for b in s['block_order']:
+    if s['blocks'][b].get('disabled'): continue
     bs = s['blocks'][b]['settings']
     icon = ('<div class="product-image-text__icon"><span style="display:inline-block;width:14px;height:14px;'
             'border-radius:50%;background:#bbb"></span></div>') if bs.get('icon') else ''

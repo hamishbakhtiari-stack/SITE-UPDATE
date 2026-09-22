@@ -169,17 +169,10 @@
             "text": "Memory foam cushion, plus a 7-Day Reset plan to retrain how you sit.",
             "text_style": "body"
           }
-        },
-        "custom_liquid_cartAddLink": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<script>\n(function () {\n  document.addEventListener(\"click\", function (event) {\n    var link = event.target.closest(\"a[href^=\\\"/cart/add?\\\"]\");\n    if (!link) return;\n    event.preventDefault();\n\n    var url = new URL(link.href, window.location.origin);\n    var cart = document.querySelector(\"cart-drawer\") || document.querySelector(\"cart-notification\");\n\n    var formData = new FormData();\n    formData.append(\"id\", url.searchParams.get(\"id\"));\n    formData.append(\"quantity\", url.searchParams.get(\"quantity\") || \"1\");\n    if (cart && cart.getSectionsToRender) {\n      formData.append(\"sections\", cart.getSectionsToRender().map(function (section) { return section.id; }));\n      formData.append(\"sections_url\", window.location.pathname);\n    }\n\n    fetch((window.routes && window.routes.cart_add_url) || \"/cart/add.js\", {\n      method: \"POST\",\n      headers: { \"X-Requested-With\": \"XMLHttpRequest\", \"Accept\": \"application/json\" },\n      body: formData\n    })\n      .then(function (response) { return response.json(); })\n      .then(function (data) {\n        if (data.status) {\n          window.location.href = link.href;\n          return;\n        }\n        if (cart && cart.renderContents) {\n          cart.renderContents(data);\n        } else {\n          window.location.href = \"/cart\";\n        }\n      })\n      .catch(function () {\n        window.location.href = link.href;\n      });\n  });\n})();\n</script>"
-          }
         }
       },
       "block_order": [
         "custom_liquid_heroAnchor",
-        "custom_liquid_cartAddLink",
         "custom_liquid_AwKGzJ",
         "text_jwDAhr",
         "title",
@@ -243,7 +236,7 @@
         "icon_list_pdi698": {
           "type": "icon_list",
           "settings": {
-            "text": "Extra foam only softens the same pressure points. ErgoRelief™'s contour and cut-out change where your weight lands, so the ache doesn't build 20–30 minutes in."
+            "text": "Most cushions focus on softness. ErgoRelief™ is designed to reduce pressure on your hips, tailbone and lower back while promoting better sitting posture throughout the day."
           }
         },
         "icon_list_bM8qg6": {
@@ -251,32 +244,28 @@
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Ergonomic cut-out design reduces tailbone pressure"
-          },
-          "disabled": true
+          }
         },
         "icon_list_6WDpLk": {
           "type": "icon_list",
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Supports pelvic alignment for better posture"
-          },
-          "disabled": true
+          }
         },
         "icon_list_NLhAyM": {
           "type": "icon_list",
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Perfect for Long Sitting — Ideal for your home office, desk or car"
-          },
-          "disabled": true
+          }
         },
         "icon_list_3cazAc": {
           "type": "icon_list",
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Includes the SitComfort 7-Day Reset programme"
-          },
-          "disabled": true
+          }
         }
       },
       "block_order": [
@@ -292,9 +281,9 @@
         "image_position": "row-reverse",
         "main_image": "shopify://shop_images/82f09c40-8be1-44a1-9cc0-9648385b671a.webp",
         "sub_heading": "Why ErgoRelief™ Feels Different",
-        "heading": "Softness isn't the fix.",
-        "button_link": "/cart/add?id=48771729031425&quantity=1&return_to=/cart",
-        "button_text": "Add ErgoRelief to cart",
+        "heading": "ErgoRelief™ Seat Cushion",
+        "button_link": "shopify://products/ergorelief",
+        "button_text": "Buy ErgoRelief™",
         "padding_top_desktop": 100,
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 50,
