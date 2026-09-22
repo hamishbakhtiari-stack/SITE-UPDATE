@@ -1,0 +1,740 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_qB9XCU": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_jwDAhr": {
+          "type": "text",
+          "settings": {
+            "text": "Sit longer without the ache.",
+            "text_style": "subtitle"
+          }
+        },
+        "bullet_point_6Fn37y": {
+          "type": "bullet_point",
+          "settings": {
+            "bullet-point-1": "Cut-out takes pressure off your tailbone",
+            "bullet-point-2": "Contour cradles your hips and thighs",
+            "bullet-point-3": "Anti-slip base stays put on any chair",
+            "bullet-point-4": "7-Day Reset builds the habit in a week",
+            "bullet-point-5": "",
+            "bullet-point-6": ""
+          }
+        },
+        "text_RdmgPL": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Reduce seat pressure and stay comfortable through long hours of sitting.",
+            "text_style": "subtitle"
+          }
+        },
+        "text_mtakaW": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "🏷️Limited Launch Offer(Save $18)",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "text_list_i8wmpT": {
+          "type": "text_list",
+          "disabled": true,
+          "settings": {
+            "text_list": "<ul><li>Express shipping from Australia (only $8)</li><li>30‑day money back guarantee </li><li>Easy returns</li></ul>",
+            "text_style1": "body"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {},
+          "disabled": true
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false,
+            "workurl": "#Systerproduct_7days",
+            "worktext": "See How It Works"
+          }
+        },
+        "custom_liquid_Re7E8y": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"safe-checkout-usp\">\n                \n                  <p>🔒 Guaranteed Safe &amp; Secure Checkout</p>\n                \n                \n                   <ul class=\"list list-payment\" role=\"list\">\n              {%- for type in shop.enabled_payment_types -%}\n                <li class=\"list-payment__item\">\n                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}\n                </li>\n              {%- endfor -%}\n            </ul>\n                \n              </div>"
+          }
+        },
+        "icon_with_text_yQWCyd": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/free-ship.png",
+            "heading_1": "Express shipping from Australia",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/30-day.png",
+            "heading_2": "30‑day money back guarantee",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/easy-return.png",
+            "heading_3": "Easy Returns"
+          }
+        },
+        "video_reviews_JQk9rY": {
+          "type": "video_reviews",
+          "settings": {
+            "video-link-1": "https://cdn.shopify.com/videos/c/o/v/9278c1c8a4464fe692808fff8716871f.mp4",
+            "video-link-2": "https://cdn.shopify.com/videos/c/o/v/db89ca754d6d43d8b7e0e3a716d7dcf8.mp4",
+            "video-link-3": "https://cdn.shopify.com/videos/c/o/v/6047526603d2424698c3e4ec99400674.mp4",
+            "video-link-4": "https://cdn.shopify.com/videos/c/o/v/d1652ce9e0394127b4604873f25882d1.mp4",
+            "video-link-5": "https://cdn.shopify.com/videos/c/o/v/65cd316703c340ac93aa775068d22ac7.mp4"
+          }
+        },
+        "collapsible_tab_BwtdyK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "icon": "none",
+            "content": "<p>Built around a contoured cut-out seat, ErgoRelief™ works with your body to<br/>take pressure off your tailbone and hips — the exact spot that starts hurting<br/>20-30 minutes into a desk day. It’s the difference between a cushion that just<br/>feels soft and one that actually changes how you sit.</p><p><strong>What's included:</strong></p><p>● ErgoRelief™ Seat Cushion — ergonomic cut-out design, memory foam with breathable mesh, removable washable zip cover, non-slip base and universal fit.</p><p>● The SitComfort 7-Day Reset Program (guided)</p><p>• Backed by a 30-day money-back guarantee</p><p><em>Designed in Australia for people who sit 6+ hours a day and are done compromising on comfort.</em></p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_fri6mY": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "7-Day Reset Program",
+            "icon": "none",
+            "content": "<p>It's the difference between a cushion that feels good for a day and a system that fixes how you sit for good.</p><p>The 7-Day Reset Program is a guided, day-by-day plan included free with every ComfortBundle™. Each day takes a few minutes and builds on the last — small posture cues, stretches, and setup adjustments that retrain your body to sit better, not just softer.</p><p><strong>How it works:</strong></p><p>● Day-by-day guidance delivered straight to your inbox — no app, no login, no fuss</p><p>● Simple, physio-informed movements and posture checks you can do at your desk</p><p>● Built to work alongside your ErgoRelief™ and LumbarEase™ set-up</p><p>● Takes 2–3 minutes a day</p><p>By Day 7, you're not just sitting on a better cushion — you're sitting better, period. That's the difference between temporary relief and a lasting fix.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_wp4qfc": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "none",
+            "content": "<p><strong>Shipping</strong></p><p>● Express shipping, all orders, all of Australia</p><p>● Dispatched from our Sydney warehouse — no overseas wait times</p><p>● Tracking sent straight to your inbox the moment it ships</p><p><strong>Returns</strong></p><p>● 30-day money-back guarantee — if it's not right for you, it's not right for us</p><p>● Easy returns, no hoops to jump through</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "text_w3qqHW": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Express shipping from Australia • 30‑day money back guarantee • Easy Returns",
+            "text_style": "body"
+          }
+        },
+        "custom_liquid_heroAnchor": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"hero-buy-section\"></div><style>.product__title h1{font-size:15px!important;line-height:1.3!important;font-weight:600!important;letter-spacing:.05em!important;text-transform:uppercase!important;opacity:.8!important}.product__text.subtitle{font-size:26px!important;line-height:1.15!important;font-weight:700!important;letter-spacing:-.02em!important;margin:.6rem 0 8px!important}.product__text.caption-with-letter-spacing{font-size:11px!important;letter-spacing:.05em!important;opacity:.7!important}.product-media-container{--media-radius:14px!important;border-radius:14px!important;overflow:hidden!important}.product-media-container .media{border-radius:14px!important;overflow:hidden!important}.bst{margin-top:0!important;margin-bottom:0!important}.bst p{margin:0!important}@media screen and (max-width:749px){.product-media-container.constrain-height{--constrained-height:320px!important;margin-left:auto!important;margin-right:auto!important}.product.grid{row-gap:.75rem!important}.product__media-wrapper{margin-bottom:0!important}}@media screen and (min-width:750px){.product-media-container.constrain-height{--constrained-height:9999px!important;margin-left:0!important;margin-right:auto!important}.product-media-container.constrain-height.media-fit-contain{width:88%!important}}@media screen and (max-width:749px){.product__info-container .price .price-item{line-height:1.2!important}.product__info-container .product__text:not(.subtitle):not(.caption-with-letter-spacing){font-size:16px!important;line-height:24px!important}}@media screen and (max-width:749px){[id$=\"__judge_me_reviews_preview_badge_qB9XCU\"]{margin-top:.5rem!important;margin-bottom:.5rem!important}}</style>"
+          }
+        },
+        "custom_liquid_AwKGzJ": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"bst\"><p>Better Sitting in 7 Days</p></div>"
+          }
+        },
+        "text_bodyER": {
+          "type": "text",
+          "settings": {
+            "text": "Memory foam cushion, plus a 7-Day Reset plan to retrain how you sit.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_heroAnchor",
+        "custom_liquid_AwKGzJ",
+        "text_jwDAhr",
+        "title",
+        "judge_me_reviews_preview_badge_qB9XCU",
+        "price",
+        "text_bodyER",
+        "bullet_point_6Fn37y",
+        "text_RdmgPL",
+        "text_mtakaW",
+        "variant_picker",
+        "text_list_i8wmpT",
+        "quantity_selector",
+        "buy_buttons",
+        "custom_liquid_Re7E8y",
+        "icon_with_text_yQWCyd",
+        "video_reviews_JQk9rY",
+        "collapsible_tab_BwtdyK",
+        "collapsible_tab_fri6mY",
+        "collapsible_tab_wp4qfc",
+        "share",
+        "text_w3qqHW"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-2",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 8,
+        "padding_bottom": 24
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "pws_image_with_text_U7pgnH": {
+      "type": "pws_image_with_text",
+      "blocks": {
+        "icon_list_pdi698": {
+          "type": "icon_list",
+          "settings": {
+            "text": "Most cushions focus on softness. ErgoRelief™ is designed to reduce pressure on your hips, tailbone and lower back while promoting better sitting posture throughout the day."
+          }
+        },
+        "icon_list_bM8qg6": {
+          "type": "icon_list",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
+            "text": "Ergonomic cut-out design reduces tailbone pressure"
+          }
+        },
+        "icon_list_6WDpLk": {
+          "type": "icon_list",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
+            "text": "Supports pelvic alignment for better posture"
+          }
+        },
+        "icon_list_NLhAyM": {
+          "type": "icon_list",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
+            "text": "Perfect for Long Sitting — Ideal for your home office, desk or car"
+          }
+        },
+        "icon_list_3cazAc": {
+          "type": "icon_list",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
+            "text": "Includes the SitComfort 7-Day Reset programme"
+          }
+        }
+      },
+      "block_order": [
+        "icon_list_pdi698",
+        "icon_list_bM8qg6",
+        "icon_list_6WDpLk",
+        "icon_list_NLhAyM",
+        "icon_list_3cazAc"
+      ],
+      "name": "product-image-text",
+      "settings": {
+        "bg_color": "#f4f6f5",
+        "image_position": "row-reverse",
+        "main_image": "shopify://shop_images/82f09c40-8be1-44a1-9cc0-9648385b671a.webp",
+        "sub_heading": "Why ErgoRelief™ Feels Different",
+        "heading": "ErgoRelief™ Seat Cushion",
+        "button_link": "shopify://products/ergorelief",
+        "button_text": "Buy ErgoRelief™",
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "one_product_PTdiHH": {
+      "type": "one-product",
+      "blocks": {
+        "feature_pXURKz": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/one.png",
+            "block_heading": "Relieves Lower Back Pain",
+            "block_subheading": "Targeted lumbar support reduces pressure on your spine"
+          }
+        },
+        "feature_WHamjG": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/two.png",
+            "block_heading": "7 Day Posture Reset",
+            "block_subheading": "Retrains your body for better alignment in 7 Days"
+          }
+        },
+        "feature_pJJif9": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/three.png",
+            "block_heading": "Ergonomic Alignment",
+            "block_subheading": "Scientifically designed for optimal spine positioning"
+          }
+        },
+        "feature_GpKMQT": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/iv.png",
+            "block_heading": "Reduces Sitting Fatigue",
+            "block_subheading": "Stay comfortable during long work sessions"
+          }
+        }
+      },
+      "block_order": [
+        "feature_pXURKz",
+        "feature_WHamjG",
+        "feature_pJJif9",
+        "feature_GpKMQT"
+      ],
+      "name": "One Product Section",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50,
+        "section_image": "shopify://shop_images/Designer_5.webp",
+        "image_position": "left",
+        "badge_text": "Full alignment achieved with complete system",
+        "heading": "Why [One Product] Isn’t Enough",
+        "highlight_color": "#1a7a6e",
+        "subheading": "Most people fix one area and ignore the rest. Full comfort comes from supporting seat + spine together — then reinforcing better habits over 7 days.",
+        "button_text": "Get the Full System — $117",
+        "button_link": "shopify://products/comfortbundle-complete-system"
+      }
+    },
+    "7days_P3eEBF": {
+      "type": "7days",
+      "name": "7 Day System",
+      "settings": {}
+    },
+    "every_day_section_jYJzBQ": {
+      "type": "every-day-section",
+      "blocks": {
+        "feature_YaP9Lq": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/Mask_group_940a292d-5c00-48f0-a28b-1e9a861c29ec.png",
+            "block_heading": "Sit longer without pain"
+          }
+        },
+        "feature_QLEXR7": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/Mask_group_1_6cff3ebb-52bc-4450-8932-9f935418066c.png",
+            "block_heading": "Improve posture naturally"
+          }
+        },
+        "feature_DhAexF": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/Mask_group_2_2fbeb481-5f08-4131-8f94-811340e2a73a.png",
+            "block_heading": "Reduce fatigue and fidgeting"
+          }
+        },
+        "feature_HRMPdM": {
+          "type": "feature",
+          "settings": {
+            "block_image": "shopify://shop_images/Mask_group_3_a0b88483-1567-4b99-8c02-8c5157012978.png",
+            "block_heading": "Feel supported across your whole workday"
+          }
+        }
+      },
+      "block_order": [
+        "feature_YaP9Lq",
+        "feature_QLEXR7",
+        "feature_DhAexF",
+        "feature_HRMPdM"
+      ],
+      "name": "Every Day Section",
+      "settings": {
+        "bg_color": "#f4f4f4",
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50,
+        "heading": "The Difference [ You'll Feel Every Day]",
+        "note": "<p>Note: Designed to support your lower body. For full spinal alignment and faster relief, pairs best with LumbarEase™</p>",
+        "highlight_color": "#1a7a6e",
+        "corner_image": "shopify://shop_images/corner-left.png",
+        "button_text": "Get the Full System",
+        "button_link": "shopify://products/comfortbundle-complete-system"
+      }
+    },
+    "single_support_section_QU6dHr": {
+      "type": "single-support-section",
+      "blocks": {
+        "feature_8fzUd3": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "High-density memory foam — contours to your body without flattening over time"
+          }
+        },
+        "feature_PGy38c": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Breathable mesh cover — stays cool during long sitting sessions"
+          }
+        },
+        "feature_TNz6nG": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Removable washable cover — easy to clean and maintain"
+          }
+        },
+        "feature_9NbQNf": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Non-slip base — stays securely in place on most chairs"
+          }
+        },
+        "feature_LzWFjF": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Universal fit — suitable for office, gaming, dining, and car seats"
+          }
+        }
+      },
+      "block_order": [
+        "feature_8fzUd3",
+        "feature_PGy38c",
+        "feature_TNz6nG",
+        "feature_9NbQNf",
+        "feature_LzWFjF"
+      ],
+      "name": "Single Support",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50,
+        "subheading": "",
+        "heading": "Built for All-Day Support — <span>Not Just Day One</span>",
+        "description": "Designed to support your lower body. For full spinal alignment and faster relief, pairs best with LumbarEase™",
+        "main_image": "shopify://shop_images/7-1_f33def10-283c-4928-b155-6841d426f5c6.webp",
+        "support_image": "shopify://shop_images/Generated_image__Seat_support_diagram_on_office_chair.webp",
+        "button_text": "Add ErgoRelief™ To Cart",
+        "button_link": "shopify://products/ergorelief"
+      }
+    },
+    "video_reviews_V3QqMX": {
+      "type": "video-reviews",
+      "blocks": {
+        "video_nzGbiB": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Luzio.mp4",
+            "thumbnail": "shopify://shop_images/Luizo.webp"
+          }
+        },
+        "video_zLX3cf": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Wiki.MOV",
+            "thumbnail": "shopify://shop_images/wiki.webp"
+          }
+        },
+        "video_whq97k": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Hollie.MOV",
+            "thumbnail": "shopify://shop_images/Hollie.webp"
+          }
+        },
+        "video_jmgKty": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Helen.mp4",
+            "thumbnail": "shopify://shop_images/helen.webp"
+          }
+        },
+        "review_6JGriz": {
+          "type": "review",
+          "settings": {
+            "text": "\"The cushion helped straight away, but the 7-Day Reset showed me how to set everything up properly. After a few days, I stopped shifting around as much.”",
+            "image": "shopify://shop_images/sarah.jpg",
+            "name": "Sarah L.",
+            "bio": "Verified customer"
+          }
+        },
+        "review_mAhrUk": {
+          "type": "review",
+          "settings": {
+            "text": "“The lumbar support is the best I've ever used. It doesn't flatten out like the cheap ones from Amazon.”",
+            "image": "shopify://shop_images/9d4ad869d29821c1caa655f1a2ff6cd3dd48ce79.jpg",
+            "name": "Mark T.",
+            "bio": "Verified customer"
+          }
+        },
+        "review_36PpHk": {
+          "type": "review",
+          "settings": {
+            "text": "“The daily video cues were the missing piece. It's not just about the cushion; it's the habit training.”",
+            "image": "shopify://shop_images/66666.png",
+            "name": "Jessica K.",
+            "bio": "Verified customer"
+          }
+        },
+        "judge_me_reviews_preview_badge_video": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "video_nzGbiB",
+        "video_zLX3cf",
+        "video_whq97k",
+        "video_jmgKty",
+        "judge_me_reviews_preview_badge_video",
+        "review_6JGriz",
+        "review_mAhrUk",
+        "review_36PpHk"
+      ],
+      "name": "Video + Reviews",
+      "settings": {
+        "bg_color": "#f4f6f5",
+        "heading": "Real people.",
+        "heading_span": "Real relief.",
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "feature_highlight_kEKcXt": {
+      "type": "feature-highlight",
+      "blocks": {
+        "feature_Tmaw6r": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group.png",
+            "title": "Ergonomic Designed"
+          }
+        },
+        "feature_fNCM6F": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_3.png",
+            "title": "Built for Desk Workers"
+          }
+        },
+        "feature_XHRL3w": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_5.png",
+            "title": "Satisfaction guarantee"
+          }
+        },
+        "feature_gptnmT": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_1.png",
+            "title": "Fast shipping from Australia"
+          }
+        },
+        "feature_yKVdfc": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/premium-memory-foam-icon.png",
+            "title": "Premium Memory Foam"
+          }
+        },
+        "feature_gzVEbj": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_2.png",
+            "title": "30-Day Risk-Free Trial"
+          }
+        }
+      },
+      "block_order": [
+        "feature_Tmaw6r",
+        "feature_fNCM6F",
+        "feature_XHRL3w",
+        "feature_gptnmT",
+        "feature_yKVdfc",
+        "feature_gzVEbj"
+      ],
+      "name": "Feature Highlight",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50,
+        "image_position": "left",
+        "main_image": "shopify://shop_images/Designer_32_1_2_4.webp",
+        "corner_image": "shopify://shop_images/corner-image_2.webp",
+        "heading": "Designed for People",
+        "heading_span": "Who Sit All Day",
+        "subheading": ""
+      }
+    },
+    "faq_bMxpUE": {
+      "type": "FAQ",
+      "blocks": {
+        "faq_7WFGwi": {
+          "type": "faq",
+          "settings": {
+            "question": "Does it work for all chairs?",
+            "answer": "LumbarEase™ and ErgoRelief™ are designed to work with most standard chairs, including office chairs, dining chairs, and car seats.\n\nThey fit best on chairs with a flat seat and a supportive backrest. For optimal comfort and positioning, we recommend using them on a stable, non‑slippery surface."
+          }
+        },
+        "faq_mBiBVG": {
+          "type": "faq",
+          "settings": {
+            "question": "How fast will I feel results?",
+            "answer": "Many users notice improved comfort within the first few uses, especially when sitting for longer periods.\n\nFor best results, we recommend following the 7-Day SitComfort Reset Program, as consistent setup and posture habits make the biggest difference over time."
+          }
+        },
+        "faq_6NTqnJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it firm or soft?",
+            "answer": "LumbarEase™ and ErgoRelief™ are designed with a balanced feel — supportive yet comfortable.\n\nThey are firm enough to maintain proper posture and alignment, while still providing cushioning to keep you comfortable during long periods of sitting."
+          }
+        },
+        "faq_EtRgqK": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s included in the 7 Day Reset?",
+            "answer": "The 7-Day SitComfort Reset is a simple, guided program designed to help you improve posture and reduce discomfort step by step.\n\nIt includes:\n- Daily video guidance (one per day)\n- Practical setup tips for your chair, desk, and posture\n- Simple movement and habit routines to follow\n\nEach day builds on the previous one, so you can create a complete sitting setup and routine that feels natural and easy to maintain."
+          }
+        },
+        "faq_Prjczy": {
+          "type": "faq",
+          "settings": {
+            "question": "Shipping & returns?",
+            "answer": "We offer fast and reliable shipping across Australia, with tracking provided once your order is dispatched.\n\nIf you’re not completely satisfied, you can return your order within the return period for a refund or exchange — as long as the product is in good condition.\n\nFor any questions or assistance, simply contact us at info@sitcomfort.com.au and our team will be happy to help."
+          }
+        }
+      },
+      "block_order": [
+        "faq_7WFGwi",
+        "faq_mBiBVG",
+        "faq_6NTqnJ",
+        "faq_EtRgqK",
+        "faq_Prjczy"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "bg_color": "#f5f5f5",
+        "show_logo": true,
+        "logo_width": 120,
+        "heading": "Frequently Asked",
+        "heading_span": "Questions",
+        "heading_color": "#111111",
+        "heading_size": 42,
+        "subheading": "",
+        "bottom_text": "Have more questions? Contact us",
+        "bottom_subtext": "",
+        "button_text": "Ready to try it? Start your 7-day reset",
+        "button_link": "shopify://products/comfortbundle-complete-system",
+        "icon_style": "plus",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "apps_JXNAik": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_hJD79N": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_hJD79N"
+      ],
+      "settings": {
+        "include_margins": true
+      },
+      "custom_css": [
+        "& {\n  background-color: #f5f5f5 !important;\n}"
+      ]
+    },
+    "cta_section_tEApVF": {
+      "type": "CTA-section",
+      "name": "CTA Banner",
+      "settings": {
+        "bg_color": "#0e6b5b",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "heading": "Reset your sitting. Reclaim your comfort.",
+        "subheading": "Express shipping from Australia [br] · 30-day money back guarantee · Easy returns",
+        "button_text": "Start your 7-day reset",
+        "button_link": "shopify://products/comfortbundle-complete-system"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "pws_image_with_text_U7pgnH",
+    "one_product_PTdiHH",
+    "7days_P3eEBF",
+    "every_day_section_jYJzBQ",
+    "single_support_section_QU6dHr",
+    "video_reviews_V3QqMX",
+    "feature_highlight_kEKcXt",
+    "faq_bMxpUE",
+    "apps_JXNAik",
+    "cta_section_tEApVF"
+  ]
+}

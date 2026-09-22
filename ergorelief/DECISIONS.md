@@ -35,3 +35,19 @@ Mirrors the ComfortBundle PDP redesign process (skill: shopify-page-update).
 
 ## Log
 - 2026-09-22 — duplicated live theme; snapshotted ergoRelief + ComfortBundle templates. No writes yet.
+
+## Section 1 — Hero (proposed 2026-09-22, awaiting approval)
+Candidate: `candidate/product.ergoRelief.json`, built by `build_hero.py` (38 leaf diffs, all inside `main`; `order` unchanged; `main.block_order` reordered on purpose).
+- Photo layout = ComfortBundle: `media_size` medium→small, 320px constrained height on mobile, 14px rounded corners. Same photo; the owner handles photography.
+- Padding 52/100 → 8/24 (CB values).
+- Hero anchor CSS = the hero part of CB's anchor only. CB's one-product / feature-highlight rules wait until those sections.
+- Order: eyebrow pill → headline → title (small caps) → stars → price → body line → bullets → ATC.
+- Headline: "Sit longer without the ache." (1 line at 26px; the old 72-char subtitle was 2 lines at 18px).
+- Body: "Memory foam cushion, plus a 7-Day Reset plan to retrain how you sit."
+- Bullets (all 1 line at 402px; before, 3 of 4 wrapped): Cut-out takes pressure off your tailbone / Contour cradles your hips and thighs / Anti-slip base stays put on any chair / 7-Day Reset builds the habit in a week. Fixes the retired "SitComfort 7-Day Reset programme".
+- Quantity selector disabled. Evidence: 74 orders, all contain ErgoRelief; only 2 have qty>1 (#1051 ×2, #1087 ×3), and both are ErgoRelief+LumbarEase carts.
+- Measured (harness, 402px iframe): ATC top 995 → 838px (−157px). The owner's phone shows the old title on 2 lines ("™" glyph width), which the harness renders on 1, so the real before is ~1049px and the real saving is likely larger.
+
+## Parked (raise when we reach it)
+- Cart-drawer CTA delegate (`custom_liquid_cartDrawerAjax`): add when we reach the first lower-page CTA.
+- `system_preview_lock_text` (global) says Days 4–7 are "included with the ComfortBundle™" — check against ErgoRelief when we reach the 7-Day section.
