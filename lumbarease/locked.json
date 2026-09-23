@@ -1,0 +1,23 @@
+{
+  "_why": "ErgoRelief PDP hard-won settings (mirrors ComfortBundle). Change only with owner approval; log in DECISIONS.md.",
+  "settings": {
+    "sections.main.settings.media_size": "small",
+    "sections.main.settings.constrain_to_viewport": true,
+    "sections.main.settings.media_fit": "contain",
+    "sections.main.settings.padding_top": 8,
+    "sections.main.settings.padding_bottom": 24,
+    "sections.main.blocks.quantity_selector.disabled": true,
+    "sections.main.blocks.text_AcTFLh.settings.text": "Stop slumping by 2pm."
+  },
+  "css_must_contain": [
+    "--constrained-height:320px!important",
+    ".product__title h1{font-size:15px",
+    ".product__text.subtitle{font-size:26px",
+    "--media-radius:14px!important",
+    ".product__info-container .price .price-item{line-height:1.2!important}"
+  ],
+  "first_block": {
+    "main": "custom_liquid_heroAnchor"
+  },
+  "first_section": "sc_trust_strip"
+}
