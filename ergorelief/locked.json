@@ -21,5 +21,12 @@
   "first_block": {
     "main": "custom_liquid_heroAnchor"
   },
-  "first_section": "sc_trust_strip"
+  "first_section": "sc_trust_strip",
+  "block_must_contain": {
+    "custom_liquid_cartAddLink": [
+      "sc-cta-delegate",
+      "a[href^=\"/cart/add?\"]",
+      "product-form form [name=\"add\"]"
+    ]
+  }
 }
