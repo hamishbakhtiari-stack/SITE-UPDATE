@@ -134,3 +134,21 @@ Owner: "Real people … mirrored from bundle page, only number of reviews differ
 - 11 Closing banner: CB verbatim except subheading ("Free express" → "Express") and button: "Start your 7-Day Reset" adding ErgoRelief (on CB, "Get the full system" adds its own product, the bundle).
 - Guard: build fails if the bundle variant id or any free-shipping phrase appears on the ErgoRelief page.
 - PUSHED (commit 42883d9). Verified checksumMd5 6305751ef461cb0fcb871214dc70887f = local, size 39058. Live untouched.
+
+## CTA audit (PUSHED 2026-09-23)
+Owner: "check all CTAs, few seem not working properly".
+Every CTA on the page, traced from its template setting through the section liquid to the click handler:
+| # | CTA | Target | Status |
+|---|---|---|---|
+| 1 | Hero "Add ErgoRelief to cart" | native Dawn product-form → drawer | OK |
+| 2 | Hero "See How It Works" | #Systerproduct_7days (7days section id) | OK |
+| 3 | S2 "Add ErgoRelief to cart" | /cart/add?id=48771729031425 | BUG → fixed |
+| 4 | S3 "Get the Full System — $117" | /products/comfortbundle-complete-system | OK (navigation) |
+| 5 | S4 "Start Your 7-Day Reset" | /cart/add?id={{product variant}} (button_adds_product) | BUG → fixed |
+| 6 | S6 "Add ErgoRelief to cart" | /cart/add?id=48771729031425 | BUG → fixed |
+| 7 | FAQ "Ready to try it? Start your 7-Day Reset" | /cart/add?id=48771729031425 | BUG → fixed |
+| 8 | FAQ "Contact us" | /pages/contact | OK |
+| 9 | Closing banner "Start your 7-Day Reset" | /cart/add?id=48771729031425 | BUG → fixed |
+Root cause (my error): `custom_liquid_cartAddLink` held the AJAX /cart/add script copied from CB's delegate block. On CB it never runs, because CB's capture-phase delegate intercepts first. It called cart.renderContents() but never removed `is-empty` from <cart-drawer> (Dawn product-form.js L104 does). From an empty cart, the item was added but the drawer opened showing "Your cart is empty". It worked only if the cart already had items.
+Fix: replaced it with a narrowed version of CB's proven delegate. Every `a[href^="/cart/add?"]` on this page clicks the hero's own Add to Cart (same variant; the build asserts all /cart/add links use 48771729031425). The link works on its own if the hero button is missing or disabled; falls back to /cart if the drawer hasn't opened within 3s. Links to other pages (bundle) are untouched. Tested in headless Chromium: /cart/add link → hero ATC clicked + navigation prevented; click on inner text → same; bundle link → not intercepted.
+- PUSHED (commit 21407f1). Verified checksumMd5 164e0c48ec93593434bb2caa7f4527fa = local, size 39026. Live untouched. Guard now requires sc-cta-delegate in cartAddLink.
