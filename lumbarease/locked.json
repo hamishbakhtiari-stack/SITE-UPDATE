@@ -7,7 +7,7 @@
     "sections.main.settings.padding_top": 8,
     "sections.main.settings.padding_bottom": 24,
     "sections.main.blocks.quantity_selector.disabled": true,
-    "sections.main.blocks.text_AcTFLh.settings.text": "Stop slumping by 2pm."
+    "sections.main.blocks.text_AcTFLh.settings.text": "Sit upright without trying."
   },
   "css_must_contain": [
     "--constrained-height:320px!important",

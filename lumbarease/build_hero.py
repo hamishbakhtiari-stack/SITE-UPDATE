@@ -54,8 +54,9 @@ def main():
     blocks['custom_liquid_AwKGzJ'] = copy.deepcopy(er['sections']['main']['blocks']['custom_liquid_AwKGzJ'])
 
     # 4. Headline. The old subtitle was ErgoRelief's line ("Reduce seat pressure...").
-    #    New one is the owner's own sign-off from the LumbarEase description.
-    blocks['text_AcTFLh']['settings']['text'] = 'Stop slumping by 2pm.'
+    #    "Sit upright without trying." -- from the Description tab ("sitting upright without thinking
+    #    about it"). Owner rejected the first pick, "Stop slumping by 2pm." (ad hook, reads two ways).
+    blocks['text_AcTFLh']['settings']['text'] = 'Sit upright without trying.'
 
     # 5. Body line under price (was "Targeted back support..."), same role as ER's text_bodyER.
     blocks['text_RdmgPL']['settings']['text'] = (
