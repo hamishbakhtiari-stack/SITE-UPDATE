@@ -28,3 +28,9 @@ Owner approved the full plan ("Yes"). Built by `build_rest.py` from the pushed h
 - CTAs: sc-cta-delegate (ErgoRelief's fixed version) from the start. The build asserts every /cart/add link uses LumbarEase's variant and no bundle/ErgoRelief variant appears.
 - Mobile total ≈ −1,880px (hero −240, s2 −268, s3 ~−321, s5 −660, s6 −393).
 - PUSHED (commit 6b79375). Verified checksumMd5 1dff1c559a9ed629e69171da28497ff9 = local, size 38770. ErgoRelief template + 7days.liquid unchanged. Live untouched.
+
+## Headline change (PUSHED 2026-09-23)
+Owner didn't like "Stop slumping by 2pm." and asked whether it's good enough for a product page. My answer: no. It's an ad hook, it reads two ways ("stop by 2pm" vs "the 2pm slump"), and it names the problem rather than the benefit (ErgoRelief's "Sit longer without the ache." states a benefit).
+- New: "Sit upright without trying." (the Description tab's own words, "sitting upright without thinking about it"). 1 line at 26px on 402px (30px tall).
+- "Stop slumping by 2pm." is still a good Meta ad hook.
+- PUSHED (commit d191e80). Verified checksumMd5 2153535f7d8463eb8a9cd87c8127b74e = local, size 38776. 1 key changed. Live untouched.
