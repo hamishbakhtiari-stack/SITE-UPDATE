@@ -16,3 +16,15 @@ Owner: "start with the hero section and do exactly the same as ErgoRelief".
 - Trust strip: same as ErgoRelief ("Sydney dispatch · Express shipping · 30-day money-back").
 - Measured (harness, 402px, lead photo is a stand-in): ATC 1107 → 867px (−240px, trust strip included).
 - PUSHED (commit 00a8aab). Verified checksumMd5 d539c09740fd88cf62ddd93cdc8b46d5 = local, size 30506. ErgoRelief template unchanged (164e0c48…). Live untouched.
+
+## Sections 2–11 + CTAs (PUSHED 2026-09-23)
+Owner approved the full plan ("Yes"). Built by `build_rest.py` from the pushed hero state. At section level, every difference from ErgoRelief's final page is product-specific: names, images, links, LumbarEase copy.
+- 2 Image-with-text: "Leaning back isn't the fix." / "A soft chair back doesn't hold your spine's curve — it just moves where you slump. LumbarEase™ keeps your lower back supported in the same position the whole time you sit." (from the product description). 4 bullets disabled; button bug (linked to own page) → add LumbarEase. 1034 → 766px.
+- 3 Why One Product Isn't Enough: CB copy/blocks verbatim (bundle pitch) + subheading "The ComfortBundle™ pairs this lumbar support with the ErgoRelief™ seat cushion — so seat and spine are supported together, then reinforced over 7 days." Heading kept, button → bundle page, white bg. Same content as ER before → ~−321px.
+- 4 7-Day Reset: lock note "…included with LumbarEase™"; button adds LumbarEase (opt-in settings already in 7days.liquid, unchanged).
+- 5 Every-day: disabled (−660px).
+- 6 All-Day Support: "Firm-but-forgiving support that holds its shape — so it keeps working after the first week, not just on day one." Button → add LumbarEase. Diagram hidden ≤991px (the product image stays, same call as ErgoRelief; the owner hasn't seen LumbarEase's images, so it's worth confirming). Also cleared the teal subheading that repeated the page title. 1526 → 1133px.
+- 7–11: mirrored from CB exactly like ErgoRelief (no "Free"; FAQ + banner buttons add LumbarEase; LumbarEase's own photo kept in "Australian, end to end").
+- CTAs: sc-cta-delegate (ErgoRelief's fixed version) from the start. The build asserts every /cart/add link uses LumbarEase's variant and no bundle/ErgoRelief variant appears.
+- Mobile total ≈ −1,880px (hero −240, s2 −268, s3 ~−321, s5 −660, s6 −393).
+- PUSHED (commit 6b79375). Verified checksumMd5 1dff1c559a9ed629e69171da28497ff9 = local, size 38770. ErgoRelief template + 7days.liquid unchanged. Live untouched.
