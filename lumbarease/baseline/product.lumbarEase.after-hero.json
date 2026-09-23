@@ -163,7 +163,7 @@
         "custom_liquid_heroAnchor": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"hero-buy-section\"></div><style>.product__title h1{font-size:15px!important;line-height:1.3!important;font-weight:600!important;letter-spacing:.05em!important;text-transform:uppercase!important;opacity:.8!important}.product__text.subtitle{font-size:26px!important;line-height:1.15!important;font-weight:700!important;letter-spacing:-.02em!important;margin:.6rem 0 8px!important}.product__text.caption-with-letter-spacing{font-size:11px!important;letter-spacing:.05em!important;opacity:.7!important}.product-media-container{--media-radius:14px!important;border-radius:14px!important;overflow:hidden!important}.product-media-container .media{border-radius:14px!important;overflow:hidden!important}.bst{margin-top:0!important;margin-bottom:0!important}.bst p{margin:0!important}@media screen and (max-width:749px){.product-media-container.constrain-height{--constrained-height:320px!important;margin-left:auto!important;margin-right:auto!important}.product.grid{row-gap:.75rem!important}.product__media-wrapper{margin-bottom:0!important}}@media screen and (min-width:750px){.product-media-container.constrain-height{--constrained-height:9999px!important;margin-left:0!important;margin-right:auto!important}.product-media-container.constrain-height.media-fit-contain{width:88%!important}}@media screen and (max-width:749px){.product__info-container .price .price-item{line-height:1.2!important}.product__info-container .product__text:not(.subtitle):not(.caption-with-letter-spacing){font-size:16px!important;line-height:24px!important}}@media screen and (max-width:749px){[id$=\"__judge_me_reviews_preview_badge_UtwgBq\"]{margin-top:.5rem!important;margin-bottom:.5rem!important}}@media screen and (max-width:749px){.one-product-content{display:contents!important}.one-product-grid{gap:16px!important}.one-product-grid>.one-product-image{order:3!important}.one-product-content>.heading-h2{order:1!important}.one-product-content>.one-product-subheading{order:2!important}.one-product-content>.one-product-badge{order:4!important}.one-product-content>.one-product-blocks{order:5!important}.one-product-content>.btn-globel{order:6!important}.one-product-image{width:70%!important;max-width:70%!important;align-self:center!important;margin:0 auto!important}.one-product-image img{width:100%!important;height:auto!important;display:block!important}.one-product-blocks{gap:10px!important}.one-product-block{display:grid!important;grid-template-columns:44px 1fr;grid-template-areas:\"i t\" \"i b\";column-gap:12px;row-gap:2px;align-items:start;text-align:left!important;padding:14px!important}.one-product-icon{grid-area:i;margin:0!important}.one-product-icon img{width:44px!important;height:44px!important;display:block!important}.one-product-block h4{grid-area:t;margin:0!important}.one-product-block p{grid-area:b;margin:0!important}}@media screen and (max-width:749px){.one-product-badge{align-self:center!important;text-align:center!important}}.one-product-blocks .one-product-block:nth-child(1) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cpath fill='%23fff' d='M5 6h14a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5h-1.8v-2.6a3.2 3.2 0 0 0-6.4 0V18H7a5 5 0 0 1-5-5V9a3 3 0 0 1 3-3Z'/%3E%3C/g%3E%3C/svg%3E\")!important}.one-product-blocks .one-product-block:nth-child(2) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cg fill='%23fff' opacity='.45'%3E%3Crect x='12.5' y='3' width='4.2' height='2' rx='1'/%3E%3Crect x='10.8' y='5.6' width='4.8' height='2' rx='1'/%3E%3Crect x='9.6' y='8.2' width='5.2' height='2' rx='1'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Crect x='9.2' y='10.8' width='5.6' height='2' rx='1'/%3E%3Crect x='9.8' y='13.4' width='6' height='2' rx='1'/%3E%3Crect x='10.9' y='16' width='6.2' height='2' rx='1'/%3E%3Cpath d='M12.2 18.6h5.4l-1.3 2.9a1.1 1.1 0 0 1-1 .7h-.8a1.1 1.1 0 0 1-1-.7Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")!important}.one-product-blocks .one-product-block:nth-child(3) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cg fill='%23fff'%3E%3Crect x='15' y='2.8' width='5.6' height='10.4' rx='2.8'/%3E%3Cpath d='M4 15.2h15a2 2 0 0 1 2 2v1.6a2.4 2.4 0 0 1-2.4 2.4h-2.2v-1.1a2 2 0 0 0-4 0v1.1H6.4A2.4 2.4 0 0 1 4 18.8Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")!important}.one-product-blocks .one-product-block:nth-child(4) .one-product-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231A7A6E'/%3E%3Cg transform='translate(10 10) scale(1.1667)'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' d='M20.4 12a8.4 8.4 0 1 1-2.9-6.4'/%3E%3Cpath fill='%23fff' d='M20.2 2.9l.5 5-4.9-1.1z'/%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round' d='M9.5 9.3h5.2l-3.1 6.6'/%3E%3C/g%3E%3C/svg%3E\")!important}@media screen and (max-width:991px){.single-support-section .support-image{display:none!important}}.sub-heading-high{font-size:15px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:normal!important;color:#2c3a36!important;margin:.6rem 0 1.2rem!important}.feature-grid .feature-item:nth-child(3) .feature-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A7A6E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5.2' width='18' height='16' rx='2.6'/%3E%3Cpath d='M8 2.8v4.6M16 2.8v4.6M3 10.4h18'/%3E%3Ctext x='12' y='18.3' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-size='6.6' font-weight='700' fill='%231A7A6E' stroke='none'%3E30%3C/text%3E%3C/svg%3E\")!important}.feature-grid .feature-item:nth-child(4) .feature-icon img{content:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A7A6E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2.4' y='4.8' width='19.2' height='14.4' rx='2.4'/%3E%3Cpath d='M2.9 6.6 12 13l9.1-6.4'/%3E%3C/svg%3E\")!important}@media screen and (min-width:992px){.feature-highlight-section .feature-grid{grid-template-columns:repeat(2,1fr)!important}}@media screen and (max-width:749px){.feature-highlight-section .feature-main-image{max-width:260px!important;margin-left:auto!important;margin-right:auto!important}}.feature-highlight-section .feature-main-image img{border-radius:14px!important;display:block!important}</style>"
+            "custom_liquid": "<div id=\"hero-buy-section\"></div><style>.product__title h1{font-size:15px!important;line-height:1.3!important;font-weight:600!important;letter-spacing:.05em!important;text-transform:uppercase!important;opacity:.8!important}.product__text.subtitle{font-size:26px!important;line-height:1.15!important;font-weight:700!important;letter-spacing:-.02em!important;margin:.6rem 0 8px!important}.product__text.caption-with-letter-spacing{font-size:11px!important;letter-spacing:.05em!important;opacity:.7!important}.product-media-container{--media-radius:14px!important;border-radius:14px!important;overflow:hidden!important}.product-media-container .media{border-radius:14px!important;overflow:hidden!important}.bst{margin-top:0!important;margin-bottom:0!important}.bst p{margin:0!important}@media screen and (max-width:749px){.product-media-container.constrain-height{--constrained-height:320px!important;margin-left:auto!important;margin-right:auto!important}.product.grid{row-gap:.75rem!important}.product__media-wrapper{margin-bottom:0!important}}@media screen and (min-width:750px){.product-media-container.constrain-height{--constrained-height:9999px!important;margin-left:0!important;margin-right:auto!important}.product-media-container.constrain-height.media-fit-contain{width:88%!important}}@media screen and (max-width:749px){.product__info-container .price .price-item{line-height:1.2!important}.product__info-container .product__text:not(.subtitle):not(.caption-with-letter-spacing){font-size:16px!important;line-height:24px!important}}@media screen and (max-width:749px){[id$=\"__judge_me_reviews_preview_badge_UtwgBq\"]{margin-top:.5rem!important;margin-bottom:.5rem!important}}</style>"
           }
         },
         "custom_liquid_AwKGzJ": {
@@ -171,17 +171,10 @@
           "settings": {
             "custom_liquid": "<div class=\"bst\"><p>Better Sitting in 7 Days</p></div>"
           }
-        },
-        "custom_liquid_cartAddLink": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<script>\n/* sc-cta-delegate (ErgoRelief): every in-page add-to-cart link (/cart/add?...) goes through the\n   hero's own Add to Cart button, so it opens the cart drawer exactly like that button does,\n   including from an empty cart. Links to other pages (e.g. the ComfortBundle page) are untouched.\n   If the hero button is missing or disabled, the link works on its own (adds, then goes to /cart).\n   Never silent: if the drawer has not opened within 3s, go to /cart. */\n(function () {\n  var SEL = 'a[href^=\"/cart/add?\"]';\n\n  function drawerIsOpen() {\n    var d = document.querySelector('cart-drawer');\n    var n = document.querySelector('cart-notification');\n    return (d && d.classList.contains('active')) ||\n           (n && n.classList.contains('active')) ||\n           document.body.classList.contains('overflow-hidden');\n  }\n\n  document.addEventListener('click', function (e) {\n    var el = e.target.closest(SEL);\n    if (!el) return;\n\n    var submit = document.querySelector('product-form form [name=\"add\"]');\n    if (!submit || submit.disabled) return;\n\n    e.preventDefault();\n    e.stopImmediatePropagation();\n    submit.click();\n\n    var t0 = Date.now();\n    var iv = setInterval(function () {\n      if (drawerIsOpen()) { clearInterval(iv); return; }\n      if (Date.now() - t0 > 3000) {\n        clearInterval(iv);\n        window.location.href = '/cart';\n      }\n    }, 150);\n  }, true);\n})();\n</script>"
-          }
         }
       },
       "block_order": [
         "custom_liquid_heroAnchor",
-        "custom_liquid_cartAddLink",
         "custom_liquid_AwKGzJ",
         "text_AcTFLh",
         "title",
@@ -244,7 +237,7 @@
         "icon_list_mwrwGe": {
           "type": "icon_list",
           "settings": {
-            "text": "A soft chair back doesn't hold your spine's curve — it just moves where you slump. LumbarEase™ keeps your lower back supported in the same position the whole time you sit."
+            "text": "Most back cushions add padding. LumbarEase™ is designed to fill the gap between your chair and spine, helping you maintain better posture and feel supported during long hours of sitting."
           }
         },
         "icon_list_DUyxWa": {
@@ -252,32 +245,28 @@
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Ergonomic shape follows the natural curve of your spine"
-          },
-          "disabled": true
+          }
         },
         "icon_list_rdYrwQ": {
           "type": "icon_list",
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Fills the gap between your chair and back"
-          },
-          "disabled": true
+          }
         },
         "icon_list_qY8HDt": {
           "type": "icon_list",
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Encourages better sitting posture throughout the day"
-          },
-          "disabled": true
+          }
         },
         "icon_list_jixVXV": {
           "type": "icon_list",
           "settings": {
             "icon": "shopify://shop_images/Vector_03576a97-83c5-4f50-9964-359d3c539791.png",
             "text": "Includes the SitComfort™ 7-Day Reset Program"
-          },
-          "disabled": true
+          }
         }
       },
       "block_order": [
@@ -293,9 +282,9 @@
         "image_position": "row-reverse",
         "main_image": "shopify://shop_images/updated_bg.webp",
         "sub_heading": "Why LumbarEase™ Feels Different",
-        "heading": "Leaning back isn't the fix.",
-        "button_link": "/cart/add?id=48772058022145&quantity=1&return_to=/cart",
-        "button_text": "Add LumbarEase to cart",
+        "heading": "LumbarEase™ Lumbar Support",
+        "button_link": "shopify://products/lumbarease",
+        "button_text": "Buy LumbarEase™",
         "padding_top_desktop": 100,
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 50,
@@ -309,32 +298,32 @@
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/one.png",
-            "block_heading": "Pressure off your tailbone",
-            "block_subheading": "The contoured cut-out keeps your weight off the spot that starts aching first."
+            "block_heading": "Relieves Lower Back Pain",
+            "block_subheading": "Targeted lumbar support reduces pressure on your spine"
           }
         },
         "feature_WHamjG": {
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/two.png",
-            "block_heading": "Your lower back keeps its curve",
-            "block_subheading": "The lumbar support holds it there, so you're not holding it with muscle all day."
+            "block_heading": "7 Day Posture Reset",
+            "block_subheading": "Retrains your body for better alignment in 7 Days"
           }
         },
         "feature_pJJif9": {
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/three.png",
-            "block_heading": "One makes the other work",
-            "block_subheading": "The seat sets your hips at the right angle — which is what lets the lumbar support do its job."
+            "block_heading": "Ergonomic Alignment",
+            "block_subheading": "Scientifically designed for optimal spine positioning"
           }
         },
         "feature_GpKMQT": {
           "type": "feature",
           "settings": {
             "block_image": "shopify://shop_images/iv.png",
-            "block_heading": "Then it sticks",
-            "block_subheading": "The 7-Day Reset retrains how you sit, so it holds when you're not thinking about it."
+            "block_heading": "Reduces Sitting Fatigue",
+            "block_subheading": "Stay comfortable during long work sessions"
           }
         }
       },
@@ -351,12 +340,12 @@
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50,
-        "section_image": "shopify://shop_images/Designer_4.webp",
+        "section_image": "shopify://shop_images/Designer_5.webp",
         "image_position": "left",
-        "badge_text": "Hips, lower back and spine in one line",
+        "badge_text": "Full alignment achieved with complete system",
         "heading": "Why [One Product] Isn’t Enough",
         "highlight_color": "#1a7a6e",
-        "subheading": "The ComfortBundle™ pairs this lumbar support with the ErgoRelief™ seat cushion — so seat and spine are supported together, then reinforced over 7 days.",
+        "subheading": "Most people fix one area and ignore the rest. Full comfort comes from supporting seat + spine together — then reinforcing better habits over 7 days.",
         "button_text": "Get the Full System — $117",
         "button_link": "shopify://products/comfortbundle-complete-system"
       }
@@ -364,10 +353,7 @@
     "7days_Grhwr4": {
       "type": "7days",
       "name": "7 Day System",
-      "settings": {
-        "lock_text_override": "Days 4–7 unlock when you start the Reset — included with LumbarEase™",
-        "button_adds_product": true
-      }
+      "settings": {}
     },
     "every_day_section_jYJzBQ": {
       "type": "every-day-section",
@@ -420,8 +406,7 @@
         "corner_image": "shopify://shop_images/corner-left.webp",
         "button_text": "Get the Full System",
         "button_link": "shopify://products/comfortbundle-complete-system"
-      },
-      "disabled": true
+      }
     },
     "single_support_section_R8ffeX": {
       "type": "single-support-section",
@@ -471,64 +456,56 @@
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50,
-        "subheading": "",
+        "subheading": "LumbarEase™ Lumbar Support",
         "heading": "Built for All-Day Support — <span>Not Just Day One</span>",
-        "description": "Firm-but-forgiving support that holds its shape — so it keeps working after the first week, not just on day one.",
+        "description": "Targets your spine and upper back positioning. For full-body relief including seat pressure, pairs best with ErgoRelief™",
         "main_image": "shopify://shop_images/Untitled_design_3.webp",
         "support_image": "shopify://shop_images/Generated_image__Proper_posture_with_lumbar_support.webp",
-        "button_text": "Add LumbarEase to cart",
-        "button_link": "/cart/add?id=48772058022145&quantity=1&return_to=/cart"
+        "button_text": "Add LumbarEase™ To Cart",
+        "button_link": "shopify://products/lumbarease"
       }
     },
     "video_reviews_CJJRFe": {
       "type": "video-reviews",
       "blocks": {
-        "video_3xEPRH": {
+        "video_erk8mK": {
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/Luzio.mp4",
-            "thumbnail": "shopify://shop_images/Luizo.webp",
-            "name": "Luiza"
+            "thumbnail": "shopify://shop_images/Luizo.webp"
           }
         },
-        "video_7YLxxr": {
+        "video_qDEmGJ": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/WIKI.mp4",
-            "thumbnail": "shopify://shop_images/wiki.webp",
-            "name": "Wiki"
+            "video": "shopify://files/videos/Wiki.MOV",
+            "thumbnail": "shopify://shop_images/wiki.webp"
           }
         },
-        "video_KUELQX": {
+        "video_dawVJm": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/HOLLIE2.mp4",
-            "thumbnail": "shopify://shop_images/Hollie.webp",
-            "name": "Hollie"
+            "video": "shopify://files/videos/Hollie.MOV",
+            "thumbnail": "shopify://shop_images/Hollie.webp"
           }
         },
-        "video_UnFkQ6": {
+        "video_BHGXUw": {
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/Helen.mp4",
-            "thumbnail": "shopify://shop_images/helen.webp",
-            "name": "Helen"
+            "thumbnail": "shopify://shop_images/helen.webp"
           }
         },
-        "judge_me_reviews_preview_badge_video": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        },
-        "review_QkLebD": {
+        "review_dMPFpq": {
           "type": "review",
           "settings": {
-            "text": "\"The cushion helped straight away, but the 7-Day Reset showed me how to set everything up properly. After a few days, I stopped shifting around as much.\"",
+            "text": "\"The cushion helped straight away, but the 7-Day Reset showed me how to set everything up properly. After a few days, I stopped shifting around as much.”",
             "image": "shopify://shop_images/sarah.jpg",
             "name": "Sarah L.",
             "bio": "Verified customer"
           }
         },
-        "review_WYPwwd": {
+        "review_Eaadad": {
           "type": "review",
           "settings": {
             "text": "“The lumbar support is the best I've ever used. It doesn't flatten out like the cheap ones from Amazon.”",
@@ -537,7 +514,7 @@
             "bio": "Verified customer"
           }
         },
-        "review_HqirxD": {
+        "review_z9eUxz": {
           "type": "review",
           "settings": {
             "text": "“The daily video cues were the missing piece. It's not just about the cushion; it's the habit training.”",
@@ -545,17 +522,21 @@
             "name": "Jessica K.",
             "bio": "Verified customer"
           }
+        },
+        "judge_me_reviews_preview_badge_video": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
       "block_order": [
-        "video_3xEPRH",
-        "video_7YLxxr",
-        "video_KUELQX",
-        "video_UnFkQ6",
+        "video_erk8mK",
+        "video_qDEmGJ",
+        "video_dawVJm",
+        "video_BHGXUw",
         "judge_me_reviews_preview_badge_video",
-        "review_QkLebD",
-        "review_WYPwwd",
-        "review_HqirxD"
+        "review_dMPFpq",
+        "review_Eaadad",
+        "review_z9eUxz"
       ],
       "name": "Video + Reviews",
       "settings": {
@@ -576,28 +557,27 @@
           "settings": {
             "icon": "shopify://shop_images/Mask_group.png",
             "title": "Ergonomic Designed"
-          },
-          "disabled": true
+          }
         },
         "feature_fNCM6F": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_3.png",
-            "title": "Australian customer support"
+            "title": "Built for Desk Workers"
           }
         },
         "feature_XHRL3w": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_5.png",
-            "title": "Returns go to Sydney, not overseas"
+            "title": "Satisfaction guarantee"
           }
         },
         "feature_gptnmT": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_1.png",
-            "title": "Ships from Sydney"
+            "title": "Fast shipping from Australia"
           }
         },
         "feature_yKVdfc": {
@@ -605,24 +585,23 @@
           "settings": {
             "icon": "shopify://shop_images/premium-memory-foam-icon.png",
             "title": "Premium Memory Foam"
-          },
-          "disabled": true
+          }
         },
         "feature_gzVEbj": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Mask_group_2.png",
-            "title": "30 days to change your mind"
+            "title": "30-Day Risk-Free Trial"
           }
         }
       },
       "block_order": [
-        "feature_gptnmT",
-        "feature_XHRL3w",
-        "feature_gzVEbj",
-        "feature_fNCM6F",
         "feature_Tmaw6r",
-        "feature_yKVdfc"
+        "feature_fNCM6F",
+        "feature_XHRL3w",
+        "feature_gptnmT",
+        "feature_yKVdfc",
+        "feature_gzVEbj"
       ],
       "name": "Feature Highlight",
       "settings": {
@@ -634,9 +613,9 @@
         "image_position": "left",
         "main_image": "shopify://shop_images/Designer_32_1_2_3.webp",
         "corner_image": "shopify://shop_images/corner-image_1.webp",
-        "heading": "Australian,",
-        "heading_span": "end to end",
-        "subheading": "Designed in Australia, stocked and shipped from Sydney. If something's wrong you email a person, and if it's not right it goes back to an Australian address."
+        "heading": "Designed For People",
+        "heading_span": "Who Sit All Day",
+        "subheading": ""
       }
     },
     "faq_bMxpUE": {
@@ -646,42 +625,35 @@
           "type": "faq",
           "settings": {
             "question": "Does it work for all chairs?",
-            "answer": "Most of them — office, gaming, dining and car seats.\n\nErgoRelief™ sits on any flat seat. LumbarEase™ has adjustable straps, so it fits backrests with or without built-in lumbar support.\n\nThey work best on a chair with a flat seat and a backrest you can strap to."
+            "answer": "LumbarEase™ and ErgoRelief™ are designed to work with most standard chairs, including office chairs, dining chairs, and car seats.\n\nThey fit best on chairs with a flat seat and a supportive backrest. For optimal comfort and positioning, we recommend using them on a stable, non‑slippery surface."
           }
         },
         "faq_mBiBVG": {
           "type": "faq",
           "settings": {
             "question": "How fast will I feel results?",
-            "answer": "Most people feel the pressure come off the first time they sit down.\n\nFull comfort usually takes a few days. Sitting properly uses muscles you haven't been using, so a short adjustment period is normal — it isn't a sign it isn't working.\n\nThat's what the 7-Day Reset is for. One short video a day, each building on the last, so the change sticks instead of wearing off."
+            "answer": "Many users notice improved comfort within the first few uses, especially when sitting for longer periods.\n\nFor best results, we recommend following the 7-Day SitComfort Reset Program, as consistent setup and posture habits make the biggest difference over time."
           }
         },
         "faq_6NTqnJ": {
           "type": "faq",
           "settings": {
             "question": "Is it firm or soft?",
-            "answer": "Firm — deliberately.\n\nSoft cushions feel great for ten minutes, then bottom out and put you straight back on your tailbone. High-density memory foam holds its shape, so the support at 5pm is the same as it was at 9am.\n\nIf every lumbar support you've tried has dug into your back, that's usually a too-thick one on a chair that already curves. LumbarEase™ is contoured to sit in the gap rather than push into it."
+            "answer": "LumbarEase™ and ErgoRelief™ are designed with a balanced feel — supportive yet comfortable.\n\nThey are firm enough to maintain proper posture and alignment, while still providing cushioning to keep you comfortable during long periods of sitting."
           }
         },
         "faq_EtRgqK": {
           "type": "faq",
           "settings": {
-            "question": "What's included in the 7-Day Reset?",
-            "answer": "A short video each day, plus the setup and habit changes that go with it.\n\n- Day-by-day video guidance, one per day\n- Practical setup tips for your chair, desk and screen\n- Simple movement and posture routines you can do at your desk\n\nEach day builds on the last, so by the end you have a setup and a routine that hold without you thinking about them."
-          }
-        },
-        "faq_Mt6Leh": {
-          "type": "faq",
-          "settings": {
-            "question": "How do I access the 7-Day Reset?",
-            "answer": "It's emailed to you after your order — no app, no login.\n\nEach day is one short video and one adjustment to make, about 2–3 minutes."
+            "question": "What’s included in the 7-day reset?",
+            "answer": "The 7-Day SitComfort Reset is a simple, guided program designed to help you improve posture and reduce discomfort step by step.\n\nIt includes:\n- Daily video guidance (one per day)\n- Practical setup tips for your chair, desk, and posture\n- Simple movement and habit routines to follow\n\nEach day builds on the previous one, so you can create a complete sitting setup and routine that feels natural and easy to maintain."
           }
         },
         "faq_Prjczy": {
           "type": "faq",
           "settings": {
             "question": "Shipping & returns?",
-            "answer": "Shipping\nExpress shipping across Australia, dispatched from our Sydney warehouse. Most orders arrive in 2–3 business days, and tracking is emailed the moment your order ships.\n\nReturns\n30-day money-back guarantee. If it's not right for you, email info@sitcomfort.com.au within 30 days and we'll take care of it."
+            "answer": "We offer fast and reliable shipping across Australia, with tracking provided once your order is dispatched.\n\nIf you’re not completely satisfied, you can return your order within the return period for a refund or exchange — as long as the product is in good condition.\n\nFor any questions or assistance, simply contact us at info@sitcomfort.com.au and our team will be happy to help."
           }
         }
       },
@@ -690,7 +662,6 @@
         "faq_mBiBVG",
         "faq_6NTqnJ",
         "faq_EtRgqK",
-        "faq_Mt6Leh",
         "faq_Prjczy"
       ],
       "name": "Custom FAQ Section",
@@ -698,15 +669,15 @@
         "bg_color": "#f5f5f5",
         "show_logo": true,
         "logo_width": 120,
-        "heading": "Frequently Asked",
-        "heading_span": "Questions",
+        "heading": "Frequently asked",
+        "heading_span": "questions",
         "heading_color": "#111111",
         "heading_size": 42,
         "subheading": "",
-        "bottom_text": "Have more questions? <a href=\"/pages/contact\">Contact us</a>",
+        "bottom_text": "Have more questions? Contact us",
         "bottom_subtext": "",
-        "button_text": "Ready to try it? Start your 7-Day Reset",
-        "button_link": "/cart/add?id=48772058022145&quantity=1&return_to=/cart",
+        "button_text": "Ready to try it? Start your 7-day reset",
+        "button_link": "shopify://products/comfortbundle-complete-system",
         "icon_style": "plus",
         "padding_top": 100,
         "padding_bottom": 100,
@@ -734,7 +705,7 @@
         "include_margins": true
       },
       "custom_css": [
-        "& {background-color: #ffffff !important; padding-top: clamp(40px, 6vw, 60px); padding-bottom: clamp(50px, 8vw, 80px);}"
+        "& {\n  background-color: #f5f5f5 !important;\n}"
       ]
     },
     "cta_section_tEApVF": {
@@ -746,11 +717,10 @@
         "padding_bottom_desktop": 60,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
-        "heading": "Reset your sitting. [br]Reclaim your comfort.",
-        "subheading": "Express shipping from Sydney · [br]2–3 business days · 30-day money-back guarantee",
-        "button_text": "Start your 7-Day Reset",
-        "button_link": "/cart/add?id=48772058022145&quantity=1&return_to=/cart",
-        "center_layout": true
+        "heading": "Reset your sitting. Reclaim your comfort.",
+        "subheading": "Express shipping from Australia [br]· 30-day money back guarantee · Easy returns",
+        "button_text": "Start your 7-day reset",
+        "button_link": "shopify://products/comfortbundle-complete-system"
       }
     }
   },

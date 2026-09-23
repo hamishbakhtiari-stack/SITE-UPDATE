@@ -14,10 +14,20 @@
     ".product__title h1{font-size:15px",
     ".product__text.subtitle{font-size:26px",
     "--media-radius:14px!important",
-    ".product__info-container .price .price-item{line-height:1.2!important}"
+    ".product__info-container .price .price-item{line-height:1.2!important}",
+    ".one-product-content{display:contents!important}",
+    "grid-template-areas:\"i t\" \"i b\"",
+    ".single-support-section .support-image{display:none!important}"
   ],
   "first_block": {
     "main": "custom_liquid_heroAnchor"
   },
-  "first_section": "sc_trust_strip"
+  "first_section": "sc_trust_strip",
+  "block_must_contain": {
+    "custom_liquid_cartAddLink": [
+      "sc-cta-delegate",
+      "a[href^=\"/cart/add?\"]",
+      "product-form form [name=\"add\"]"
+    ]
+  }
 }
