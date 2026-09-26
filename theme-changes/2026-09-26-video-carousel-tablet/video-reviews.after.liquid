@@ -1,0 +1,187 @@
+{% comment %}
+  Video testimonials carousel.
+
+  Notes:
+  - Swiper CSS/JS load non-blocking (media=print swap + defer).
+  - Slides fetch their first frame ~800px before entering the viewport so the
+    cards are never blank by the time the shopper reaches them, then only
+    start playing once actually visible.
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  media="print"
+  onload="this.media='all'"
+>
+
+{%- comment -%}
+  CLS fix: give the carousel its final Swiper layout before the async Swiper
+  CSS/JS arrive, so the video cards never render stacked full-width and then
+  collapse. Slide widths mirror the Swiper config below (spaceBetween 10;
+  2.5 / 3.3 / 4 slides per view at 0 / 600 / 990px). Tablets show 3.3 so a
+  partial card peeks and cards stay under ~380px tall. Videos are 1080x1920,
+  so each card reserves a 9:16 box up front.
+{%- endcomment -%}
+<style>
+  .video_testimonials .mySwiper { position: relative; overflow: hidden; }
+  .video_testimonials .mySwiper .swiper-wrapper { display: flex; }
+  .video_testimonials .mySwiper .swiper-slide { flex-shrink: 0; width: calc((100% - 15px) / 2.5); margin-right: 10px; }
+  @media (min-width: 600px) { .video_testimonials .mySwiper .swiper-slide { width: calc((100% - 23px) / 3.3); } }
+  @media (min-width: 990px) { .video_testimonials .mySwiper .swiper-slide { width: calc((100% - 30px) / 4); } }
+  .video_testimonials .video-card1 video { aspect-ratio: 9 / 16; height: auto; object-fit: cover; }
+  .video_testimonials .mySwiper .swiper-button-next,
+  .video_testimonials .mySwiper .swiper-button-prev { position: absolute; top: 50%; margin-top: -22px; z-index: 10; }
+  .video_testimonials .mySwiper .swiper-button-prev { left: 10px; right: auto; }
+  .video_testimonials .mySwiper .swiper-button-next { right: 10px; left: auto; }
+  .video_testimonials .mySwiper .swiper-notification { position: absolute; left: 0; top: 0; opacity: 0; pointer-events: none; }
+</style>
+
+<div class="video_testimonials">
+  <h2 class="heading-h2">Real people.
+    <span>Real relief.</span>
+  </h2>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper" id="swiper-wrapper-{{ block.id }}" aria-live="polite">
+
+      {%- comment -%}
+        Cards play Shopify's 480p rendition of each upload (originals are
+        1080x1920, 16-123 MB), tapping opens the 720p rendition, and Shopify's
+        own preview frame is used as the poster. Rendition URLs carry a
+        per-video suffix, so known uploads are mapped here; any other link
+        falls back to playing exactly as entered in the theme editor.
+      {%- endcomment -%}
+      {%- for n in (1..6) -%}
+        {%- assign link_key = 'video-link-' | append: n -%}
+        {%- assign link = block.settings[link_key] -%}
+        {%- if link != blank -%}
+          {%- assign vid_id = link | split: '/' | last | split: '.' | first -%}
+          {%- case vid_id -%}
+            {%- when '9278c1c8a4464fe692808fff8716871f' -%}{%- assign rendition = '91000312' -%}
+            {%- when 'db89ca754d6d43d8b7e0e3a716d7dcf8' -%}{%- assign rendition = '91000313' -%}
+            {%- when '65cd316703c340ac93aa775068d22ac7' -%}{%- assign rendition = '92732756' -%}
+            {%- when 'd1652ce9e0394127b4604873f25882d1' -%}{%- assign rendition = '91001478' -%}
+            {%- when '6047526603d2424698c3e4ec99400674' -%}{%- assign rendition = '91000510' -%}
+            {%- else -%}{%- assign rendition = '' -%}
+          {%- endcase -%}
+          {%- assign card_src = link -%}
+          {%- assign modal_src = link -%}
+          {%- assign poster = '' -%}
+          {%- if rendition != '' -%}
+            {%- assign base = 'https://cdn.shopify.com/videos/c/vp/' | append: vid_id | append: '/' | append: vid_id -%}
+            {%- assign card_src = base | append: '.SD-480p-1.5Mbps-' | append: rendition | append: '.mp4' -%}
+            {%- assign modal_src = base | append: '.HD-720p-4.5Mbps-' | append: rendition | append: '.mp4' -%}
+            {%- assign poster = 'https://cdn.shopify.com/s/files/1/0812/9416/4225/files/preview_images/' | append: vid_id | append: '.thumbnail.0000000000.jpg?width=300' -%}
+          {%- endif %}
+        <div class="swiper-slide video-card1" data-video1="{{ modal_src }}">
+          <video data-src="{{ card_src }}"{% if poster != '' %} poster="{{ poster }}"{% endif %} muted playsinline loop preload="none"></video>
+        </div>
+        {%- endif -%}
+      {%- endfor %}
+
+    </div>
+
+    <!-- Arrows -->
+    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-{{ block.id }}"></div>
+    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-{{ block.id }}"></div>
+    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Init Swiper
+    if (typeof Swiper !== "undefined") {
+      new Swiper(".mySwiper", {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          0: { slidesPerView: 2.5 },
+          600: { slidesPerView: 3.3 },
+          990: { slidesPerView: 4 }
+        }
+      });
+    }
+
+    // Modal logic
+    var modal = document.getElementById("videoModal1");
+    var video = document.getElementById("modalVideo");
+    var closeBtn1 = document.querySelector(".close1");
+
+    document.querySelectorAll(".video-card1").forEach(function (card) {
+      card.addEventListener("click", function () {
+        if (!modal || !video) return;
+        video.src = card.getAttribute("data-video1");
+        modal.style.display = "flex";
+      });
+    });
+
+    function closeModal() {
+      if (!modal || !video) return;
+      modal.style.display = "none";
+      video.pause();
+      video.src = "";
+    }
+
+    if (closeBtn1) {
+      closeBtn1.addEventListener("click", closeModal);
+    }
+
+    if (modal) {
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // Two-phase loading so the cards are never blank when reached:
+    //   1. ~800px out  -> attach src + preload metadata, so the first frame paints
+    //   2. actually visible -> start playback
+    var lazyVideos = document.querySelectorAll(".video-card1 video[data-src]");
+
+    if (!("IntersectionObserver" in window)) {
+      lazyVideos.forEach(function (vid) {
+        vid.src = vid.dataset.src;
+        vid.preload = "auto";
+        vid.play().catch(function () {});
+      });
+      return;
+    }
+
+    var frameObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var vid = entry.target;
+        if (vid.dataset.src && !vid.src) {
+          vid.preload = "metadata";
+          vid.src = vid.dataset.src;
+        }
+        observer.unobserve(vid);
+      });
+    }, { root: null, rootMargin: "800px", threshold: 0 });
+
+    var playObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var vid = entry.target;
+        if (entry.isIntersecting) {
+          if (vid.dataset.src && !vid.src) {
+            vid.src = vid.dataset.src;
+          }
+          vid.play().catch(function () {});
+        } else if (!vid.paused) {
+          vid.pause();
+        }
+      });
+    }, { root: null, rootMargin: "0px", threshold: 0.25 });
+
+    lazyVideos.forEach(function (vid) {
+      frameObserver.observe(vid);
+      playObserver.observe(vid);
+    });
+  });
+</script>
