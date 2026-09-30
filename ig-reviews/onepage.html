@@ -1,0 +1,59 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Lora;src:url(Lora-Regular.ttf)}
+@font-face{font-family:Lora;font-style:italic;src:url(Lora-Italic.ttf)}
+@font-face{font-family:Inst;src:url(InstrumentSans-Regular.ttf)}
+@font-face{font-family:Inst;font-weight:700;src:url(InstrumentSans-Bold.ttf)}
+:root{--teal:#1A7A6E;--gold:#C9A84C;--off:#F9F6F0;--dark:#1C1C1C;--muted:#7d786f}
+*{box-sizing:border-box;margin:0;padding:0}
+.post{width:1080px;height:1350px;background:var(--off);padding:58px 56px;font-family:Inst;color:var(--dark);position:relative;overflow:hidden}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:700;letter-spacing:5px;font-size:28px;color:var(--teal)}
+.pill{display:flex;align-items:center;gap:12px;background:#fff;border-radius:999px;padding:12px 24px;font-size:25px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.pill .st{color:var(--gold);letter-spacing:3px}
+.pill b{font-size:28px}
+.pill span{color:var(--muted)}
+h1{font-family:Lora;font-weight:400;font-size:84px;line-height:1;margin-top:40px;letter-spacing:-1.5px}
+h1 i{color:var(--teal)}
+.sub{font-size:28px;color:var(--muted);margin-top:16px}
+.sub b{color:var(--dark)}
+
+.mosaic{position:absolute;left:56px;right:56px;top:318px;height:890px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.col{background:#fff;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.ph{height:610px;position:relative;flex:none;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.t{padding:22px 22px 22px;display:flex;flex-direction:column;flex:1}
+.t .stars{color:var(--gold);letter-spacing:3px;font-size:26px}
+.t p{font-family:Lora;font-size:30px;line-height:1.2;margin-top:8px}
+.who{margin-top:auto;font-size:25px;padding-top:10px}
+.who b{display:block;color:var(--dark)}
+.ver{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-weight:700;font-size:21px;margin-top:4px}
+.ver svg{width:23px;height:23px}
+
+.trust{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font-size:22px;color:var(--muted)}
+.medal{display:flex;align-items:center;gap:10px}
+.medal svg{width:38px;height:38px;flex:none}
+.medal b{color:var(--dark);display:block;font-size:22px}
+</style></head><body>
+<div class="post" id="post">
+  <div class="top">
+    <div class="logo">SITCOMFORT™</div>
+    <div class="pill"><span class="st">★★★★★</span><b>4.98</b><span>· 50 reviews on Judge.me</span></div>
+  </div>
+  <h1>Real chairs. <i>Real reviews.</i></h1>
+  <div class="sub">The <b>ComfortBundle™</b>, set up by our customers at home.</div>
+
+  <div class="mosaic">
+<div class="col"><div class="ph"><img src="photos/wendy.jpg" style="object-position:60% 70%"></div><div class="t"><div class="stars">★★★★★</div><p>“They’ve genuinely helped with long hours of sitting.”</p><div class="who"><b>Wendy C.</b><span class="ver"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1A7A6E"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified Buyer</span></div></div></div>
+<div class="col"><div class="ph"><img src="photos/nikkiryan.jpg" style="object-position:50% 55%"></div><div class="t"><div class="stars">★★★★★</div><p>“Both pieces stay securely in place.”</p><div class="who"><b>Nikkiryan</b><span class="ver"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1A7A6E"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified Buyer</span></div></div></div>
+<div class="col"><div class="ph"><img src="photos/daniela.jpg" style="object-position:50% 50%;transform:scale(1.3);transform-origin:50% 42%"></div><div class="t"><div class="stars">★★★★★</div><p>“Supportive without being too firm.”</p><div class="who"><b>Daniela</b><span class="ver"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1A7A6E"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified Buyer</span></div></div></div>
+  </div>
+
+  <div class="trust">
+    <div class="medal"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#1A7A6E"/><path d="M20 9l9 8-9 14-9-14z" fill="#F9F6F0"/><path d="M11 17h18" stroke="#1A7A6E" stroke-width="1.5"/></svg><div><b>Diamond</b>Transparent Shop</div></div>
+    <div class="medal"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#C9A84C"/><path d="M20 8l10 4v8c0 6-4.5 10-10 12-5.5-2-10-6-10-12v-8z" fill="#F9F6F0"/><path d="M15 20l3.5 3.5L25.5 16" stroke="#C9A84C" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Authentic</b>Shop · 92% verified</div></div>
+    <div class="medal"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#1C1C1C"/><text x="20" y="26" text-anchor="middle" font-family="Inst" font-weight="700" font-size="15" fill="#C9A84C">30</text></svg><div><b>30-day</b>money-back guarantee</div></div>
+  </div>
+</div>
+</body></html>
