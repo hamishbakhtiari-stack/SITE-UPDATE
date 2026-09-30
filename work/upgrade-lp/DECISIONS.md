@@ -16,5 +16,11 @@
 - Layout, icons, CTA: unchanged. Gallery = product media (shared with main PDP); open if owner wants a different first image.
 - Guard (`locked.json`) updated: headline lock now expects "Upgrade your chair, don't replace it.".
 
+## Section 2 — one_product_PTdiHH ("Why the full system works") — approved 2026-09-30 (v4)
+- Heading: "Why [the full system] works" → "Your chair, [fully supported]"
+- Subheading → "Support under you and behind you — on the chair you already own. The 7-Day Reset shows you how to set it up."
+- Owner rejected "Why a cushion [isn't enough]": copy must stay positive — we are selling. Keep copy plain and grammatical.
+- Layout, badge, 4 cards, icons, CTA unchanged.
+
 ## Closed topics
 - Compliance: never raise again (owner, 2026-09-30).
