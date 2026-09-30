@@ -7,14 +7,14 @@
   Not in navigation; ad landing page only.
 
 ## Hero (main-product) — approved 2026-09-30
-- Eyebrow: "Better Sitting in 7 Days" → "For the chair you already have" → "No new chair needed" (v2: longer text wrapped the pill badge to 2 lines on mobile+desktop; keep eyebrow ≤ ~24 chars)
-- Headline: "Fix how you sit, not just what you sit on." → "Upgrade your chair, not your whole office." (P2 lead line)
+- Eyebrow: kept as original "Better Sitting in 7 Days" (v3). Tried "For the chair you already have" (wrapped the pill to 2 lines — keep pill text ≤ ~24 chars) and "No new chair needed" (repeated the headline).
+- Headline: "Fix how you sit, not just what you sit on." → "Upgrade your chair, don't replace it." (v3, owner's line — echoes Sarah's core thought; replaced the P2 lead line "Upgrade your chair, not your whole office.")
 - Description → "Seat cushion and strap-on lumbar support for the chair you already own, plus the 7-Day Reset."
 - Bullets: value first, then setup (owner's call — setup objections sit right above Add to Cart):
   1 Cushion takes pressure off your tailbone · 2 Lumbar support holds your back's curve ·
   3 Fits most chairs: office, dining and gaming · 4 No tools, no assembly. Straps on and stays put.
 - Layout, icons, CTA: unchanged. Gallery = product media (shared with main PDP); open if owner wants a different first image.
-- Guard (`locked.json`) updated: headline lock now expects the new P2 headline.
+- Guard (`locked.json`) updated: headline lock now expects "Upgrade your chair, don't replace it.".
 
 ## Closed topics
 - Compliance: never raise again (owner, 2026-09-30).

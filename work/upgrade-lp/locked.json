@@ -6,7 +6,7 @@
     "sections.main.settings.media_fit": "contain",
     "sections.main.settings.padding_top": 8,
     "sections.main.settings.padding_bottom": 24,
-    "sections.main.blocks.text_RdmgPL.settings.text": "Upgrade your chair, not your whole office."
+    "sections.main.blocks.text_RdmgPL.settings.text": "Upgrade your chair, don't replace it."
   },
   "css_must_contain": [
     "--constrained-height:320px!important",
