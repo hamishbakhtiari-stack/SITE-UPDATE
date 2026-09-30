@@ -22,5 +22,11 @@
 - Owner rejected "Why a cushion [isn't enough]": copy must stay positive — we are selling. Keep copy plain and grammatical.
 - Layout, badge, 4 cards, icons, CTA unchanged.
 
+## Other sections — owner: no changes needed (What's included, 7-Day Reset, All-Day Support, videos/reviews, Australian, FAQ, Judge.me)
+
+## CTA banner — cta_section_tEApVF — approved 2026-09-30 (v5)
+- Heading: "Reset your sitting. [br]Reclaim your comfort." → "Upgrade your chair. [br]Keep your comfort." (echoes hero)
+- Setting lives in this template only; CTA-section.liquid untouched, so About Us / other pages' banners are unaffected (checksums verified before/after).
+
 ## Closed topics
 - Compliance: never raise again (owner, 2026-09-30).
