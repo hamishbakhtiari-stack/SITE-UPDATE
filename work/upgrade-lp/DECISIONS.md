@@ -7,7 +7,7 @@
   Not in navigation; ad landing page only.
 
 ## Hero (main-product) — approved 2026-09-30
-- Eyebrow: "Better Sitting in 7 Days" → "For the chair you already have"
+- Eyebrow: "Better Sitting in 7 Days" → "For the chair you already have" → "No new chair needed" (v2: longer text wrapped the pill badge to 2 lines on mobile+desktop; keep eyebrow ≤ ~24 chars)
 - Headline: "Fix how you sit, not just what you sit on." → "Upgrade your chair, not your whole office." (P2 lead line)
 - Description → "Seat cushion and strap-on lumbar support for the chair you already own, plus the 7-Day Reset."
 - Bullets: value first, then setup (owner's call — setup objections sit right above Add to Cart):
