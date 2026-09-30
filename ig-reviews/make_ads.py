@@ -1,0 +1,75 @@
+"""Generate retargeting ad creatives (feed 4:5 and story 9:16) as HTML."""
+
+V = ('<span class="ver"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1A7A6E"/>'
+     '<path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" '
+     'stroke-linejoin="round"/></svg>Verified Buyer</span>')
+
+REVIEWS = [
+    ("wendy.jpg", "object-position:60% 70%", "They’ve genuinely helped with long hours of sitting.", "Wendy C."),
+    ("nikkiryan.jpg", "object-position:50% 55%", "Both pieces stay securely in place.", "Nikkiryan"),
+    ("daniela.jpg", "object-position:50% 50%;transform:scale(1.3);transform-origin:50% 42%",
+     "Supportive without being too firm.", "Daniela"),
+]
+
+BASE_CSS = """
+@font-face{font-family:Lora;src:url(Lora-Regular.ttf)}
+@font-face{font-family:Lora;font-style:italic;src:url(Lora-Italic.ttf)}
+@font-face{font-family:Inst;src:url(InstrumentSans-Regular.ttf)}
+@font-face{font-family:Inst;font-weight:700;src:url(InstrumentSans-Bold.ttf)}
+:root{--teal:#1A7A6E;--gold:#C9A84C;--off:#F9F6F0;--dark:#1C1C1C;--muted:#7d786f}
+*{box-sizing:border-box;margin:0;padding:0}
+.ad{width:1080px;background:var(--off);font-family:Inst;color:var(--dark);position:relative;overflow:hidden}
+.brand{position:absolute;left:56px;right:56px;display:flex;justify-content:space-between;align-items:center}
+.brand .logo{font-weight:700;letter-spacing:5px;font-size:28px;color:var(--teal)}
+.brand .jm{font-size:24px;color:var(--muted)}
+.brand .jm b{color:var(--dark)}
+.rating{position:absolute;left:56px;right:56px;display:flex;align-items:center;gap:28px}
+.rating .num{font-family:Lora;font-size:128px;line-height:.9;letter-spacing:-3px}
+.rating .stars{color:var(--gold);font-size:52px;letter-spacing:6px;line-height:1}
+.rating .lbl{font-size:34px;margin-top:10px}
+.rating .lbl b{color:var(--teal)}
+.sub{position:absolute;left:56px;right:56px;font-family:Lora;font-style:italic;font-size:34px;color:var(--dark)}
+.cols{position:absolute;left:56px;right:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.col{background:#fff;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.ph{position:relative;flex:none;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.t{padding:20px 22px;display:flex;flex-direction:column;flex:1}
+.t .st{color:var(--gold);letter-spacing:3px;font-size:24px}
+.t p{font-family:Lora;font-size:29px;line-height:1.2;margin-top:6px}
+.who{margin-top:auto;padding-top:8px;font-size:24px}
+.who b{display:block}
+.ver{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-weight:700;font-size:20px;margin-top:3px}
+.ver svg{width:22px;height:22px}
+.cta{position:absolute;left:56px;right:56px;background:var(--teal);border-radius:32px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 40px;color:#fff}
+.cta .perks{font-size:30px;line-height:1.35}
+.cta .perks b{font-size:34px;display:block}
+.cta .btn{background:var(--off);color:var(--teal);font-weight:700;font-size:36px;padding:26px 38px;border-radius:999px;white-space:nowrap}
+"""
+
+
+def page(height, top, photo_h):
+    """top: dict of y positions for brand, rating, sub, cols, cta; cta height fixed."""
+    cols = "\n".join(
+        f'<div class="col"><div class="ph" style="height:{photo_h}px"><img src="photos/{img}" style="{pos}"></div>'
+        f'<div class="t"><div class="st">★★★★★</div><p>“{q}”</p><div class="who"><b>{n}</b>{V}</div></div></div>'
+        for img, pos, q, n in REVIEWS)
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{BASE_CSS}</style></head><body>
+<div class="ad" id="ad" style="height:{height}px">
+  <div class="brand" style="top:{top['brand']}px"><div class="logo">SITCOMFORT™</div><div class="jm">Verified reviews on <b>Judge.me</b></div></div>
+  <div class="rating" style="top:{top['rating']}px"><div class="num">4.98</div>
+    <div><div class="stars">★★★★★</div><div class="lbl">Rated by <b>50 real customers</b></div></div></div>
+  <div class="sub" style="top:{top['sub']}px">The ComfortBundle™, on their own chairs.</div>
+  <div class="cols" style="top:{top['cols']}px;height:{top['cols_h']}px">{cols}</div>
+  <div class="cta" style="top:{top['cta']}px;height:150px">
+    <div class="perks"><b>Try it 30 days risk-free</b>Free shipping on the bundle</div>
+    <div class="btn">Shop now →</div></div>
+</div></body></html>"""
+
+
+# Feed 4:5 — 1080x1350
+feed = page(1350, dict(brand=56, rating=120, sub=262, cols=326, cols_h=794, cta=1144), 520)
+# Story 9:16 — 1080x1920. Keep content clear of top ~250px and bottom ~340px (Instagram UI).
+story = page(1920, dict(brand=262, rating=330, sub=472, cols=540, cols_h=860, cta=1424), 580)
+
+open("ad-feed.html", "w").write(feed)
+open("ad-story.html", "w").write(story)
